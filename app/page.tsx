@@ -63,10 +63,7 @@ function HeroSection() {
           Every apprenticeship resource, in one place.
         </h1>
         <p className="text-sm sm:text-base md:text-lg text-neutral-500">
-          We track organisations, podcasts, events, CV guides, and communities
-          built for UK students trying to get into apprenticeships. No noise,
-          no overwhelm &mdash; just the things that are actually worth your
-          attention.
+          We surface the UK apprenticeship organisations, resources, and communities that are actually worth your attention.
         </p>
       </div>
       <div className="flex flex-wrap justify-center gap-3">
@@ -88,7 +85,7 @@ function SectionsRow() {
         {sectionTiles.map((tile) => (
           <div
             key={tile.label}
-            className="flex flex-col items-center justify-between border border-neutral-800 bg-neutral-950/40 px-3 py-4 text-xs sm:text-sm text-neutral-200 min-h-32"
+            className="flex flex-col items-center justify-between px-3 py-4 text-xs sm:text-sm text-neutral-200 min-h-32 transition-colors hover:bg-neutral-900/40"
           >
             <tile.Icon
               className="h-5 w-5 text-neutral-400 mb-3"
@@ -141,15 +138,24 @@ function OrganisationsPreview() {
               <h3 className="text-sm font-semibold text-neutral-100">
                 {org.name}
               </h3>
-              <span className="text-[10px] uppercase tracking-wide text-neutral-500">
-                Placeholder
-              </span>
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </div>
             <p className="mt-2 text-xs text-neutral-400">{org.blurb}</p>
           </div>
         ))}
       </div>
     </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="mt-10 flex items-center justify-between text-[11px] sm:text-xs text-neutral-500">
+      <span className="tracking-[0.22em] uppercase text-neutral-400">
+        APRNTCSHP
+      </span>
+      <span>Built for UK students</span>
+    </footer>
   );
 }
 
@@ -167,6 +173,7 @@ export default function Home() {
           <SectionDivider />
           <OrganisationsPreview />
         </div>
+        <Footer />
       </main>
     </div>
   );
