@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
 import { ExternalLink, Building2, Calendar, FileText, Mic, Users } from "lucide-react";
 
 const navItems = [
@@ -14,32 +18,121 @@ const organisations = [
     description:
       "A student-run organisation giving all students access to extracurricular opportunities.",
     url: "https://www.equityed.co.uk/",
+    logo: "/logos/equityed2.png",
   },
   {
     name: "WISE Foundation",
     description:
       "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
     url: "https://www.wizefoundation.com/",
+    logo: "/logos/wize.png",
   },
   {
     name: "Amazing Apprenticeships",
     description:
       "Debunking misconceptions around apprenticeships and helping more students access them.",
     url: "https://www.amazingapprenticeships.com/",
+    logo: "/logos/amazingapprenticeships.png",
   },
   {
     name: "Black Apprenticeship Network",
     description:
       "Supporting and empowering Black apprentices through networking, career support, and professional development.",
     url: "https://www.blackapprenticenetwork.co.uk/",
+    logo: "/logos/ban2.png",
   },
   {
     name: "Apprentease",
     description:
       "Peer-led community helping students secure apprenticeships through resources, mentorship, and support.",
     url: "https://discord.com/invite/UXKYgRB6ux",
+    logo: "/logos/apprentease.jpg",
+  },
+  {
+    name: "Muslim Apprentice Community",
+    description:
+      "Community space for Muslim apprentices and aspiring apprentices across the UK.",
+    url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
+    logo: "/logos/mac.jpg",
+  },
+  {
+    name: "Mentup",
+    description:
+      "Mentorship-focused support for UK students looking to break into apprenticeships.",
+    url: "https://www.linkedin.com/company/mentup-uk/",
+    logo: "/logos/mentup.jpg",
+  },
+  {
+    name: "Arab Asian Network",
+    description:
+      "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
+    url: "https://www.linkedin.com/company/asianarabnetwork/",
+    logo: "/logos/aan.jpg",
+  },
+  {
+    name: "Investate",
+    description:
+      "Student-led initiative introducing young people to investing, finance, and related pathways.",
+    url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
+    logo: "/logos/investate.jpg",
+  },
+  {
+    name: "Hindu Apprentice Network",
+    description:
+      "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
+    url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
+    logo: "/logos/han.jpg",
+  },
+  {
+    name: "Apprentilink",
+    description:
+      "Connecting students to apprenticeship opportunities and communities across the UK.",
+    url: "https://www.allapprenticenetwork.co.uk/?utm_source=chatgpt.com",
+    logo: "/logos/apprentilink.jpg",
+  },
+  {
+    name: "Apprentadream",
+    description:
+      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
+    url: "https://www.apprentadream.co.uk/",
+    logo: "/logos/ad.png",
+  },
+  {
+    name: "Women in Apprenticeships Network",
+    description:
+      "Network focused on supporting women in apprenticeships through community and resources.",
+    url: "https://www.womeninapprenticeshipsnetwork.org/",
+    logo: "/logos/wian.png",
+  },
+  {
+    name: "Success at School",
+    description:
+      "Careers platform helping students explore options, including apprenticeships, after school.",
+    url: "https://www.successatschool.org",
+    logo: "/logos/sas.png",
   },
 ];
+
+function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
+  const [errored, setErrored] = useState(false);
+
+  if (errored) {
+    return <div className="mt-0.5 h-14 w-14 bg-neutral-800" />;
+  }
+
+  return (
+    <div className="mt-0.5 h-14 w-14 bg-neutral-900 flex items-center justify-center overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        width={56}
+        height={56}
+        className="h-14 w-14 object-contain"
+        onError={() => setErrored(true)}
+      />
+    </div>
+  );
+}
 
 function Navbar() {
   return (
@@ -91,19 +184,19 @@ function PageHeader() {
 function OrganisationsGrid() {
   return (
     <section className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {organisations.map((org) => (
           <a
             key={org.name}
             href={org.url}
             target="_blank"
             rel="noreferrer"
-            className="group border border-neutral-800 bg-neutral-950/40 hover:bg-neutral-900/40 transition-colors px-4 py-4 text-sm text-neutral-200 flex items-start justify-between gap-4"
+            className="group border-b border-neutral-800 bg-neutral-950/40 hover:bg-neutral-900/40 transition-colors px-5 py-6 sm:px-6 text-sm text-neutral-200 flex items-start justify-between gap-4"
           >
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 h-10 w-10 bg-neutral-800" />
+              <OrganisationLogo src={org.logo} alt={org.name} />
               <div className="space-y-1">
-                <h2 className="text-sm font-semibold text-neutral-50">
+                <h2 className="text-base font-semibold text-neutral-50">
                   {org.name}
                 </h2>
                 <p className="text-xs text-neutral-400">{org.description}</p>
