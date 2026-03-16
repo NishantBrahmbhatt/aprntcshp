@@ -19,6 +19,7 @@ const organisations = [
       "Debunking misconceptions around apprenticeships and helping more students access them.",
     url: "https://www.amazingapprenticeships.com/",
     logo: "/logos/amazingapprenticeships.png",
+    category: "Organisation",
   },
   {
     name: "Apprentease",
@@ -26,6 +27,7 @@ const organisations = [
       "Peer-led community helping students secure apprenticeships through resources, mentorship, and support.",
     url: "https://discord.com/invite/UXKYgRB6ux",
     logo: "/logos/apprentease.jpg",
+    category: "Community",
   },
   {
     name: "Apprentadream",
@@ -33,6 +35,7 @@ const organisations = [
       "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
     url: "https://www.apprentadream.co.uk/",
     logo: "/logos/ad.png",
+    category: "Organisation",
   },
   {
     name: "Apprentilink",
@@ -40,6 +43,7 @@ const organisations = [
       "Connecting students to apprenticeship opportunities and communities across the UK.",
     url: "https://www.allapprenticenetwork.co.uk/?utm_source=chatgpt.com",
     logo: "/logos/apprentilink.jpg",
+    category: "Organisation",
   },
   {
     name: "Arab Asian Network",
@@ -47,6 +51,7 @@ const organisations = [
       "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
     url: "https://www.linkedin.com/company/asianarabnetwork/",
     logo: "/logos/aan.jpg",
+    category: "Community",
   },
   {
     name: "Black Apprenticeship Network",
@@ -54,6 +59,7 @@ const organisations = [
       "Supporting and empowering Black apprentices through networking, career support, and professional development.",
     url: "https://www.blackapprenticenetwork.co.uk/",
     logo: "/logos/ban2.png",
+    category: "Organisation",
   },
   {
     name: "Equity Ed",
@@ -61,6 +67,7 @@ const organisations = [
       "A student-run organisation giving all students access to extracurricular opportunities.",
     url: "https://www.equityed.co.uk/",
     logo: "/logos/equityed2.png",
+    category: "Organisation",
   },
   {
     name: "Hindu Apprentice Network",
@@ -68,6 +75,7 @@ const organisations = [
       "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
     url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
     logo: "/logos/han.jpg",
+    category: "Community",
   },
   {
     name: "Investate",
@@ -75,6 +83,7 @@ const organisations = [
       "Student-led initiative introducing young people to investing, finance, and related pathways.",
     url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
     logo: "/logos/investate.jpg",
+    category: "Community",
   },
   {
     name: "Mentup",
@@ -82,6 +91,7 @@ const organisations = [
       "Mentorship-focused support for UK students looking to break into apprenticeships.",
     url: "https://www.linkedin.com/company/mentup-uk/",
     logo: "/logos/mentup.jpg",
+    category: "Organisation",
   },
   {
     name: "Muslim Apprentice Community",
@@ -89,6 +99,7 @@ const organisations = [
       "Community space for Muslim apprentices and aspiring apprentices across the UK.",
     url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
     logo: "/logos/mac.jpg",
+    category: "Community",
   },
   {
     name: "Success at School",
@@ -96,6 +107,7 @@ const organisations = [
       "Careers platform helping students explore options, including apprenticeships, after school.",
     url: "https://www.successatschool.org",
     logo: "/logos/sas.png",
+    category: "Organisation",
   },
   {
     name: "WISE Foundation",
@@ -103,6 +115,7 @@ const organisations = [
       "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
     url: "https://www.wizefoundation.com/",
     logo: "/logos/wize.png",
+    category: "Organisation",
   },
   {
     name: "Women in Apprenticeships Network",
@@ -110,6 +123,7 @@ const organisations = [
       "Network focused on supporting women in apprenticeships through community and resources.",
     url: "https://www.womeninapprenticeshipsnetwork.org/",
     logo: "/logos/wian.png",
+    category: "Community",
   },
   {
     name: "Movement to Work",
@@ -117,6 +131,7 @@ const organisations = [
       "Connecting young people with employer work experience and apprenticeship opportunities.",
     url: "https://www.mtwplacements.com",
     logo: "/logos/movementtowork.png",
+    category: "Organisation",
   },
   {
     name: "Higherin",
@@ -124,6 +139,7 @@ const organisations = [
       "Student community with apprenticeship reviews, career advice, and day-in-the-life content.",
     url: "https://higherin.com",
     logo: "/logos/higherin.svg",
+    category: "Organisation",
   },
   {
     name: "UCAS",
@@ -131,6 +147,7 @@ const organisations = [
       "The UK's official university and apprenticeship application platform with guides and vacancies.",
     url: "https://www.ucas.com/explore/search/apprenticeships",
     logo: "/logos/UCAS.png",
+    category: "Organisation",
   },
   {
     name: "Essex Opportunities",
@@ -138,6 +155,7 @@ const organisations = [
       "Local hub connecting Essex students with apprenticeship and employment opportunities.",
     url: "https://www.essexopportunities.co.uk/apprenticeship-hub/",
     logo: "/logos/essexopportunities.png",
+    category: "Organisation",
   },
   {
     name: "Apprenticeships.gov.uk",
@@ -145,6 +163,7 @@ const organisations = [
       "The government's official apprenticeship search and information service.",
     url: "https://www.apprenticeships.gov.uk/apprentices",
     logo: "/logos/apprenticeships.png",
+    category: "Organisation",
   },
   {
     name: "Apprenticeship Insider",
@@ -152,6 +171,7 @@ const organisations = [
       "Resource helping students research apprenticeship schemes and opportunities in detail.",
     url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
     logo: "/logos/ApprenticeshipInsider.png",
+    category: "Organisation",
   },
   {
     name: "Pathway CTM",
@@ -159,6 +179,7 @@ const organisations = [
       "Careers and employability programme helping students access apprenticeships, school leaver schemes, and opportunities.",
     url: "https://pathwayctm.com/",
     logo: "/logos/pathwayctm.png",
+    category: "Organisation",
   },
   {
     name: "GetMyFirstJob",
@@ -166,6 +187,7 @@ const organisations = [
       "Search platform connecting young people with apprenticeship, traineeship, and early careers roles.",
     url: "https://www.getmyfirstjob.co.uk/",
     logo: "/logos/gmfj.png",
+    category: "Organisation",
   },
   {
     name: "NotGoingToUni",
@@ -173,6 +195,7 @@ const organisations = [
       "Platform highlighting alternatives to traditional university, including apprenticeships, degree apprenticeships, and school leaver routes.",
     url: "https://notgoingtouni.co.uk/",
     logo: "/logos/NGTU.png",
+    category: "Organisation",
   },
   {
     name: "GradCracker",
@@ -180,6 +203,7 @@ const organisations = [
       "STEM careers platform listing internships, placements, graduate schemes, and degree apprenticeships.",
     url: "https://www.gradcracker.com/search/all-disciplines/degree-apprenticeships",
     logo: "/logos/gradcracker.svg",
+    category: "Organisation",
   },
 ];
 
@@ -271,7 +295,12 @@ function OrganisationsGrid() {
               <OrganisationLogo src={org.logo} alt={org.name} />
               <div className="space-y-1">
                 <h2 className="text-base font-semibold text-neutral-50">
-                  {org.name}
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span>{org.name}</span>
+                    <span className="text-[10px] tracking-wide text-neutral-500 border border-neutral-800 bg-neutral-950/60 px-2 py-0.5">
+                      {org.category}
+                    </span>
+                  </span>
                 </h2>
                 <p className="text-xs text-neutral-400">{org.description}</p>
               </div>

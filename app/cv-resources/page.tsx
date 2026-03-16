@@ -12,8 +12,8 @@ const navItems = [
 
 const templates = [
   {
-    name: "Tech & Academic CV",
-    description: "Clean technical format suited for tech and degree apprenticeships.",
+    name: "Techacademia Technical CV",
+    description: "Clean, technical format suited for tech degree apprenticeships.",
     href: "/resources/CV/CV%20Templates/Tech-Academia-Techncial-CV-Template-.docx",
     download: true,
   },
@@ -133,13 +133,11 @@ function DownloadCard({
   description,
   href,
   download,
-  external,
 }: {
   name: string;
   description: string;
   href: string;
   download?: boolean;
-  external?: boolean;
 }) {
   return (
     <div className="border border-neutral-800 bg-neutral-950/40 px-5 py-6 text-sm text-neutral-200">
@@ -153,22 +151,17 @@ function DownloadCard({
             <p className="text-xs text-neutral-400">{description}</p>
           </div>
         </div>
-        {external ? (
-          <ExternalLink
-            className="mt-1 h-4 w-4 text-neutral-500"
-            aria-hidden="true"
-          />
-        ) : null}
       </div>
       <div className="mt-4">
         <a
           href={href}
-          {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+          target="_blank"
+          rel="noreferrer"
           {...(download ? { download: "" } : {})}
           className="inline-flex items-center gap-2 text-xs font-medium text-neutral-300 hover:text-neutral-100 tracking-wide transition-colors"
         >
-          Download
-          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          Download Now
+          <ExternalLink className="h-3.5 w-3.5 text-neutral-500" aria-hidden="true" />
         </a>
       </div>
     </div>
@@ -218,7 +211,6 @@ export default function CvResourcesPage() {
                   description={t.description}
                   href={t.href}
                   download={"download" in t ? t.download : undefined}
-                  external={"external" in t ? t.external : undefined}
                 />
               ))}
             </div>
