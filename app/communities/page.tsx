@@ -7,8 +7,6 @@ import { ExternalLink } from "lucide-react";
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
-  { label: "Podcasts", href: "/#podcasts" },
-  { label: "Events", href: "/#events" },
   { label: "CV Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
 ];

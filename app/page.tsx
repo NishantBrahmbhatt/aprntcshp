@@ -1,10 +1,8 @@
-import { Building2, Calendar, FileText, Mic, Users } from "lucide-react";
+import { Building2, FileText, Users } from "lucide-react";
 import Link from "next/link";
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
-  { label: "Podcasts", Icon: Mic, href: "#podcasts" },
-  { label: "Events", Icon: Calendar, href: "#events" },
   { label: "CV Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
