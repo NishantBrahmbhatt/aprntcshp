@@ -1,11 +1,12 @@
 import { Building2, Calendar, FileText, Mic, Users } from "lucide-react";
+import Link from "next/link";
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Podcasts", Icon: Mic, href: "#podcasts" },
   { label: "Events", Icon: Calendar, href: "#events" },
   { label: "CV Resources", Icon: FileText, href: "/cv-resources" },
-  { label: "Communities", Icon: Users, href: "#communities" },
+  { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
 const organisations = [
@@ -30,9 +31,9 @@ const organisations = [
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <div className="font-semibold tracking-[0.26em] text-neutral-100">
+      <Link href="/" className="font-semibold tracking-[0.26em] text-neutral-100">
         APRNTCSHP
-      </div>
+      </Link>
       <nav className="hidden sm:flex items-center gap-5">
         {sectionTiles.map((item) => (
           <a
@@ -67,12 +68,18 @@ function HeroSection() {
         </p>
       </div>
       <div className="flex flex-wrap justify-center gap-3">
-        <button className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-50 bg-neutral-900 border border-neutral-600 hover:border-neutral-400 hover:bg-neutral-800 transition-colors">
+        <Link
+          href="/organisations"
+          className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-50 bg-neutral-900 border border-neutral-600 hover:border-neutral-400 hover:bg-neutral-800 transition-colors"
+        >
           Find Organisations
-        </button>
-        <button className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-200 border border-neutral-700 hover:border-neutral-400 hover:bg-neutral-900 transition-colors">
+        </Link>
+        <Link
+          href="/cv-resources"
+          className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-200 border border-neutral-700 hover:border-neutral-400 hover:bg-neutral-900 transition-colors"
+        >
           Browse Resources
-        </button>
+        </Link>
       </div>
     </section>
   );

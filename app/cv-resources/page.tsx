@@ -1,13 +1,14 @@
 "use client";
 
 import { ExternalLink, FileText } from "lucide-react";
+import Link from "next/link";
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
   { label: "Podcasts", href: "/#podcasts" },
   { label: "Events", href: "/#events" },
   { label: "CV Resources", href: "/cv-resources" },
-  { label: "Communities", href: "/#communities" },
+  { label: "Communities", href: "/communities" },
 ];
 
 const templates = [
@@ -70,9 +71,9 @@ const coverLetters = [
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <div className="font-semibold tracking-[0.26em] text-neutral-100">
+      <Link href="/" className="font-semibold tracking-[0.26em] text-neutral-100">
         APRNTCSHP
-      </div>
+      </Link>
       <nav className="hidden sm:flex items-center gap-5">
         {navItems.map((item) => (
           <a

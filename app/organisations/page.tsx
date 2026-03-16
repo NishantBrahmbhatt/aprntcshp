@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink, Building2, Calendar, FileText, Mic, Users } from "lucide-react";
 
 const navItems = [
@@ -9,7 +10,7 @@ const navItems = [
   { label: "Podcasts", href: "/#podcasts" },
   { label: "Events", href: "/#events" },
   { label: "CV Resources", href: "/cv-resources" },
-  { label: "Communities", href: "/#communities" },
+  { label: "Communities", href: "/communities" },
 ];
 
 const organisations = [
@@ -22,43 +23,11 @@ const organisations = [
     category: "Organisation",
   },
   {
-    name: "Apprentease",
-    description:
-      "Peer-led community helping students secure apprenticeships through resources, mentorship, and support.",
-    url: "https://discord.com/invite/UXKYgRB6ux",
-    logo: "/logos/apprentease.jpg",
-    category: "Community",
-  },
-  {
     name: "Apprentadream",
     description:
       "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
     url: "https://www.apprentadream.co.uk/",
     logo: "/logos/ad.png",
-    category: "Organisation",
-  },
-  {
-    name: "Apprentilink",
-    description:
-      "Connecting students to apprenticeship opportunities and communities across the UK.",
-    url: "https://www.allapprenticenetwork.co.uk/?utm_source=chatgpt.com",
-    logo: "/logos/apprentilink.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Arab Asian Network",
-    description:
-      "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
-    url: "https://www.linkedin.com/company/asianarabnetwork/",
-    logo: "/logos/aan.jpg",
-    category: "Community",
-  },
-  {
-    name: "Black Apprenticeship Network",
-    description:
-      "Supporting and empowering Black apprentices through networking, career support, and professional development.",
-    url: "https://www.blackapprenticenetwork.co.uk/",
-    logo: "/logos/ban2.png",
     category: "Organisation",
   },
   {
@@ -68,38 +37,6 @@ const organisations = [
     url: "https://www.equityed.co.uk/",
     logo: "/logos/equityed2.png",
     category: "Organisation",
-  },
-  {
-    name: "Hindu Apprentice Network",
-    description:
-      "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
-    url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
-    logo: "/logos/han.jpg",
-    category: "Community",
-  },
-  {
-    name: "Investate",
-    description:
-      "Student-led initiative introducing young people to investing, finance, and related pathways.",
-    url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
-    logo: "/logos/investate.jpg",
-    category: "Community",
-  },
-  {
-    name: "Mentup",
-    description:
-      "Mentorship-focused support for UK students looking to break into apprenticeships.",
-    url: "https://www.linkedin.com/company/mentup-uk/",
-    logo: "/logos/mentup.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Muslim Apprentice Community",
-    description:
-      "Community space for Muslim apprentices and aspiring apprentices across the UK.",
-    url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
-    logo: "/logos/mac.jpg",
-    category: "Community",
   },
   {
     name: "Success at School",
@@ -116,14 +53,6 @@ const organisations = [
     url: "https://www.wizefoundation.com/",
     logo: "/logos/wize.png",
     category: "Organisation",
-  },
-  {
-    name: "Women in Apprenticeships Network",
-    description:
-      "Network focused on supporting women in apprenticeships through community and resources.",
-    url: "https://www.womeninapprenticeshipsnetwork.org/",
-    logo: "/logos/wian.png",
-    category: "Community",
   },
   {
     name: "Movement to Work",
@@ -163,14 +92,6 @@ const organisations = [
       "The government's official apprenticeship search and information service.",
     url: "https://www.apprenticeships.gov.uk/apprentices",
     logo: "/logos/apprenticeships.png",
-    category: "Organisation",
-  },
-  {
-    name: "Apprenticeship Insider",
-    description:
-      "Resource helping students research apprenticeship schemes and opportunities in detail.",
-    url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
-    logo: "/logos/ApprenticeshipInsider.png",
     category: "Organisation",
   },
   {
@@ -231,9 +152,9 @@ function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <div className="font-semibold tracking-[0.26em] text-neutral-100">
+      <Link href="/" className="font-semibold tracking-[0.26em] text-neutral-100">
         APRNTCSHP
-      </div>
+      </Link>
       <nav className="hidden sm:flex items-center gap-5">
         {navItems.map((item) => (
           <a
@@ -295,17 +216,15 @@ function OrganisationsGrid() {
               <OrganisationLogo src={org.logo} alt={org.name} />
               <div className="space-y-1">
                 <h2 className="text-base font-semibold text-neutral-50">
-                  <span className="flex flex-wrap items-center gap-2">
-                    <span>{org.name}</span>
-                    <span className="text-[10px] tracking-wide text-neutral-500 border border-neutral-800 bg-neutral-950/60 px-2 py-0.5">
-                      {org.category}
-                    </span>
-                  </span>
+                  {org.name}
                 </h2>
                 <p className="text-xs text-neutral-400">{org.description}</p>
               </div>
             </div>
-            <ExternalLink className="mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300" aria-hidden="true" />
+            <ExternalLink
+              className="mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300"
+              aria-hidden="true"
+            />
           </a>
         ))}
       </div>
