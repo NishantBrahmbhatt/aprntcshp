@@ -4,7 +4,7 @@ const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Podcasts", Icon: Mic, href: "#podcasts" },
   { label: "Events", Icon: Calendar, href: "#events" },
-  { label: "CV Resources", Icon: FileText, href: "#cv-resources" },
+  { label: "CV Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "#communities" },
 ];
 

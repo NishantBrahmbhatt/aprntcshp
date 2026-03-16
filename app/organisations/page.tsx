@@ -8,38 +8,17 @@ const navItems = [
   { label: "Organisations", href: "/organisations" },
   { label: "Podcasts", href: "/#podcasts" },
   { label: "Events", href: "/#events" },
-  { label: "CV Resources", href: "/#cv-resources" },
+  { label: "CV Resources", href: "/cv-resources" },
   { label: "Communities", href: "/#communities" },
 ];
 
 const organisations = [
-  {
-    name: "Equity Ed",
-    description:
-      "A student-run organisation giving all students access to extracurricular opportunities.",
-    url: "https://www.equityed.co.uk/",
-    logo: "/logos/equityed2.png",
-  },
-  {
-    name: "WISE Foundation",
-    description:
-      "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
-    url: "https://www.wizefoundation.com/",
-    logo: "/logos/wize.png",
-  },
   {
     name: "Amazing Apprenticeships",
     description:
       "Debunking misconceptions around apprenticeships and helping more students access them.",
     url: "https://www.amazingapprenticeships.com/",
     logo: "/logos/amazingapprenticeships.png",
-  },
-  {
-    name: "Black Apprenticeship Network",
-    description:
-      "Supporting and empowering Black apprentices through networking, career support, and professional development.",
-    url: "https://www.blackapprenticenetwork.co.uk/",
-    logo: "/logos/ban2.png",
   },
   {
     name: "Apprentease",
@@ -49,39 +28,11 @@ const organisations = [
     logo: "/logos/apprentease.jpg",
   },
   {
-    name: "Muslim Apprentice Community",
+    name: "Apprentadream",
     description:
-      "Community space for Muslim apprentices and aspiring apprentices across the UK.",
-    url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
-    logo: "/logos/mac.jpg",
-  },
-  {
-    name: "Mentup",
-    description:
-      "Mentorship-focused support for UK students looking to break into apprenticeships.",
-    url: "https://www.linkedin.com/company/mentup-uk/",
-    logo: "/logos/mentup.jpg",
-  },
-  {
-    name: "Arab Asian Network",
-    description:
-      "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
-    url: "https://www.linkedin.com/company/asianarabnetwork/",
-    logo: "/logos/aan.jpg",
-  },
-  {
-    name: "Investate",
-    description:
-      "Student-led initiative introducing young people to investing, finance, and related pathways.",
-    url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
-    logo: "/logos/investate.jpg",
-  },
-  {
-    name: "Hindu Apprentice Network",
-    description:
-      "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
-    url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
-    logo: "/logos/han.jpg",
+      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
+    url: "https://www.apprentadream.co.uk/",
+    logo: "/logos/ad.png",
   },
   {
     name: "Apprentilink",
@@ -91,11 +42,67 @@ const organisations = [
     logo: "/logos/apprentilink.jpg",
   },
   {
-    name: "Apprentadream",
+    name: "Arab Asian Network",
     description:
-      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
-    url: "https://www.apprentadream.co.uk/",
-    logo: "/logos/ad.png",
+      "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
+    url: "https://www.linkedin.com/company/asianarabnetwork/",
+    logo: "/logos/aan.jpg",
+  },
+  {
+    name: "Black Apprenticeship Network",
+    description:
+      "Supporting and empowering Black apprentices through networking, career support, and professional development.",
+    url: "https://www.blackapprenticenetwork.co.uk/",
+    logo: "/logos/ban2.png",
+  },
+  {
+    name: "Equity Ed",
+    description:
+      "A student-run organisation giving all students access to extracurricular opportunities.",
+    url: "https://www.equityed.co.uk/",
+    logo: "/logos/equityed2.png",
+  },
+  {
+    name: "Hindu Apprentice Network",
+    description:
+      "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
+    url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
+    logo: "/logos/han.jpg",
+  },
+  {
+    name: "Investate",
+    description:
+      "Student-led initiative introducing young people to investing, finance, and related pathways.",
+    url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
+    logo: "/logos/investate.jpg",
+  },
+  {
+    name: "Mentup",
+    description:
+      "Mentorship-focused support for UK students looking to break into apprenticeships.",
+    url: "https://www.linkedin.com/company/mentup-uk/",
+    logo: "/logos/mentup.jpg",
+  },
+  {
+    name: "Muslim Apprentice Community",
+    description:
+      "Community space for Muslim apprentices and aspiring apprentices across the UK.",
+    url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
+    logo: "/logos/mac.jpg",
+  },
+  {
+    name: "Success at School",
+    description:
+      "Careers platform helping students explore options, including apprenticeships, after school.",
+    url: "https://www.successatschool.org",
+    logo: "/logos/sas.png",
+  },
+  {
+    name: "WISE Foundation",
+    description:
+      "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
+    url: "https://www.wizefoundation.com/",
+    logo: "/logos/wize.png",
   },
   {
     name: "Women in Apprenticeships Network",
@@ -105,11 +112,74 @@ const organisations = [
     logo: "/logos/wian.png",
   },
   {
-    name: "Success at School",
+    name: "Movement to Work",
     description:
-      "Careers platform helping students explore options, including apprenticeships, after school.",
-    url: "https://www.successatschool.org",
-    logo: "/logos/sas.png",
+      "Connecting young people with employer work experience and apprenticeship opportunities.",
+    url: "https://www.mtwplacements.com",
+    logo: "/logos/movementtowork.png",
+  },
+  {
+    name: "Higherin",
+    description:
+      "Student community with apprenticeship reviews, career advice, and day-in-the-life content.",
+    url: "https://higherin.com",
+    logo: "/logos/higherin.svg",
+  },
+  {
+    name: "UCAS",
+    description:
+      "The UK's official university and apprenticeship application platform with guides and vacancies.",
+    url: "https://www.ucas.com/explore/search/apprenticeships",
+    logo: "/logos/UCAS.png",
+  },
+  {
+    name: "Essex Opportunities",
+    description:
+      "Local hub connecting Essex students with apprenticeship and employment opportunities.",
+    url: "https://www.essexopportunities.co.uk/apprenticeship-hub/",
+    logo: "/logos/essexopportunities.png",
+  },
+  {
+    name: "Apprenticeships.gov.uk",
+    description:
+      "The government's official apprenticeship search and information service.",
+    url: "https://www.apprenticeships.gov.uk/apprentices",
+    logo: "/logos/apprenticeships.png",
+  },
+  {
+    name: "Apprenticeship Insider",
+    description:
+      "Resource helping students research apprenticeship schemes and opportunities in detail.",
+    url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
+    logo: "/logos/ApprenticeshipInsider.png",
+  },
+  {
+    name: "Pathway CTM",
+    description:
+      "Careers and employability programme helping students access apprenticeships, school leaver schemes, and opportunities.",
+    url: "https://pathwayctm.com/",
+    logo: "/logos/pathwayctm.png",
+  },
+  {
+    name: "GetMyFirstJob",
+    description:
+      "Search platform connecting young people with apprenticeship, traineeship, and early careers roles.",
+    url: "https://www.getmyfirstjob.co.uk/",
+    logo: "/logos/gmfj.png",
+  },
+  {
+    name: "NotGoingToUni",
+    description:
+      "Platform highlighting alternatives to traditional university, including apprenticeships, degree apprenticeships, and school leaver routes.",
+    url: "https://notgoingtouni.co.uk/",
+    logo: "/logos/NGTU.png",
+  },
+  {
+    name: "GradCracker",
+    description:
+      "STEM careers platform listing internships, placements, graduate schemes, and degree apprenticeships.",
+    url: "https://www.gradcracker.com/search/all-disciplines/degree-apprenticeships",
+    logo: "/logos/gradcracker.svg",
   },
 ];
 
@@ -182,10 +252,14 @@ function PageHeader() {
 }
 
 function OrganisationsGrid() {
+  const sortedOrganisations = [...organisations].sort((a, b) =>
+    a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+  );
+
   return (
     <section className="space-y-4">
       <div className="grid gap-5 md:grid-cols-2">
-        {organisations.map((org) => (
+        {sortedOrganisations.map((org) => (
           <a
             key={org.name}
             href={org.url}
