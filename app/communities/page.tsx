@@ -81,7 +81,7 @@ const communities = [
     description:
       "Resource helping students research apprenticeship schemes and opportunities in detail.",
     url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
-    logo: "/logos/ApprenticeshipInsider.png",
+    logo: "/logos/apprenticeshipinsider.png",
   },
 ];
 
@@ -130,9 +130,14 @@ function Navbar() {
 function Footer() {
   return (
     <footer className="mt-10 flex items-center justify-between text-[11px] sm:text-xs text-neutral-500">
-      <span className="tracking-[0.22em] uppercase text-neutral-400">
-        APRNTCSHP
-      </span>
+      <a
+        href="https://chat.whatsapp.com/LAbUrTAZ72VKGBpup63Gks"
+        target="_blank"
+        rel="noreferrer"
+        className="tracking-[0.22em] uppercase text-neutral-400 hover:text-neutral-200 transition-colors"
+      >
+        Suggest a Resource
+      </a>
       <span>Built for UK students</span>
     </footer>
   );
@@ -192,7 +197,7 @@ function CommunitiesGrid() {
 export default function CommunitiesPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
-      <main className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-6 sm:py-8 md:py-10">
+      <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
         <Navbar />
         <div className="flex-1">
           <PageHeader />
