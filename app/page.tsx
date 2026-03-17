@@ -7,24 +7,6 @@ const sectionTiles = [
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
-const organisations = [
-  {
-    name: "Placeholder Organisation One",
-    blurb: "A national provider with entry routes across tech, finance, and more.",
-  },
-  {
-    name: "Placeholder Organisation Two",
-    blurb: "Hands-on apprenticeships focused on real client work from day one.",
-  },
-  {
-    name: "Placeholder Organisation Three",
-    blurb: "Regional programmes connecting local employers with motivated students.",
-  },
-  {
-    name: "Placeholder Organisation Four",
-    blurb: "Online-first apprenticeships designed to fit around college and life.",
-  },
-];
 
 function Navbar() {
   return (
@@ -88,8 +70,9 @@ function SectionsRow() {
     <section className="mt-10" id="sections">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {sectionTiles.map((tile) => (
-          <div
+          <Link
             key={tile.label}
+            href={tile.href}
             className="flex flex-col items-center justify-between px-3 py-4 text-xs sm:text-sm text-neutral-200 min-h-32 transition-colors hover:bg-neutral-900/40"
           >
             <tile.Icon
@@ -97,7 +80,7 @@ function SectionsRow() {
               aria-hidden="true"
             />
             <span className="text-neutral-100 text-center">{tile.label}</span>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
@@ -118,37 +101,6 @@ function WhySection() {
         podcasts, events, CV guides, and communities in one quiet, focused
         place.
       </p>
-    </section>
-  );
-}
-
-function OrganisationsPreview() {
-  return (
-    <section className="mt-12 space-y-4" id="organisations">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium tracking-wide text-neutral-300 uppercase">
-          Organisations preview
-        </h2>
-        <button className="text-xs font-medium text-neutral-400 hover:text-neutral-200 tracking-wide">
-          View all
-        </button>
-      </div>
-      <div className="grid gap-3 md:grid-cols-2">
-        {organisations.map((org) => (
-          <div
-            key={org.name}
-            className="border border-neutral-800 bg-neutral-950/40 px-5 py-4 text-sm text-neutral-200"
-          >
-            <div className="flex items-baseline justify-between gap-4">
-              <h3 className="text-sm font-semibold text-neutral-100">
-                {org.name}
-              </h3>
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            </div>
-            <p className="mt-2 text-xs text-neutral-400">{org.blurb}</p>
-          </div>
-        ))}
-      </div>
     </section>
   );
 }
@@ -175,8 +127,6 @@ export default function Home() {
           <SectionsRow />
           <SectionDivider />
           <WhySection />
-          <SectionDivider />
-          <OrganisationsPreview />
         </div>
         <Footer />
       </main>
