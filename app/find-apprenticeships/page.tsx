@@ -5,6 +5,7 @@ import { ExternalLink } from "lucide-react";
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
+  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
   { label: "CV Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
 ];
@@ -145,12 +146,10 @@ function PageHeader() {
 
 function LinkCard({
   title,
-  source,
   href,
   description,
 }: {
   title: string;
-  source: string;
   href: string;
   description: string;
 }) {
@@ -163,7 +162,6 @@ function LinkCard({
     >
       <div className="space-y-1">
         <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
-        <p className="text-xs text-neutral-400">{source}</p>
         <p className="pt-2 text-xs text-neutral-400">{description}</p>
       </div>
       <ExternalLink
@@ -187,7 +185,6 @@ export default function FindApprenticeshipsPage() {
                 <LinkCard
                   key={card.href}
                   title={card.title}
-                  source={card.source}
                   href={card.href}
                   description={card.description}
                 />

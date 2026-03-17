@@ -1,8 +1,9 @@
-import { Building2, FileText, Users } from "lucide-react";
+import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
+  { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
   { label: "CV Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
