@@ -46,7 +46,7 @@ const communities = [
     description:
       "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
     url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
-    logo: "/logos/han.jpg",
+    logo: "/logos/hinduapprenticeshipsnetworklogo.jpg",
   },
   {
     name: "Investate",
@@ -60,21 +60,21 @@ const communities = [
     description:
       "Mentorship-focused support for UK students looking to break into apprenticeships.",
     url: "https://www.linkedin.com/company/mentup-uk/",
-    logo: "/logos/mentup.jpg",
+    logo: "/logos/mentuplogo.jpg",
   },
   {
     name: "Muslim Apprentice Community",
     description:
       "Community space for Muslim apprentices and aspiring apprentices across the UK.",
     url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
-    logo: "/logos/mac.jpg",
+    logo: "/logos/muslim_apprentice_community_logo.jpg",
   },
   {
     name: "Women in Apprenticeships Network",
     description:
       "Network focused on supporting women in apprenticeships through community and resources.",
     url: "https://www.womeninapprenticeshipsnetwork.org/",
-    logo: "/logos/wian.png",
+    logo: "/logos/womeninapprenticeshipnetworklogo1764673141458.jpg",
   },
   {
     name: "Apprenticeship Insider",
@@ -88,21 +88,21 @@ const communities = [
     description:
       "Network supporting LGBTQ+ apprentices and allies across the UK.",
     url: "https://linktr.ee/LACENetwork",
-    logo: "/logos/lacenetwork.png",
+    logo: "/logos/lacenetworklogo.jpg",
   },
   {
     name: "Apprentice Living",
     description:
       "Community supporting apprentices through their journey.",
     url: "https://www.linkedin.com/company/apprenticeliving/",
-    logo: "/logos/apprenticeliving.png",
+    logo: "/logos/apprenticeliving.jpg",
   },
   {
     name: "RISE Network",
     description:
       "Community connecting students with apprenticeship opportunities.",
     url: "https://risenetwork.online/",
-    logo: "/logos/risenetwork.png",
+    logo: "/logos/risenetwork.jpg",
   },
   {
     name: "Muslim Apprentice Network",
@@ -116,42 +116,42 @@ const communities = [
     description:
       "Organisation supporting Muslim apprentices professionally and personally.",
     url: "https://www.linkedin.com/company/association-of-muslim-apprentices/",
-    logo: "/logos/ama.png",
+    logo: "/logos/theassociationofmuslimapapprenticeslogo.jpg",
   },
   {
     name: "NetworKING",
     description:
       "Networking community for apprentices across the UK.",
     url: "https://www.networkinguk.com/index.php",
-    logo: "/logos/networKING.png",
+    logo: "/logos/networkinguklogo.jpg",
   },
   {
     name: "Ellavate",
     description:
       "Community empowering young women in apprenticeships.",
     url: "https://www.linkedin.com/company/3llavate/posts/",
-    logo: "/logos/ellavate.png",
+    logo: "/logos/ellavatelogo.jpg",
   },
   {
     name: "Legally Apprentice",
     description:
       "Community for students pursuing legal apprenticeships.",
     url: "https://www.linkedin.com/company/legally-apprentice/about/",
-    logo: "/logos/legallyapprentice.png",
+    logo: "/logos/legally_apprentice_logo.jpg",
   },
   {
     name: "MyLaunchpad",
     description:
       "Platform helping young people launch their careers through apprenticeships.",
     url: "https://www.linkedin.com/company/mylaunchpaduk/",
-    logo: "/logos/mylaunchpad.png",
+    logo: "/logos/mylaunchpaduk_logo.jpg",
   },
   {
     name: "Apprentice Alliance",
     description:
       "Alliance connecting apprentices and employers across the UK.",
     url: "https://www.linkedin.com/company/apprentice-alliance/",
-    logo: "/logos/apprenticealliance.png",
+    logo: "/logos/apprenticealliancelogo.jpg",
   },
 ];
 
