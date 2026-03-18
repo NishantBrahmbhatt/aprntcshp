@@ -74,7 +74,7 @@ const communities = [
     description:
       "Network focused on supporting women in apprenticeships through community and resources.",
     url: "https://www.womeninapprenticeshipsnetwork.org/",
-    logo: "/logos/womeninapprenticeshipnetworklogo1764673141458.jpg",
+    logo: "/logos/womeninapprenticeshipsnetworklogo.png",
   },
   {
     name: "Apprenticeship Insider",
@@ -109,21 +109,21 @@ const communities = [
     description:
       "Supporting Muslim students exploring apprenticeship pathways.",
     url: "https://muslimapprenticenetwork.com/",
-    logo: "/logos/muslimapprenticenetwork.png",
+    logo: "muslim_apprentice_network_logo.png",
   },
   {
     name: "Association of Muslim Apprentices",
     description:
       "Organisation supporting Muslim apprentices professionally and personally.",
     url: "https://www.linkedin.com/company/association-of-muslim-apprentices/",
-    logo: "/logos/theassociationofmuslimapapprenticeslogo.jpg",
+    logo: "/logos/theassociationofmuslimapprenticeslogo.png",
   },
   {
     name: "NetworKING",
     description:
       "Networking community for apprentices across the UK.",
     url: "https://www.networkinguk.com/index.php",
-    logo: "/logos/networkinguklogo.jpg",
+    logo: "/logos/networkinguk_logo.jpg",
   },
   {
     name: "Ellavate",
