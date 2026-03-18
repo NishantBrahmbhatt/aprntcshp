@@ -18,7 +18,7 @@ const organisations = [
     description:
       "Debunking misconceptions around apprenticeships and helping more students access them.",
     url: "https://www.amazingapprenticeships.com/",
-    logo: "/logos/amazingapprenticeships.png",
+    logo: "/logos/amazing_apprenticeships_logo.jpg",
     category: "Organisation",
   },
   {
@@ -26,7 +26,7 @@ const organisations = [
     description:
       "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
     url: "https://www.apprentadream.co.uk/",
-    logo: "/logos/ad.png",
+    logo: "/logos/apprentadreamlogo.jpg",
     category: "Organisation",
   },
   {
@@ -34,7 +34,7 @@ const organisations = [
     description:
       "A student-run organisation giving all students access to extracurricular opportunities.",
     url: "https://www.equityed.co.uk/",
-    logo: "/logos/equityed2.png",
+    logo: "/logos/equityed_logo.jpg",
     category: "Organisation",
   },
   {
@@ -42,15 +42,15 @@ const organisations = [
     description:
       "Careers platform helping students explore options, including apprenticeships, after school.",
     url: "https://www.successatschool.org",
-    logo: "/logos/sas.png",
+    logo: "/logos/success_at_school_logo.jpg",
     category: "Organisation",
   },
   {
-    name: "WISE Foundation",
+    name: "WIZE Foundation",
     description:
       "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
     url: "https://www.wizefoundation.com/",
-    logo: "/logos/wize.png",
+    logo: "/logos/wizefoundation_logo.jpg",
     category: "Organisation",
   },
   {
@@ -58,7 +58,7 @@ const organisations = [
     description:
       "Connecting young people with employer work experience and apprenticeship opportunities.",
     url: "https://www.mtwplacements.com",
-    logo: "/logos/movementtowork.png",
+    logo: "/logos/movement_to_work_logo.jpg",
     category: "Organisation",
   },
   {
@@ -66,7 +66,7 @@ const organisations = [
     description:
       "Student community with apprenticeship reviews, career advice, and day-in-the-life content.",
     url: "https://higherin.com",
-    logo: "/logos/higherin.svg",
+    logo: "/logos/ratemyapp_ship_logo.jpg",
     category: "Organisation",
   },
   {
@@ -74,7 +74,7 @@ const organisations = [
     description:
       "The UK's official university and apprenticeship application platform with guides and vacancies.",
     url: "https://www.ucas.com/explore/search/apprenticeships",
-    logo: "/logos/UCAS.png",
+    logo: "/logos/ucas_logo.jpg",
     category: "Organisation",
   },
   {
@@ -90,7 +90,7 @@ const organisations = [
     description:
       "The government's official apprenticeship search and information service.",
     url: "https://www.apprenticeships.gov.uk/apprentices",
-    logo: "/logos/apprenticeships.png",
+    logo: "/logos/apprenticeshipsgov_logo.jpg",
     category: "Organisation",
   },
   {
@@ -98,7 +98,7 @@ const organisations = [
     description:
       "Careers and employability programme helping students access apprenticeships, school leaver schemes, and opportunities.",
     url: "https://pathwayctm.com/",
-    logo: "/logos/pathwayctm.png",
+    logo: "/logos/pathwayctm_logo.jpg",
     category: "Organisation",
   },
   {
@@ -106,7 +106,7 @@ const organisations = [
     description:
       "Search platform connecting young people with apprenticeship, traineeship, and early careers roles.",
     url: "https://www.getmyfirstjob.co.uk/",
-    logo: "/logos/gmfj.png",
+    logo: "/logos/getmyfirstjob_logo.jpg",
     category: "Organisation",
   },
   {
@@ -114,7 +114,7 @@ const organisations = [
     description:
       "Platform highlighting alternatives to traditional university, including apprenticeships, degree apprenticeships, and school leaver routes.",
     url: "https://notgoingtouni.co.uk/",
-    logo: "/logos/NGTU.png",
+    logo: "/logos/notgoingtounicouk_logo.jpg",
     category: "Organisation",
   },
   {
@@ -122,7 +122,7 @@ const organisations = [
     description:
       "STEM careers platform listing internships, placements, graduate schemes, and degree apprenticeships.",
     url: "https://www.gradcracker.com/search/all-disciplines/degree-apprenticeships",
-    logo: "/logos/gradcracker.svg",
+    logo: "/logos/gradcracker_ltd_logo.jpg",
     category: "Organisation",
   },
   {
@@ -130,7 +130,7 @@ const organisations = [
     description:
       "Platform supporting apprentices with resources, events, and community.",
     url: "https://apprenticenation.co.uk/",
-    logo: "/logos/apprenticenation.png",
+    logo: "/logos/apprenticenation_logo.jpg",
     category: "Organisation",
   },
   {
@@ -138,7 +138,7 @@ const organisations = [
     description:
       "Search apprenticeship vacancies by location and sector.",
     url: "https://apprenticeships.placer.co.uk/",
-    logo: "/logos/placer.png",
+    logo: "/logos/placer_apprenticeships_logo.jpg",
     category: "Organisation",
   },
   {
@@ -146,7 +146,7 @@ const organisations = [
     description:
       "Apprenticeship tools including AI mock interviews, CV review, and company-specific resources.",
     url: "https://sprout.careers/",
-    logo: "/logos/sprout.png",
+    logo: "/logos/sproutcareer_logo.jpg",
     category: "Organisation",
   },
   {
@@ -154,7 +154,7 @@ const organisations = [
     description:
       "App-based platform helping students find and apply for apprenticeships.",
     url: "https://www.apprentisapp.com/",
-    logo: "/logos/apprentis.png",
+    logo: "/logos/apprentis_logo.jpg",
     category: "Organisation",
   },
   {
@@ -162,7 +162,7 @@ const organisations = [
     description:
       "Newsletter sharing tips and advice for apprenticeship applicants.",
     url: "https://apprentatips.beehiiv.com/",
-    logo: "/logos/apprentatips.png",
+    logo: "/logos/apprentatipslogo.jpg",
     category: "Organisation",
   },
 ];
