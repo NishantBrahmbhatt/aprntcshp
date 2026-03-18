@@ -83,6 +83,76 @@ const communities = [
     url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
     logo: "/logos/apprenticeshipinsider.png",
   },
+  {
+    name: "LACE Network",
+    description:
+      "Network supporting LGBTQ+ apprentices and allies across the UK.",
+    url: "https://linktr.ee/LACENetwork",
+    logo: "/logos/lacenetwork.png",
+  },
+  {
+    name: "Apprentice Living",
+    description:
+      "Community supporting apprentices through their journey.",
+    url: "https://www.linkedin.com/company/apprenticeliving/",
+    logo: "/logos/apprenticeliving.png",
+  },
+  {
+    name: "RISE Network",
+    description:
+      "Community connecting students with apprenticeship opportunities.",
+    url: "https://risenetwork.online/",
+    logo: "/logos/risenetwork.png",
+  },
+  {
+    name: "Muslim Apprentice Network",
+    description:
+      "Supporting Muslim students exploring apprenticeship pathways.",
+    url: "https://muslimapprenticenetwork.com/",
+    logo: "/logos/muslimapprenticenetwork.png",
+  },
+  {
+    name: "Association of Muslim Apprentices",
+    description:
+      "Organisation supporting Muslim apprentices professionally and personally.",
+    url: "https://www.linkedin.com/company/association-of-muslim-apprentices/",
+    logo: "/logos/ama.png",
+  },
+  {
+    name: "NetworKING",
+    description:
+      "Networking community for apprentices across the UK.",
+    url: "https://www.networkinguk.com/index.php",
+    logo: "/logos/networKING.png",
+  },
+  {
+    name: "Ellavate",
+    description:
+      "Community empowering young women in apprenticeships.",
+    url: "https://www.linkedin.com/company/3llavate/posts/",
+    logo: "/logos/ellavate.png",
+  },
+  {
+    name: "Legally Apprentice",
+    description:
+      "Community for students pursuing legal apprenticeships.",
+    url: "https://www.linkedin.com/company/legally-apprentice/about/",
+    logo: "/logos/legallyapprentice.png",
+  },
+  {
+    name: "MyLaunchpad",
+    description:
+      "Platform helping young people launch their careers through apprenticeships.",
+    url: "https://www.linkedin.com/company/mylaunchpaduk/",
+    logo: "/logos/mylaunchpad.png",
+  },
+  {
+    name: "Apprentice Alliance",
+    description:
+      "Alliance connecting apprentices and employers across the UK.",
+    url: "https://www.linkedin.com/company/apprentice-alliance/",
+    logo: "/logos/apprenticealliance.png",
+  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {

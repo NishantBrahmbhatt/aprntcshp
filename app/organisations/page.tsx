@@ -125,6 +125,46 @@ const organisations = [
     logo: "/logos/gradcracker.svg",
     category: "Organisation",
   },
+  {
+    name: "Apprentice Nation",
+    description:
+      "Platform supporting apprentices with resources, events, and community.",
+    url: "https://apprenticenation.co.uk/",
+    logo: "/logos/apprenticenation.png",
+    category: "Organisation",
+  },
+  {
+    name: "Placer Apprenticeships",
+    description:
+      "Search apprenticeship vacancies by location and sector.",
+    url: "https://apprenticeships.placer.co.uk/",
+    logo: "/logos/placer.png",
+    category: "Organisation",
+  },
+  {
+    name: "Sprout",
+    description:
+      "Apprenticeship tools including AI mock interviews, CV review, and company-specific resources.",
+    url: "https://sprout.careers/",
+    logo: "/logos/sprout.png",
+    category: "Organisation",
+  },
+  {
+    name: "Apprentis",
+    description:
+      "App-based platform helping students find and apply for apprenticeships.",
+    url: "https://www.apprentisapp.com/",
+    logo: "/logos/apprentis.png",
+    category: "Organisation",
+  },
+  {
+    name: "Apprentatips",
+    description:
+      "Newsletter sharing tips and advice for apprenticeship applicants.",
+    url: "https://apprentatips.beehiiv.com/",
+    logo: "/logos/apprentatips.png",
+    category: "Organisation",
+  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
