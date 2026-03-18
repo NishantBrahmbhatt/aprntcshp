@@ -82,7 +82,7 @@ const organisations = [
     description:
       "Local hub connecting Essex students with apprenticeship and employment opportunities.",
     url: "https://www.essexopportunities.co.uk/apprenticeship-hub/",
-    logo: "/logos/essexopportunities.png",
+    logo: "/logos/essexopportunitieslogo.png",
     category: "Organisation",
   },
   {
