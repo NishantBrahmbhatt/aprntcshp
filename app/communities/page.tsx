@@ -228,15 +228,24 @@ function PageHeader() {
   );
 }
 
-function CommunitiesGrid() {
+function CommunitiesGrid({ searchTerm }: { searchTerm: string }) {
   const sortedCommunities = [...communities].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
 
+  const trimmedQuery = searchTerm.trim().toLowerCase();
+  const filteredCommunities = trimmedQuery
+    ? sortedCommunities.filter((org) => {
+        const name = org.name.toLowerCase();
+        const description = org.description.toLowerCase();
+        return name.includes(trimmedQuery) || description.includes(trimmedQuery);
+      })
+    : sortedCommunities;
+
   return (
     <section className="space-y-4">
       <div className="grid gap-5 md:grid-cols-2">
-        {sortedCommunities.map((org) => (
+        {filteredCommunities.map((org) => (
           <a
             key={org.name}
             href={org.url}
@@ -265,13 +274,23 @@ function CommunitiesGrid() {
 }
 
 export default function CommunitiesPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
         <Navbar />
         <div className="flex-1">
           <PageHeader />
-          <CommunitiesGrid />
+          <div className="pb-6">
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search communities..."
+              className="w-full max-w-2xl rounded-lg bg-neutral-950/40 border border-neutral-800 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:border-neutral-600 transition-colors"
+            />
+          </div>
+          <CommunitiesGrid searchTerm={searchTerm} />
         </div>
         <Footer />
       </main>

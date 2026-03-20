@@ -240,15 +240,24 @@ function PageHeader() {
   );
 }
 
-function OrganisationsGrid() {
+function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
   const sortedOrganisations = [...organisations].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
 
+  const trimmedQuery = searchTerm.trim().toLowerCase();
+  const filteredOrganisations = trimmedQuery
+    ? sortedOrganisations.filter((org) => {
+        const name = org.name.toLowerCase();
+        const description = org.description.toLowerCase();
+        return name.includes(trimmedQuery) || description.includes(trimmedQuery);
+      })
+    : sortedOrganisations;
+
   return (
     <section className="space-y-4">
       <div className="grid gap-5 md:grid-cols-2">
-        {sortedOrganisations.map((org) => (
+        {filteredOrganisations.map((org) => (
           <a
             key={org.name}
             href={org.url}
@@ -277,13 +286,23 @@ function OrganisationsGrid() {
 }
 
 export default function OrganisationsPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
         <Navbar />
         <div className="flex-1">
           <PageHeader />
-          <OrganisationsGrid />
+          <div className="pb-6">
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search organisations..."
+              className="w-full max-w-2xl rounded-lg bg-neutral-950/40 border border-neutral-800 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:border-neutral-600 transition-colors"
+            />
+          </div>
+          <OrganisationsGrid searchTerm={searchTerm} />
         </div>
         <Footer />
       </main>

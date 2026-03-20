@@ -8,6 +8,37 @@ const sectionTiles = [
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
+const sectionCards = [
+  {
+    label: "Organisations",
+    Icon: Building2,
+    href: "/organisations",
+    description: "Independent organisations supporting UK apprentices",
+    count: 21,
+  },
+  {
+    label: "Find Apprenticeships",
+    Icon: Search,
+    href: "/find-apprenticeships",
+    description: "Every major apprenticeship search platform",
+    count: 14,
+  },
+  {
+    label: "CV Resources",
+    Icon: FileText,
+    href: "/cv-resources",
+    description: "Templates, guides and advice for your application",
+    count: 8,
+  },
+  {
+    label: "Communities",
+    Icon: Users,
+    href: "/communities",
+    description: "Peer networks and communities to join",
+    count: 18,
+  },
+];
+
 
 function Navbar() {
   return (
@@ -36,31 +67,23 @@ function SectionDivider() {
 
 function HeroSection() {
   return (
-    <section className="space-y-7 text-center" id="hero">
-      <div className="space-y-4 max-w-2xl mx-auto">
-        <p className="text-[10px] font-medium tracking-[0.3em] text-neutral-500 uppercase">
+    <section className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12" id="hero">
+      <div className="space-y-7 text-left">
+        <div className="space-y-4">
+          <p className="text-[10px] font-medium tracking-[0.3em] text-neutral-500 uppercase">
           The UK&apos;s apprenticeship hub
-        </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
-          Every apprenticeship resource, in one place.
-        </h1>
-        <p className="text-sm sm:text-base md:text-lg text-neutral-500">
-          We surface the UK apprenticeship organisations, resources, and communities that are actually worth your attention.
-        </p>
+          </p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
+            Every apprenticeship resource, in one place.
+          </h1>
+        </div>
       </div>
-      <div className="flex flex-wrap justify-center gap-3">
-        <Link
-          href="/organisations"
-          className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-50 bg-neutral-900 border border-neutral-600 hover:border-neutral-400 hover:bg-neutral-800 transition-colors"
-        >
-          Find Organisations
-        </Link>
-        <Link
-          href="/cv-resources"
-          className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium tracking-wide text-neutral-200 border border-neutral-700 hover:border-neutral-400 hover:bg-neutral-900 transition-colors"
-        >
-          Browse Resources
-        </Link>
+      <div className="text-left md:pt-1">
+        <p className="max-w-md text-sm sm:text-base md:text-lg leading-relaxed text-neutral-500">
+          Finding apprenticeship resources shouldn&apos;t be hard. We&apos;ve gathered every
+          organisation, community, CV guide, and job board in one place - so you can
+          spend less time searching and more time applying.
+        </p>
       </div>
     </section>
   );
@@ -69,39 +92,35 @@ function HeroSection() {
 function SectionsRow() {
   return (
     <section className="mt-10" id="sections">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-        {sectionTiles.map((tile) => (
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {sectionCards.map((card) => (
           <Link
-            key={tile.label}
-            href={tile.href}
-            className="flex flex-col items-center justify-between px-3 py-4 text-xs sm:text-sm text-neutral-200 min-h-32 transition-colors hover:bg-neutral-900/40"
+            key={card.href}
+            href={card.href}
+            className="group relative flex flex-col gap-4 rounded-xl bg-neutral-900 border border-neutral-800 p-8 transition-colors hover:bg-neutral-800/60 hover:border-neutral-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0f0f]"
           >
-            <tile.Icon
-              className="h-5 w-5 text-neutral-400 mb-3"
-              aria-hidden="true"
-            />
-            <span className="text-neutral-100 text-center">{tile.label}</span>
+            <div className="flex items-start gap-4">
+              <card.Icon
+                className="h-6 w-6 text-neutral-200 mt-1"
+                aria-hidden="true"
+              />
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-base sm:text-lg font-semibold text-neutral-100">
+                    {card.label}
+                  </h2>
+                  <span className="inline-flex items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 px-2.5 py-0.5 text-xs text-neutral-500">
+                    {card.count}
+                  </span>
+                </div>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {card.description}
+                </p>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
-    </section>
-  );
-}
-
-function WhySection() {
-  return (
-    <section
-      className="mt-10 max-w-xl mx-auto text-center text-base sm:text-lg leading-relaxed text-neutral-300"
-      id="why"
-    >
-      <p>
-        Apprenticeship resources in the UK are scattered across dozens of
-        websites, providers, and half-finished directories. It&apos;s tiring to
-        keep track of what&apos;s current, what&apos;s useful, and what&apos;s
-        just marketing. This exists to put the genuinely helpful organisations,
-        podcasts, events, CV guides, and communities in one quiet, focused
-        place.
-      </p>
     </section>
   );
 }
@@ -131,8 +150,6 @@ export default function Home() {
           <HeroSection />
           <SectionDivider />
           <SectionsRow />
-          <SectionDivider />
-          <WhySection />
         </div>
         <Footer />
       </main>
