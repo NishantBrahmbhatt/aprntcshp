@@ -94,6 +94,13 @@ const communities = [
     logo: "/logos/lacenetworklogo.jpg",
   },
   {
+    name: "Leaf Pathways",
+    description:
+      "Pathways and support for young people exploring apprenticeships and early careers.",
+    url: "https://leafpathways.com/",
+    logo: "/logos/leaf_pathways_logo.jpg",
+  },
+  {
     name: "Apprentice Living",
     description:
       "Community supporting apprentices through their journey.",
@@ -155,6 +162,13 @@ const communities = [
       "Alliance connecting apprentices and employers across the UK.",
     url: "https://www.linkedin.com/company/apprentice-alliance/",
     logo: "/logos/apprenticealliancelogo.jpg",
+  },
+  {
+    name: "Talentix",
+    description:
+      "Connecting young people with employers, training, and career opportunities.",
+    url: "https://talentix.co.uk/home",
+    logo: "/logos/talentix_logo.jpg",
   },
 ];
 
