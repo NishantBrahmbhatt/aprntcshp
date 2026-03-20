@@ -65,6 +65,14 @@ const organisations = [
     category: "Organisation",
   },
   {
+    name: "My Great First Job",
+    description:
+      "Connecting young people with jobs, apprenticeships, and early career opportunities.",
+    url: "https://www.mygreatfirstjob.com/",
+    logo: "/logos/my_great_first_job_logo.jpg",
+    category: "Organisation",
+  },
+  {
     name: "Higherin",
     description:
       "Student community with apprenticeship reviews, career advice, and day-in-the-life content.",
