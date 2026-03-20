@@ -108,6 +108,13 @@ const communities = [
     logo: "/logos/apprenticeliving.jpg",
   },
   {
+    name: "OuterCircle",
+    description:
+      "UK apprenticeship community connecting apprentices with peers, resources, and opportunities.",
+    url: "https://outer-circle.uk/",
+    logo: "/logos/outercircle_logo.jpg",
+  },
+  {
     name: "RISE Network",
     description:
       "Community connecting students with apprenticeship opportunities.",
