@@ -1,5 +1,6 @@
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
+import { orbitron } from "./layout";
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
@@ -43,7 +44,10 @@ const sectionCards = [
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <Link href="/" className="font-semibold tracking-[0.26em] text-neutral-100">
+      <Link
+        href="/"
+        className={`${orbitron.className} font-semibold tracking-[0.26em] text-neutral-100`}
+      >
         APRNTCSHP
       </Link>
       <nav className="hidden sm:flex items-center gap-5">

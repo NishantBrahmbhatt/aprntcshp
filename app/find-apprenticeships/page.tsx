@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { Orbitron } from "next/font/google";
+
+const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
@@ -100,7 +103,10 @@ const platforms = [
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <Link href="/" className="font-semibold tracking-[0.26em] text-neutral-100">
+      <Link
+        href="/"
+        className={`${orbitron.className} font-semibold tracking-[0.26em] text-neutral-100`}
+      >
         APRNTCSHP
       </Link>
       <nav className="hidden sm:flex items-center gap-5">
