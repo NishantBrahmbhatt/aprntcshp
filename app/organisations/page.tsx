@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { FooterTagline } from "@/components/FooterTagline";
+import { NavbarLogo } from "@/components/NavbarLogo";
 import { Orbitron } from "next/font/google";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -205,12 +205,7 @@ function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <Link
-        href="/"
-        className={`${orbitron.className} font-semibold tracking-[0.26em] text-neutral-100`}
-      >
-        APRNTCSHP
-      </Link>
+      <NavbarLogo orbitronClassName={orbitron.className} />
       <nav className="hidden sm:flex items-center gap-5">
         {navItems.map((item) => (
           <a

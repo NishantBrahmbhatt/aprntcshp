@@ -1,6 +1,7 @@
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { FooterTagline } from "@/components/FooterTagline";
+import { NavbarLogo } from "@/components/NavbarLogo";
 import { orbitron } from "./layout";
 
 const sectionTiles = [
@@ -45,12 +46,7 @@ const sectionCards = [
 function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <Link
-        href="/"
-        className={`${orbitron.className} font-semibold tracking-[0.26em] text-neutral-100`}
-      >
-        APRNTCSHP
-      </Link>
+      <NavbarLogo orbitronClassName={orbitron.className} />
       <nav className="hidden sm:flex items-center gap-5">
         {sectionTiles.map((item) => (
           <a
