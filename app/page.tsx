@@ -2,6 +2,7 @@ import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { FooterTagline } from "@/components/FooterTagline";
 import { NavbarLogo } from "@/components/NavbarLogo";
+import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { orbitron } from "./layout";
 
 const sectionTiles = [
@@ -47,17 +48,9 @@ function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
       <NavbarLogo orbitronClassName={orbitron.className} />
-      <nav className="hidden sm:flex items-center gap-5">
-        {sectionTiles.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className="tracking-wide hover:text-neutral-100 transition-colors"
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <NavbarNavLinks
+        items={sectionTiles.map(({ label, href }) => ({ label, href }))}
+      />
     </header>
   );
 }
@@ -75,7 +68,9 @@ function HeroSection() {
           The UK&apos;s apprenticeship hub
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
-            Every apprenticeship resource, in one place.
+            <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
+              Every apprenticeship resource, in one place.
+            </span>
           </h1>
         </div>
       </div>
@@ -98,7 +93,7 @@ function SectionsRow() {
           <Link
             key={card.href}
             href={card.href}
-            className="group relative overflow-hidden flex flex-col gap-4 rounded-xl bg-[linear-gradient(160deg,#202020_0%,#111_100%)] border border-[#2a2a2a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] transition-[box-shadow,border-color] duration-300 ease hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0f0f]"
+            className="group relative overflow-hidden flex flex-col gap-4 rounded-xl bg-[linear-gradient(160deg,#202020_0%,#111_100%)] border border-[#2a2a2a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] duration-[120ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[4px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0f0f]"
           >
             <div className="flex items-start gap-4">
               <card.Icon

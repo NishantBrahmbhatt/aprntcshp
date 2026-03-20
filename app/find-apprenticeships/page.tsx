@@ -3,6 +3,7 @@
 import { ExternalLink } from "lucide-react";
 import { FooterTagline } from "@/components/FooterTagline";
 import { NavbarLogo } from "@/components/NavbarLogo";
+import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -105,17 +106,7 @@ function Navbar() {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
       <NavbarLogo orbitronClassName={orbitron.className} />
-      <nav className="hidden sm:flex items-center gap-5">
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className="tracking-wide hover:text-neutral-100 transition-colors"
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <NavbarNavLinks items={navItems} />
     </header>
   );
 }
@@ -141,7 +132,9 @@ function PageHeader() {
     <section className="pt-16 pb-10">
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
-          Find Apprenticeships
+          <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
+            Find Apprenticeships
+          </span>
         </h1>
         <p className="text-sm sm:text-base text-neutral-500 max-w-2xl">
           Every major apprenticeship search platform, in one place.
@@ -165,7 +158,7 @@ function LinkCard({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] transition-[box-shadow,border-color] duration-300 ease hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
+      className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] duration-[120ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[4px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
     >
       <div className="space-y-1">
         <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
