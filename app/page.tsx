@@ -1,5 +1,6 @@
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
+import { FooterTagline } from "@/components/FooterTagline";
 import { orbitron } from "./layout";
 
 const sectionTiles = [
@@ -140,7 +141,7 @@ function Footer() {
       >
         Suggest a Resource
       </a>
-      <span>Built for UK students</span>
+      <FooterTagline />
     </footer>
   );
 }

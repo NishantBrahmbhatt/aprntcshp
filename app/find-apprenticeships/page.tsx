@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { FooterTagline } from "@/components/FooterTagline";
 import { Orbitron } from "next/font/google";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -135,7 +136,7 @@ function Footer() {
       >
         Suggest a Resource
       </a>
-      <span>Built for UK students</span>
+      <FooterTagline />
     </footer>
   );
 }
