@@ -162,17 +162,19 @@ function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
   const [errored, setErrored] = useState(false);
 
   if (errored) {
-    return <div className="mt-0.5 h-14 w-14 bg-neutral-800" />;
+    return (
+      <div className="mt-0.5 h-10 w-10 min-w-10 bg-neutral-800 overflow-hidden" />
+    );
   }
 
   return (
-    <div className="mt-0.5 h-14 w-14 bg-neutral-900 flex items-center justify-center overflow-hidden">
+    <div className="mt-0.5 h-10 w-10 min-w-10 bg-neutral-900 flex items-center justify-center overflow-hidden">
       <Image
         src={src}
         alt={alt}
         width={56}
         height={56}
-        className="h-14 w-14 object-contain"
+        className="w-full h-full object-contain"
         onError={() => setErrored(true)}
       />
     </div>
@@ -257,9 +259,9 @@ function CommunitiesGrid({ searchTerm }: { searchTerm: string }) {
             href={org.url}
             target="_blank"
             rel="noreferrer"
-            className="group border-b border-neutral-800 bg-neutral-950/40 hover:bg-neutral-900/40 transition-colors px-5 py-6 sm:px-6 text-sm text-neutral-200 flex items-start justify-between gap-4"
+            className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] transition-[box-shadow,border-color] duration-300 ease hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-4">
               <OrganisationLogo src={org.logo} alt={org.name} />
               <div className="space-y-1">
                 <h2 className="text-base font-semibold text-neutral-50">
@@ -293,7 +295,7 @@ export default function CommunitiesPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search communities..."
-              className="w-full max-w-2xl rounded-lg bg-neutral-950/40 border border-neutral-800 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:border-neutral-600 transition-colors"
+              className="w-full max-w-2xl rounded-lg bg-[#111] border border-[#333] px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-[#666] focus:shadow-[0_0_0_1px_#444] transition-colors"
             />
           </div>
           <CommunitiesGrid searchTerm={searchTerm} />

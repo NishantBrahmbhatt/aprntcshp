@@ -151,9 +151,9 @@ function DownloadCard({
   download?: boolean;
 }) {
   return (
-    <div className="border border-neutral-800 bg-neutral-950/40 px-5 py-6 text-sm text-neutral-200">
+    <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] transition-[box-shadow,border-color] duration-300 ease hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] text-sm text-neutral-200 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none p-5">
       <div className="flex items-start justify-between gap-4">
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-4">
           <div className="mt-0.5 h-10 w-10 bg-neutral-900 flex items-center justify-center">
             <FileText className="h-5 w-5 text-neutral-300" aria-hidden="true" />
           </div>
@@ -193,7 +193,7 @@ function LinkCard({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group border border-neutral-800 bg-neutral-950/40 hover:bg-neutral-900/40 transition-colors px-5 py-5 text-sm text-neutral-200 flex items-start justify-between gap-4"
+      className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] transition-[box-shadow,border-color] duration-300 ease hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
     >
       <div className="space-y-1">
         <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
