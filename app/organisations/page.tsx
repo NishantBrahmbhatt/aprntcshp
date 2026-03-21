@@ -108,6 +108,14 @@ export const organisations = [
     category: "Organisation",
   },
   {
+    name: "Apprenticeships.scot",
+    description:
+      "Scotland's national apprenticeship service — information, support, and vacancy search for Scottish apprenticeships.",
+    url: "https://www.apprenticeships.scot/",
+    logo: "/logos/apprenticeships%20in%20scotland.jpg",
+    category: "Organisation",
+  },
+  {
     name: "Pathway CTM",
     description:
       "Careers and employability programme helping students access apprenticeships, school leaver schemes, and opportunities.",
