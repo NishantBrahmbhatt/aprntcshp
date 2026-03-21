@@ -23,7 +23,7 @@ const cvResourcesCount =
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
-  { label: "CV Resources", Icon: FileText, href: "/cv-resources" },
+  { label: "Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
@@ -43,7 +43,7 @@ const sectionCards = [
     count: platforms.length,
   },
   {
-    label: "CV Resources",
+    label: "Resources",
     Icon: FileText,
     href: "/cv-resources",
     description: "Templates, guides and advice for your application",

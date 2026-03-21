@@ -14,7 +14,7 @@ const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 const navItems = [
   { label: "Organisations", href: "/organisations" },
   { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "CV Resources", href: "/cv-resources" },
+  { label: "Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
 ];
 

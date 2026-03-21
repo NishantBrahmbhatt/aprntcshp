@@ -11,7 +11,7 @@ const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 const navItems = [
   { label: "Organisations", href: "/organisations" },
   { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "CV Resources", href: "/cv-resources" },
+  { label: "Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
 ];
 
@@ -91,11 +91,11 @@ function PageHeader() {
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
           <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
-            CV Resources
+            Resources
           </span>
         </h1>
         <p className="text-sm sm:text-base text-neutral-500 max-w-2xl">
-          Everything you need to write a strong apprenticeship application.
+          Everything you need for your apprenticeship application.
         </p>
       </div>
     </section>
