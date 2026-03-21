@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
@@ -36,10 +37,10 @@ const sectionCards = [
     count: organisations.length,
   },
   {
-    label: "Find Apprenticeships",
+    label: "Apprenticeship Trackers",
     Icon: Search,
     href: "/find-apprenticeships",
-    description: "Every major apprenticeship search platform",
+    description: "Every major apprenticeship tracker",
     count: platforms.length,
   },
   {
@@ -72,6 +73,43 @@ function Navbar() {
 
 function SectionDivider() {
   return <div className="mt-10 border-t border-neutral-800" />;
+}
+
+function easeOutCubic(t: number) {
+  return 1 - (1 - t) ** 3;
+}
+
+function CountUpSegment({ target }: { target: number }) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    let raf = 0;
+    let cancelled = false;
+    const start = performance.now();
+    const duration = 800;
+
+    const tick = (now: number) => {
+      if (cancelled) return;
+      const t = Math.min(1, (now - start) / duration);
+      setValue(Math.round(easeOutCubic(t) * target));
+      if (t < 1) {
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+    };
+  }, [target]);
+
+  return (
+    <span className="inline-grid shrink-0 tabular-nums">
+      <span className="invisible col-start-1 row-start-1">{target}</span>
+      <span className="col-start-1 row-start-1">{value}</span>
+    </span>
+  );
 }
 
 function HeroSection() {
@@ -116,14 +154,9 @@ function SectionsRow() {
                 aria-hidden="true"
               />
               <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-base sm:text-lg font-semibold text-neutral-100">
-                    {card.label}
-                  </h2>
-                  <span className="inline-flex items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 px-2.5 py-0.5 text-xs text-neutral-500">
-                    {card.count}
-                  </span>
-                </div>
+                <h2 className="text-base sm:text-lg font-semibold text-neutral-100">
+                  <CountUpSegment target={card.count} /> {card.label}
+                </h2>
                 <p className="text-sm text-neutral-400 leading-relaxed">
                   {card.description}
                 </p>
