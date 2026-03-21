@@ -301,12 +301,24 @@ export default function CommunitiesPage() {
         <div className="flex-1">
           <PageHeader />
           <div className="pb-6">
-            <input
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search communities..."
-              className="w-full max-w-2xl rounded-lg bg-[#111] border border-[#333] px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-[#666] focus:shadow-[0_0_0_1px_#444] transition-colors"
-            />
+            <div className="relative w-full max-w-2xl">
+              <input
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search communities..."
+                className={`w-full rounded-lg bg-[#111] border border-[#333] py-3 pl-4 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-[#666] focus:shadow-[0_0_0_1px_#444] transition-colors ${searchTerm ? "pr-10" : "pr-4"}`}
+              />
+              {searchTerm ? (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-0 top-0 flex h-full items-center px-3 text-sm leading-none text-neutral-500 transition-[color] duration-200 ease hover:text-neutral-300"
+                >
+                  ×
+                </button>
+              ) : null}
+            </div>
           </div>
           <CommunitiesGrid searchTerm={searchTerm} />
         </div>
