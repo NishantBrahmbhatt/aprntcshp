@@ -104,13 +104,6 @@ export const communities = [
     logo: "/logos/leaf_pathways_logo.jpg",
   },
   {
-    name: "Apprentice Living",
-    description:
-      "Community supporting apprentices through their journey.",
-    url: "https://www.linkedin.com/company/apprenticeliving/",
-    logo: "/logos/apprenticeliving.jpg",
-  },
-  {
     name: "OuterCircle",
     description:
       "UK apprenticeship community connecting apprentices with peers, resources, and opportunities.",
