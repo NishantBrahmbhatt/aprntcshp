@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { CursorGlow } from "@/components/CursorGlow";
 import { KeyboardShortcutsProvider } from "@/components/KeyboardShortcutsProvider";
 import "./globals.css";
 
@@ -30,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
+        <div className="relative z-10">
+          <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
+        </div>
+        <CursorGlow />
       </body>
     </html>
   );
