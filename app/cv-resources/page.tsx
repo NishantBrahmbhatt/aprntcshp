@@ -1,7 +1,7 @@
 "use client";
 
 import { ExternalLink, FileText } from "lucide-react";
-import { FooterTagline } from "@/components/FooterTagline";
+import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
@@ -78,22 +78,6 @@ function Navbar() {
       <NavbarLogo orbitronClassName={orbitron.className} />
       <NavbarNavLinks items={navItems} />
     </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="mt-10 flex items-center justify-between text-[11px] sm:text-xs text-neutral-500">
-      <a
-        href="https://chat.whatsapp.com/LAbUrTAZ72VKGBpup63Gks"
-        target="_blank"
-        rel="noreferrer"
-        className="tracking-[0.22em] uppercase text-neutral-400 hover:text-neutral-200 transition-colors"
-      >
-        Suggest a Resource
-      </a>
-      <FooterTagline />
-    </footer>
   );
 }
 
@@ -248,7 +232,7 @@ export default function CvResourcesPage() {
             </div>
           </section>
         </div>
-        <Footer />
+        <SiteFooter />
       </main>
     </div>
   );

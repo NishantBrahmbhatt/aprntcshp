@@ -3,7 +3,7 @@
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
-import { FooterTagline } from "@/components/FooterTagline";
+import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { communities } from "./communities/page";
@@ -136,22 +136,6 @@ function SectionsRow() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="mt-10 flex items-center justify-between text-[11px] sm:text-xs text-neutral-500">
-      <a
-        href="https://chat.whatsapp.com/LAbUrTAZ72VKGBpup63Gks"
-        target="_blank"
-        rel="noreferrer"
-        className="tracking-[0.22em] uppercase text-neutral-400 hover:text-neutral-200 transition-colors"
-      >
-        Suggest a Resource
-      </a>
-      <FooterTagline />
-    </footer>
-  );
-}
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
@@ -162,7 +146,7 @@ export default function Home() {
           <SectionDivider />
           <SectionsRow />
         </div>
-        <Footer />
+        <SiteFooter />
       </main>
     </div>
   );
