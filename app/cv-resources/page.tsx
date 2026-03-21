@@ -15,7 +15,7 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-const templates = [
+export const templates = [
   {
     name: "Techacademia Technical CV",
     description: "Clean, technical format suited for tech degree apprenticeships.",
@@ -36,7 +36,7 @@ const templates = [
   },
 ];
 
-const cvAdvice = [
+export const cvAdvice = [
   {
     title: "How to Write an Apprenticeship CV",
     source: "Higherin",
@@ -54,7 +54,7 @@ const cvAdvice = [
   },
 ];
 
-const coverLetters = [
+export const coverLetters = [
   {
     title: "How to Write an Apprenticeship Cover Letter",
     source: "Higherin",

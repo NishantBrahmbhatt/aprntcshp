@@ -17,7 +17,7 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-const communities = [
+export const communities = [
   {
     name: "Apprentease",
     description:
@@ -91,7 +91,7 @@ const communities = [
   {
     name: "LACE Network",
     description:
-      "Network supporting LGBTQ+ apprentices and allies across the UK.",
+      "A community for aspiring, current and alumni apprentices. Hosts online and in-person networking events to help members build their network and navigate their apprenticeship journey.",
     url: "https://linktr.ee/LACENetwork",
     logo: "/logos/lacenetworklogo.jpg",
   },

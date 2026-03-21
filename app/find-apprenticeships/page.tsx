@@ -15,7 +15,7 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-const platforms = [
+export const platforms = [
   {
     title: "Creative Dimension Trust",
     source: "Creative Dimension Trust",

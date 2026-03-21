@@ -17,7 +17,7 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-const organisations = [
+export const organisations = [
   {
     name: "Amazing Apprenticeships",
     description:

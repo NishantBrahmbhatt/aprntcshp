@@ -1,9 +1,24 @@
+"use client";
+
 import { Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
+import { Orbitron } from "next/font/google";
 import { FooterTagline } from "@/components/FooterTagline";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
-import { orbitron } from "./layout";
+import { communities } from "./communities/page";
+import {
+  coverLetters,
+  cvAdvice,
+  templates,
+} from "./cv-resources/page";
+import { platforms } from "./find-apprenticeships/page";
+import { organisations } from "./organisations/page";
+
+const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
+
+const cvResourcesCount =
+  templates.length + cvAdvice.length + coverLetters.length;
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
@@ -18,28 +33,28 @@ const sectionCards = [
     Icon: Building2,
     href: "/organisations",
     description: "Independent organisations supporting UK apprentices",
-    count: 21,
+    count: organisations.length,
   },
   {
     label: "Find Apprenticeships",
     Icon: Search,
     href: "/find-apprenticeships",
     description: "Every major apprenticeship search platform",
-    count: 14,
+    count: platforms.length,
   },
   {
     label: "CV Resources",
     Icon: FileText,
     href: "/cv-resources",
     description: "Templates, guides and advice for your application",
-    count: 8,
+    count: cvResourcesCount,
   },
   {
     label: "Communities",
     Icon: Users,
     href: "/communities",
     description: "Peer networks and communities to join",
-    count: 18,
+    count: communities.length,
   },
 ];
 
