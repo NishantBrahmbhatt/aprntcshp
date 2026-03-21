@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import { ExternalLink, FileText } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
@@ -54,6 +55,15 @@ export const cvAdvice = [
   },
 ];
 
+const RESOURCES_SECTIONS = [
+  { id: "resources-section-templates", label: "Templates" },
+  { id: "resources-section-writing-cv", label: "Writing Your CV" },
+  {
+    id: "resources-section-cover-letters",
+    label: "Cover Letters & Personal Statements",
+  },
+] as const;
+
 export const coverLetters = [
   {
     title: "How to Write an Apprenticeship Cover Letter",
@@ -83,6 +93,66 @@ function Navbar() {
 
 function SectionDivider() {
   return <div className="border-t border-neutral-800" />;
+}
+
+function ResourcesSectionNav() {
+  const [activeId, setActiveId] = useState<string>(RESOURCES_SECTIONS[0]!.id);
+
+  const updateActiveFromScroll = useCallback(() => {
+    const offset = 96;
+    let current: string = RESOURCES_SECTIONS[0]!.id;
+    for (const { id } of RESOURCES_SECTIONS) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const top = el.getBoundingClientRect().top;
+      if (top <= offset) {
+        current = id;
+      }
+    }
+    setActiveId(current);
+  }, []);
+
+  useEffect(() => {
+    updateActiveFromScroll();
+    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveFromScroll);
+  }, [updateActiveFromScroll]);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  return (
+    <nav
+      aria-label="On this page"
+      className="sticky top-0 z-20 mb-6 bg-[#0f0f0f]/95 py-3 backdrop-blur-sm supports-[backdrop-filter]:bg-[#0f0f0f]/80"
+    >
+      <div className="flex justify-center">
+        <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-full border border-[#2a2a2a] bg-[#141414] px-1 py-1">
+          {RESOURCES_SECTIONS.map(({ id, label }) => {
+            const isActive = activeId === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => scrollToSection(id)}
+                className={`rounded-full px-3 py-1.5 text-left text-[11px] sm:text-xs transition-colors ${
+                  isActive
+                    ? "bg-neutral-200/90 text-neutral-900"
+                    : "text-neutral-500 hover:text-neutral-400"
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </nav>
+  );
 }
 
 function PageHeader() {
@@ -185,8 +255,12 @@ export default function CvResourcesPage() {
         <div className="flex-1">
           <PageHeader />
 
+          <ResourcesSectionNav />
+
           <section className="space-y-4 pb-10">
-            <SectionHeading title="Templates" />
+            <div id="resources-section-templates" className="scroll-mt-24">
+              <SectionHeading title="Templates" />
+            </div>
             <div className="grid gap-5 md:grid-cols-2">
               {templates.map((t) => (
                 <DownloadCard
@@ -203,7 +277,9 @@ export default function CvResourcesPage() {
           <SectionDivider />
 
           <section className="space-y-4 py-10">
-            <SectionHeading title="Writing Your CV" />
+            <div id="resources-section-writing-cv" className="scroll-mt-24">
+              <SectionHeading title="Writing Your CV" />
+            </div>
             <div className="grid gap-5 md:grid-cols-2">
               {cvAdvice.map((card) => (
                 <LinkCard
@@ -219,7 +295,9 @@ export default function CvResourcesPage() {
           <SectionDivider />
 
           <section className="space-y-4 pt-10">
-            <SectionHeading title="Cover Letters & Personal Statements" />
+            <div id="resources-section-cover-letters" className="scroll-mt-24">
+              <SectionHeading title="Cover Letters & Personal Statements" />
+            </div>
             <div className="grid gap-5 md:grid-cols-2">
               {coverLetters.map((card) => (
                 <LinkCard
