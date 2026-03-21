@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -276,6 +277,9 @@ function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
 
 export default function OrganisationsPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const clearSearch = useCallback(() => setSearchTerm(""), []);
+  useRegisterSiteSearch(searchInputRef, clearSearch);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
@@ -286,6 +290,7 @@ export default function OrganisationsPage() {
           <div className="pb-6">
             <div className="relative w-full max-w-2xl">
               <input
+                ref={searchInputRef}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search organisations..."

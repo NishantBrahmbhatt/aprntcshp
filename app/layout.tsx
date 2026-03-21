@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { KeyboardShortcutsProvider } from "@/components/KeyboardShortcutsProvider";
 import "./globals.css";
 
 export const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
       </body>
     </html>
   );
