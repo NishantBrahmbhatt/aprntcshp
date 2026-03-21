@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ExternalLink, FileText } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
@@ -55,14 +55,20 @@ export const cvAdvice = [
   },
 ];
 
-const RESOURCES_SECTIONS = [
-  { id: "resources-section-templates", label: "Templates" },
-  { id: "resources-section-writing-cv", label: "Writing Your CV" },
+const SECTION_IDS = {
+  templates: "resources-section-templates",
+  writingCv: "resources-section-writing-cv",
+  coverLetters: "resources-section-cover-letters",
+} as const;
+
+const SECTION_PILLS: { id: string; label: string }[] = [
+  { id: SECTION_IDS.templates, label: "Templates" },
+  { id: SECTION_IDS.writingCv, label: "Writing Your CV" },
   {
-    id: "resources-section-cover-letters",
+    id: SECTION_IDS.coverLetters,
     label: "Cover Letters & Personal Statements",
   },
-] as const;
+];
 
 export const coverLetters = [
   {
@@ -95,66 +101,6 @@ function SectionDivider() {
   return <div className="border-t border-neutral-800" />;
 }
 
-function ResourcesSectionNav() {
-  const [activeId, setActiveId] = useState<string>(RESOURCES_SECTIONS[0]!.id);
-
-  const updateActiveFromScroll = useCallback(() => {
-    const offset = 96;
-    let current: string = RESOURCES_SECTIONS[0]!.id;
-    for (const { id } of RESOURCES_SECTIONS) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-      const top = el.getBoundingClientRect().top;
-      if (top <= offset) {
-        current = id;
-      }
-    }
-    setActiveId(current);
-  }, []);
-
-  useEffect(() => {
-    updateActiveFromScroll();
-    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
-    return () => window.removeEventListener("scroll", updateActiveFromScroll);
-  }, [updateActiveFromScroll]);
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  return (
-    <nav
-      aria-label="On this page"
-      className="sticky top-0 z-20 mb-6 bg-[#0f0f0f]/95 py-3 backdrop-blur-sm supports-[backdrop-filter]:bg-[#0f0f0f]/80"
-    >
-      <div className="flex justify-center">
-        <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-full border border-[#2a2a2a] bg-[#141414] px-1 py-1">
-          {RESOURCES_SECTIONS.map(({ id, label }) => {
-            const isActive = activeId === id;
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => scrollToSection(id)}
-                className={`rounded-full px-3 py-1.5 text-left text-[11px] sm:text-xs transition-colors ${
-                  isActive
-                    ? "bg-neutral-200/90 text-neutral-900"
-                    : "text-neutral-500 hover:text-neutral-400"
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </nav>
-  );
-}
-
 function PageHeader() {
   return (
     <section className="pt-16 pb-10">
@@ -179,6 +125,41 @@ function SectionHeading({ title }: { title: string }) {
         {title}
       </h2>
     </div>
+  );
+}
+
+function ResourcesSectionNav({
+  activeSectionId,
+  onPillClick,
+}: {
+  activeSectionId: string | null;
+  onPillClick: (sectionId: string) => void;
+}) {
+  return (
+    <nav
+      aria-label="Resources sections"
+      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/92 px-6 py-3 backdrop-blur-sm"
+    >
+      <div className="flex justify-center gap-2">
+        {SECTION_PILLS.map((pill) => {
+          const isActive = activeSectionId === pill.id;
+          return (
+            <button
+              key={pill.id}
+              type="button"
+              onClick={() => onPillClick(pill.id)}
+              className={`rounded-full border px-4 py-1.5 text-xs transition-[transform,background-color,color] duration-300 ease ${
+                isActive
+                  ? "border-white bg-white text-black"
+                  : "border-[#2a2a2a] bg-[#111] text-neutral-500 hover:-translate-y-[2px]"
+              }`}
+            >
+              {pill.label}
+            </button>
+          );
+        })}
+      </div>
+    </nav>
   );
 }
 
@@ -248,6 +229,70 @@ function LinkCard({
 }
 
 export default function CvResourcesPage() {
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const ratiosRef = useRef<Record<string, number>>({});
+
+  const templatesRef = useRef<HTMLElement | null>(null);
+  const writingCvRef = useRef<HTMLElement | null>(null);
+  const coverLettersRef = useRef<HTMLElement | null>(null);
+
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  useLayoutEffect(() => {
+    const sections = [
+      templatesRef.current,
+      writingCvRef.current,
+      coverLettersRef.current,
+    ].filter((n): n is HTMLElement => n !== null);
+
+    if (sections.length === 0) return;
+
+    const STICKY_OFFSET = "56px";
+
+    const pickFromRatios = () => {
+      const ratios = ratiosRef.current;
+      let bestId: string | null = null;
+      let best = -1;
+      for (const el of sections) {
+        const r = ratios[el.id] ?? 0;
+        if (r > best) {
+          best = r;
+          bestId = el.id;
+        }
+      }
+      if (bestId !== null && best > 0) {
+        setActiveSectionId(bestId);
+      }
+    };
+
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          ratiosRef.current[entry.target.id] = entry.intersectionRatio;
+        }
+        pickFromRatios();
+      },
+      {
+        root: null,
+        rootMargin: `-${STICKY_OFFSET} 0px 0px 0px`,
+        threshold: thresholds,
+      },
+    );
+
+    for (const el of sections) {
+      observer.observe(el);
+    }
+
+    return () => {
+      observer.disconnect();
+      ratiosRef.current = {};
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
@@ -255,12 +300,17 @@ export default function CvResourcesPage() {
         <div className="flex-1">
           <PageHeader />
 
-          <ResourcesSectionNav />
+          <ResourcesSectionNav
+            activeSectionId={activeSectionId}
+            onPillClick={scrollToSection}
+          />
 
-          <section className="space-y-4 pb-10">
-            <div id="resources-section-templates" className="scroll-mt-24">
-              <SectionHeading title="Templates" />
-            </div>
+          <section
+            ref={templatesRef}
+            id={SECTION_IDS.templates}
+            className="scroll-mt-[72px] space-y-4 pb-10"
+          >
+            <SectionHeading title="Templates" />
             <div className="grid gap-5 md:grid-cols-2">
               {templates.map((t) => (
                 <DownloadCard
@@ -276,10 +326,12 @@ export default function CvResourcesPage() {
 
           <SectionDivider />
 
-          <section className="space-y-4 py-10">
-            <div id="resources-section-writing-cv" className="scroll-mt-24">
-              <SectionHeading title="Writing Your CV" />
-            </div>
+          <section
+            ref={writingCvRef}
+            id={SECTION_IDS.writingCv}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Writing Your CV" />
             <div className="grid gap-5 md:grid-cols-2">
               {cvAdvice.map((card) => (
                 <LinkCard
@@ -294,10 +346,12 @@ export default function CvResourcesPage() {
 
           <SectionDivider />
 
-          <section className="space-y-4 pt-10">
-            <div id="resources-section-cover-letters" className="scroll-mt-24">
-              <SectionHeading title="Cover Letters & Personal Statements" />
-            </div>
+          <section
+            ref={coverLettersRef}
+            id={SECTION_IDS.coverLetters}
+            className="scroll-mt-[72px] space-y-4 pt-10"
+          >
+            <SectionHeading title="Cover Letters & Personal Statements" />
             <div className="grid gap-5 md:grid-cols-2">
               {coverLetters.map((card) => (
                 <LinkCard
