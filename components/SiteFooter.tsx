@@ -4,8 +4,11 @@ import { FooterTagline } from "@/components/FooterTagline";
 
 const SUGGEST_HREF = "https://chat.whatsapp.com/LAbUrTAZ72VKGBpup63Gks";
 
+const FALLBACK_LAST_UPDATED = "1 January 2025";
+
 export function SiteFooter() {
-  const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME ?? "";
+  const buildTime =
+    process.env.NEXT_PUBLIC_LAST_UPDATED || FALLBACK_LAST_UPDATED;
 
   return (
     <footer className="mt-10 grid grid-cols-3 items-center gap-4 text-[11px] sm:text-xs text-neutral-500">
