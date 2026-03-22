@@ -2,7 +2,7 @@
 
 import { FooterTagline } from "@/components/FooterTagline";
 
-const SUGGEST_HREF = "https://chat.whatsapp.com/LAbUrTAZ72VKGBpup63Gks";
+const FEEDBACK_HREF = "https://aprntcshp.featurebase.app";
 
 const FALLBACK_LAST_UPDATED = "1 January 2025";
 
@@ -13,12 +13,12 @@ export function SiteFooter() {
   return (
     <footer className="mt-10 grid grid-cols-3 items-center gap-4 text-[11px] sm:text-xs text-neutral-500">
       <a
-        href={SUGGEST_HREF}
+        href={FEEDBACK_HREF}
         target="_blank"
-        rel="noreferrer"
-        className="tracking-[0.22em] uppercase text-neutral-400 hover:text-neutral-200 transition-colors"
+        rel="noopener noreferrer"
+        className="tracking-[0.22em] uppercase text-neutral-400 hover:text-white transition-[color] duration-200 ease"
       >
-        Suggest a Resource
+        Feedback & suggestions
       </a>
       <a
         href="https://aprntcshp.featurebase.app/changelog"
