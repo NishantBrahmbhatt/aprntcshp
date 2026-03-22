@@ -139,6 +139,13 @@ export const communities = [
     logo: "/logos/networkinguk_logo.jpg",
   },
   {
+    name: "Northern Link",
+    description:
+      "Regional community connecting apprentices and students across Northern England.",
+    url: "https://chat.whatsapp.com/J1XHe86TKGlHbNfRTLqAFF",
+    logo: "/logos/northernlinkorg_logo.jpg",
+  },
+  {
     name: "Ellavate",
     description:
       "Community empowering young women in apprenticeships.",
