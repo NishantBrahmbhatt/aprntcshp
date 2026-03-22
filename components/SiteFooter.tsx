@@ -20,9 +20,14 @@ export function SiteFooter() {
       >
         Suggest a Resource
       </a>
-      <span className="text-center">
+      <a
+        href="https://aprntcshp.featurebase.app/changelog"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-center text-neutral-500 no-underline transition-[color] duration-200 ease hover:text-white"
+      >
         Library last updated {buildTime}
-      </span>
+      </a>
       <div className="flex justify-end">
         <FooterTagline />
       </div>
