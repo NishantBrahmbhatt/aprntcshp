@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { CursorGlow } from "@/components/CursorGlow";
 import { KeyboardShortcutsProvider } from "@/components/KeyboardShortcutsProvider";
 import "./globals.css";
@@ -36,6 +37,7 @@ export default function RootLayout({
           <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
         </div>
         <CursorGlow />
+        <Analytics />
       </body>
     </html>
   );
