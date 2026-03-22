@@ -39,3 +39,27 @@ body {
 .page-enter {
   animation: page-fade-in-up 0.4s ease-out forwards;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+
+  a,
+  button,
+  [role="button"],
+  [onClick] {
+    cursor: none !important;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  span,
+  label {
+    user-select: none;
+    cursor: none !important;
+  }
+}
