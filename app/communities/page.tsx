@@ -173,13 +173,6 @@ export const communities = [
     url: "https://www.linkedin.com/company/apprentice-alliance/",
     logo: "/logos/apprenticealliancelogo.jpg",
   },
-  {
-    name: "Talentix",
-    description:
-      "Connecting young people with employers, training, and career opportunities.",
-    url: "https://talentix.co.uk/home",
-    logo: "/logos/talentix_logo.jpg",
-  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {

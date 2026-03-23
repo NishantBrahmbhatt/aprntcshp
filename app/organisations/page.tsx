@@ -187,6 +187,14 @@ export const organisations = [
     logo: "/logos/apprentatipslogo.jpg",
     category: "Organisation",
   },
+  {
+    name: "Talentix",
+    description:
+      "Connecting young people with employers, training, and career opportunities.",
+    url: "https://talentix.co.uk/home",
+    logo: "/logos/talentix_logo.jpg",
+    category: "Organisation",
+  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
