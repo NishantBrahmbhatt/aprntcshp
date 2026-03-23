@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Apprenticeship CV Templates and Resources UK — APRNTCSHP",
+  title: "APRNTCSHP/Resources",
   description:
     "Free CV templates, writing guides, cover letter advice and personal statement help — all written specifically for UK apprenticeship applications.",
 };

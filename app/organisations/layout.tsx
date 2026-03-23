@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Apprenticeship Organisations UK — APRNTCSHP",
+  title: "APRNTCSHP/Organisations",
   description:
     "Every independent organisation supporting UK apprenticeship applicants, in one place. Free to access, no sign up required.",
 };

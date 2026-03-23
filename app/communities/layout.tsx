@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Apprenticeship Communities UK — APRNTCSHP",
+  title: "APRNTCSHP/Communities",
   description:
     "Find peer networks and communities for UK apprentices. From legal to tech, women in apprenticeships to Muslim apprentice networks — all in one place.",
 };
