@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ExternalLink, FileText } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
@@ -135,20 +135,61 @@ function ResourcesSectionNav({
   activeSectionId: string | null;
   onPillClick: (sectionId: string) => void;
 }) {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const pillButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container == null) return;
+
+    // Ensure the first pill ("Templates") is visible and not clipped on load.
+    container.scrollLeft = 0;
+    const firstId = SECTION_PILLS[0]?.id;
+    const firstEl = firstId ? pillButtonRefs.current[firstId] : null;
+    firstEl?.scrollIntoView({
+      behavior: "auto",
+      block: "nearest",
+      inline: "start",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!activeSectionId) return;
+    pillButtonRefs.current[activeSectionId]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeSectionId]);
+
   return (
     <nav
       aria-label="Resources sections"
-      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/92 px-6 py-3 backdrop-blur-sm"
+      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/92 px-0 py-3 md:px-6 backdrop-blur-sm"
     >
-      <div className="flex justify-center gap-2">
+      <div
+        ref={scrollContainerRef}
+        style={{ scrollbarWidth: "none" }}
+        className="flex flex-nowrap gap-2 justify-start overflow-x-auto md:overflow-visible md:justify-center px-4 md:px-0 [&::-webkit-scrollbar]:hidden"
+      >
         {SECTION_PILLS.map((pill) => {
           const isActive = activeSectionId === pill.id;
           return (
             <button
               key={pill.id}
               type="button"
-              onClick={() => onPillClick(pill.id)}
-              className={`rounded-full border px-4 py-1.5 text-xs transition-[transform,background-color,color] duration-300 ease ${
+              ref={(node) => {
+                pillButtonRefs.current[pill.id] = node;
+              }}
+              onClick={() => {
+                pillButtonRefs.current[pill.id]?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "center",
+                });
+                onPillClick(pill.id);
+              }}
+              className={`rounded-full border px-3 py-1 text-[12px] whitespace-nowrap md:px-4 md:py-1.5 md:text-xs transition-[transform,background-color,color] duration-300 ease ${
                 isActive
                   ? "border-white bg-white text-black"
                   : "border-[#2a2a2a] bg-[#111] text-neutral-500 hover:-translate-y-[2px]"
