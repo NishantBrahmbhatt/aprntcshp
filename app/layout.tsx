@@ -30,9 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: "#0a0a0a" }}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ backgroundColor: "#0a0a0a" }}
       >
         <div className="relative z-10">
           <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
