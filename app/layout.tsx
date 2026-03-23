@@ -22,6 +22,16 @@ export const metadata: Metadata = {
   title: "APRNTCSHP — Every Apprenticeship Resource in One Place",
   description:
     "Free hub gathering every UK apprenticeship resource in one place. Find organisations, communities, CV templates, and job boards — so you can spend less time searching and more time applying.",
+  manifest: "/manifest.json",
+  themeColor: "#0a0a0a",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "APRNTCSHP",
+  },
+  icons: {
+    apple: "/aprntcshp_logo.png",
+  },
 };
 
 export default function RootLayout({
