@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const ORIGINAL = "Built for UK students";
-const ALT = "...by someone who got rejected a lot 👍";
+const ALT = "...a Nishant original 😎";
 const SCRAMBLE_POOL = "!@#$%^&*?><~0123456789";
 
 function randomChar() {
