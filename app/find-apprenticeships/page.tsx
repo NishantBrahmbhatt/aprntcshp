@@ -149,7 +149,7 @@ function LinkCard({
         <p className="pt-2 text-xs text-neutral-400">{description}</p>
       </div>
       <ExternalLink
-        className="mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300"
+        className="hidden md:block mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300"
         aria-hidden="true"
       />
     </a>

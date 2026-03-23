@@ -237,7 +237,7 @@ function DownloadCard({
           className="inline-flex items-center gap-2 text-xs font-medium text-neutral-300 hover:text-neutral-100 tracking-wide transition-colors"
         >
           Download Now
-          <ExternalLink className="h-3.5 w-3.5 text-neutral-500" aria-hidden="true" />
+          <ExternalLink className="hidden md:block h-3.5 w-3.5 text-neutral-500" aria-hidden="true" />
         </a>
       </div>
     </div>
@@ -264,7 +264,7 @@ function LinkCard({
         <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
         <p className="text-xs text-neutral-400">{source}</p>
       </div>
-      <ExternalLink className="mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300" aria-hidden="true" />
+      <ExternalLink className="hidden md:block mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300" aria-hidden="true" />
     </a>
   );
 }
