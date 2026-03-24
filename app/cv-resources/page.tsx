@@ -13,6 +13,7 @@ import {
   cvResourcesCount,
   interviewPrep,
   templates,
+  workExperience,
 } from "@/lib/data/cv-resources";
 
 export { cvResourcesCount };
@@ -32,6 +33,7 @@ const SECTION_IDS = {
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
   interviewPrep: "resources-section-interview-prep",
+  workExperience: "resources-section-work-experience",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -43,6 +45,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
     label: "Cover Letters & Personal Statements",
   },
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
+  { id: SECTION_IDS.workExperience, label: "Work Experience" },
 ];
 
 function Navbar() {
@@ -235,6 +238,7 @@ export default function CvResourcesPage() {
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
   const interviewPrepRef = useRef<HTMLElement | null>(null);
+  const workExperienceRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -248,6 +252,7 @@ export default function CvResourcesPage() {
       writingCvRef.current,
       coverLettersRef.current,
       interviewPrepRef.current,
+      workExperienceRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -396,6 +401,26 @@ export default function CvResourcesPage() {
             <SectionHeading title="Interview Prep" />
             <div className="grid gap-5 md:grid-cols-2">
               {interviewPrep.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={workExperienceRef}
+            id={SECTION_IDS.workExperience}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Work Experience" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {workExperience.map((card) => (
                 <LinkCard
                   key={card.href}
                   title={card.title}

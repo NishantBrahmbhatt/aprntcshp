@@ -111,9 +111,43 @@ export const interviewPrep = [
   },
 ];
 
+export const workExperience = [
+  {
+    title: "Work Experience Ideas for Year 11",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/year-11-work-experience-ideas/",
+  },
+  {
+    title: "Work Experience Ideas for Year 12",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/how-to-find-work-experience-in-year-12/",
+  },
+  {
+    title: "Work Experience Ideas for Year 13",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/year-13-work-experience-ideas/",
+  },
+  {
+    title: "Work Experience in Law",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/work-experience-law-and-legal/",
+  },
+  {
+    title: "Work Experience in Finance",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/work-experience-finance/",
+  },
+  {
+    title: "Work Experience Opportunities",
+    source: "Uptree",
+    href: "https://uptree.co/events/",
+  },
+];
+
 export const cvResourcesCount =
   templates.length +
   cvAdvice.length +
   coverLetters.length +
   apprenticeshipGuides.length +
-  interviewPrep.length;
+  interviewPrep.length +
+  workExperience.length;
