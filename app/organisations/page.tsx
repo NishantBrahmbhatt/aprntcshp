@@ -195,6 +195,30 @@ export const organisations = [
     logo: "/logos/talentix_logo.jpg",
     category: "Organisation",
   },
+  {
+    name: "Opportune.fyi",
+    description:
+      "Early careers platform sharing opportunities, insights, and resources for students and apprentices.",
+    url: "https://www.linkedin.com/company/opportune-fyi/",
+    logo: "/logos/opportune_fyi_logo.jpg",
+    category: "Organisation",
+  },
+  {
+    name: "The Apprenticeship Guide",
+    description:
+      "Guide and information hub helping students explore apprenticeship routes across the UK.",
+    url: "https://apprenticeshipguide.co.uk/",
+    logo: "/logos/the_apprenticeship_guide_logo.jpg",
+    category: "Organisation",
+  },
+  {
+    name: "Prospects",
+    description:
+      "Careers guidance site with apprenticeship advice, resources, and pathway information.",
+    url: "https://www.prospects.ac.uk/jobs-and-work-experience/apprenticeships/",
+    logo: "/logos/prospects_ac_uk_logo.jpg",
+    category: "Organisation",
+  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {

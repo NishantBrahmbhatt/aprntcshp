@@ -160,6 +160,20 @@ export const communities = [
     logo: "/logos/legally_apprentice_logo.jpg",
   },
   {
+    name: "Aspiring Legal Network",
+    description:
+      "Community supporting aspiring legal professionals, including those pursuing legal apprenticeships.",
+    url: "https://www.linkedin.com/company/aspiringlegalnetwork/",
+    logo: "/logos/aspiringlegalnetwork_logo.jpg",
+  },
+  {
+    name: "Black Law Network",
+    description:
+      "Community connecting and supporting Black legal talent across study and early careers.",
+    url: "https://www.blacklawnetwork.com/",
+    logo: "/logos/black_law_network_logo.jpg",
+  },
+  {
     name: "MyLaunchpad",
     description:
       "Platform helping young people launch their careers through apprenticeships.",
