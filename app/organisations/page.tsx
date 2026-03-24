@@ -28,14 +28,6 @@ export const organisations = [
     category: "Organisation",
   },
   {
-    name: "Apprentadream",
-    description:
-      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
-    url: "https://www.apprentadream.co.uk/",
-    logo: "/logos/apprentadreamlogo.jpg",
-    category: "Organisation",
-  },
-  {
     name: "Equity Ed",
     description:
       "A student-run organisation giving all students access to extracurricular opportunities.",

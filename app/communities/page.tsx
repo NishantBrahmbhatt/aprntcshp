@@ -34,6 +34,13 @@ export const communities = [
     logo: "/logos/apprentilink.jpg",
   },
   {
+    name: "Apprentadream",
+    description:
+      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
+    url: "https://www.apprentadream.co.uk/",
+    logo: "/logos/apprentadreamlogo.jpg",
+  },
+  {
     name: "Arab Asian Network",
     description:
       "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
