@@ -12,6 +12,7 @@ import {
   cvAdvice,
   cvResourcesCount,
   interviewPrep,
+  linkedinPersonalBrand,
   templates,
   workExperience,
 } from "@/lib/data/cv-resources";
@@ -34,6 +35,7 @@ const SECTION_IDS = {
   coverLetters: "resources-section-cover-letters",
   interviewPrep: "resources-section-interview-prep",
   workExperience: "resources-section-work-experience",
+  linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -46,6 +48,10 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   },
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
   { id: SECTION_IDS.workExperience, label: "Work Experience" },
+  {
+    id: SECTION_IDS.linkedinPersonalBrand,
+    label: "LinkedIn & Personal Brand",
+  },
 ];
 
 function Navbar() {
@@ -239,6 +245,7 @@ export default function CvResourcesPage() {
   const coverLettersRef = useRef<HTMLElement | null>(null);
   const interviewPrepRef = useRef<HTMLElement | null>(null);
   const workExperienceRef = useRef<HTMLElement | null>(null);
+  const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -253,6 +260,7 @@ export default function CvResourcesPage() {
       coverLettersRef.current,
       interviewPrepRef.current,
       workExperienceRef.current,
+      linkedinPersonalBrandRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -421,6 +429,26 @@ export default function CvResourcesPage() {
             <SectionHeading title="Work Experience" />
             <div className="grid gap-5 md:grid-cols-2">
               {workExperience.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={linkedinPersonalBrandRef}
+            id={SECTION_IDS.linkedinPersonalBrand}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="LinkedIn & Personal Brand" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {linkedinPersonalBrand.map((card) => (
                 <LinkCard
                   key={card.href}
                   title={card.title}

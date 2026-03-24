@@ -144,10 +144,34 @@ export const workExperience = [
   },
 ];
 
+export const linkedinPersonalBrand = [
+  {
+    title: "How to Improve Your LinkedIn Profile",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/getting-a-job/how-to-improve-your-linkedin-profile/",
+  },
+  {
+    title: "LinkedIn for Students",
+    source: "My Great First Job",
+    href: "https://www.mygreatfirstjob.com/post/recording-linkedin-for-students",
+  },
+  {
+    title: "Do you need LinkedIn for degree apprenticeship applications?",
+    source: "Apprenticeship Insider",
+    href: "https://www.youtube.com/watch?v=joayKmdrO3s",
+  },
+  {
+    title: "How to Develop Your Personal Brand",
+    source: "My Great First Job",
+    href: "https://www.mygreatfirstjob.com/post/how-to-develop-your-personal-brand-webinar-recording",
+  },
+];
+
 export const cvResourcesCount =
   templates.length +
   cvAdvice.length +
   coverLetters.length +
   apprenticeshipGuides.length +
   interviewPrep.length +
-  workExperience.length;
+  workExperience.length +
+  linkedinPersonalBrand.length;
