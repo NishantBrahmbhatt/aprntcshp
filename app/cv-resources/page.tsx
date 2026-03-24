@@ -6,6 +6,15 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
+import {
+  apprenticeshipGuides,
+  coverLetters,
+  cvAdvice,
+  cvResourcesCount,
+  templates,
+} from "@/lib/data/cv-resources";
+
+export { cvResourcesCount };
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -16,75 +25,20 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-export const templates = [
-  {
-    name: "Techacademia Technical CV",
-    description: "Clean, technical format suited for tech degree apprenticeships.",
-    href: "/resources/CV/CV%20Templates/Tech-Academia-Techncial-CV-Template-.docx",
-    download: true,
-  },
-  {
-    name: "Trackr CV Template",
-    description: "Simple structured template for general apprenticeship applications.",
-    href: "/resources/CV/CV%20Templates/Trackr_CV_Template.docx",
-    download: true,
-  },
-  {
-    name: "Jake's Resume",
-    description: "Minimal LaTeX template, best for tech roles.",
-    href: "https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs",
-    external: true,
-  },
-];
-
-export const cvAdvice = [
-  {
-    title: "How to Write an Apprenticeship CV",
-    source: "Higherin",
-    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cv",
-  },
-  {
-    title: "How to Write a Winning CV Without a Degree",
-    source: "Not Going to Uni",
-    href: "https://notgoingtouni.co.uk/blogs/how-to-write-a-winning-cv-and-cover-letter-without-a-degree",
-  },
-  {
-    title: "How to Write a CV",
-    source: "Success at School",
-    href: "https://www.successatschool.org/advice/applying-for-jobs/how-to-write-a-cv-updated-for-2024/201",
-  },
-];
-
 const SECTION_IDS = {
+  apprenticeshipGuides: "resources-section-apprenticeship-guides",
   templates: "resources-section-templates",
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
+  { id: SECTION_IDS.apprenticeshipGuides, label: "Apprenticeship Guides" },
   { id: SECTION_IDS.templates, label: "Templates" },
   { id: SECTION_IDS.writingCv, label: "Writing Your CV" },
   {
     id: SECTION_IDS.coverLetters,
     label: "Cover Letters & Personal Statements",
-  },
-];
-
-export const coverLetters = [
-  {
-    title: "How to Write an Apprenticeship Cover Letter",
-    source: "Higherin",
-    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cover-letter",
-  },
-  {
-    title: "How to Write a Speculative Cover Letter",
-    source: "Success at School",
-    href: "https://www.successatschool.org/advice/applying-for-jobs/how-to-write-a-speculative-cover-letter/661",
-  },
-  {
-    title: "How to Write an Apprenticeship Personal Statement",
-    source: "Higherin",
-    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-personal-statement",
   },
 ];
 
@@ -142,7 +96,7 @@ function ResourcesSectionNav({
     const container = scrollContainerRef.current;
     if (container == null) return;
 
-    // Ensure the first pill ("Templates") is visible and not clipped on load.
+    // Ensure the first pill is visible and not clipped on load.
     container.scrollLeft = 0;
     const firstId = SECTION_PILLS[0]?.id;
     const firstEl = firstId ? pillButtonRefs.current[firstId] : null;
@@ -273,6 +227,7 @@ export default function CvResourcesPage() {
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const ratiosRef = useRef<Record<string, number>>({});
 
+  const apprenticeshipGuidesRef = useRef<HTMLElement | null>(null);
   const templatesRef = useRef<HTMLElement | null>(null);
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
@@ -284,6 +239,7 @@ export default function CvResourcesPage() {
 
   useLayoutEffect(() => {
     const sections = [
+      apprenticeshipGuidesRef.current,
       templatesRef.current,
       writingCvRef.current,
       coverLettersRef.current,
@@ -347,9 +303,29 @@ export default function CvResourcesPage() {
           />
 
           <section
+            ref={apprenticeshipGuidesRef}
+            id={SECTION_IDS.apprenticeshipGuides}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Apprenticeship Guides" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {apprenticeshipGuides.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
             ref={templatesRef}
             id={SECTION_IDS.templates}
-            className="scroll-mt-[72px] space-y-4 pb-10"
+            className="scroll-mt-[72px] space-y-4 py-10"
           >
             <SectionHeading title="Templates" />
             <div className="grid gap-5 md:grid-cols-2">
@@ -390,7 +366,7 @@ export default function CvResourcesPage() {
           <section
             ref={coverLettersRef}
             id={SECTION_IDS.coverLetters}
-            className="scroll-mt-[72px] space-y-4 pt-10"
+            className="scroll-mt-[72px] space-y-4 py-10"
           >
             <SectionHeading title="Cover Letters & Personal Statements" />
             <div className="grid gap-5 md:grid-cols-2">

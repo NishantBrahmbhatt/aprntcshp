@@ -8,18 +8,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { communities } from "@/app/communities/page";
-import {
-  coverLetters,
-  cvAdvice,
-  templates,
-} from "@/app/cv-resources/page";
+import { cvResourcesCount } from "@/app/cv-resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { organisations } from "@/app/organisations/page";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const cvResourcesCount =
-  templates.length + cvAdvice.length + coverLetters.length;
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
