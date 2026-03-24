@@ -11,6 +11,7 @@ import {
   coverLetters,
   cvAdvice,
   cvResourcesCount,
+  interviewPrep,
   templates,
 } from "@/lib/data/cv-resources";
 
@@ -30,6 +31,7 @@ const SECTION_IDS = {
   templates: "resources-section-templates",
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
+  interviewPrep: "resources-section-interview-prep",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -40,6 +42,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
     id: SECTION_IDS.coverLetters,
     label: "Cover Letters & Personal Statements",
   },
+  { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
 ];
 
 function Navbar() {
@@ -231,6 +234,7 @@ export default function CvResourcesPage() {
   const templatesRef = useRef<HTMLElement | null>(null);
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
+  const interviewPrepRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -243,6 +247,7 @@ export default function CvResourcesPage() {
       templatesRef.current,
       writingCvRef.current,
       coverLettersRef.current,
+      interviewPrepRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -371,6 +376,26 @@ export default function CvResourcesPage() {
             <SectionHeading title="Cover Letters & Personal Statements" />
             <div className="grid gap-5 md:grid-cols-2">
               {coverLetters.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={interviewPrepRef}
+            id={SECTION_IDS.interviewPrep}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Interview Prep" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {interviewPrep.map((card) => (
                 <LinkCard
                   key={card.href}
                   title={card.title}

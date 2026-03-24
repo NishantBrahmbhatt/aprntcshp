@@ -78,8 +78,42 @@ export const apprenticeshipGuides = [
   },
 ];
 
+export const interviewPrep = [
+  {
+    title: "A Guide to Apprenticeship Interviews",
+    source: "Apprenticeships.gov.uk",
+    href: "https://assets.ctfassets.net/8kbr1n52z8s2/16gBmnXLerznk7H2wMGlnN/27293ee12c50a6c2413714674fbaef19/PDF-a-guide-to-apprenticeship-interviews.pdf",
+  },
+  {
+    title: "Apprenticeship Interview Tips",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/apprenticeship-interview/",
+  },
+  {
+    title: "5 Key Apprenticeship Interview Questions",
+    source: "Success at School",
+    href: "https://www.successatschool.org/advice/apprenticeships/5-key-apprenticeship-interview-questions-and-how-to-answer-them/1123",
+  },
+  {
+    title: "How to Impress at an Interview",
+    source: "Gradcracker",
+    href: "https://www.gradcracker.com/career-centre/5/interviews/432/how-to-impress-at-an-interview",
+  },
+  {
+    title: "Standing Out at Assessment Centres",
+    source: "Gradcracker",
+    href: "https://www.gradcracker.com/career-centre/6/assessment-centres/433/standing-out-at-assessment-centres",
+  },
+  {
+    title: "Interview Tips",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/interview-tips",
+  },
+];
+
 export const cvResourcesCount =
   templates.length +
   cvAdvice.length +
   coverLetters.length +
-  apprenticeshipGuides.length;
+  apprenticeshipGuides.length +
+  interviewPrep.length;
