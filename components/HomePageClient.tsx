@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Building2, FileText, Search, Users } from "lucide-react";
+import { Briefcase, Building2, FileText, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -17,6 +17,7 @@ const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
+  { label: "Industries", Icon: Briefcase, href: "/industries" },
   { label: "Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
