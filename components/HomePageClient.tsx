@@ -39,7 +39,7 @@ const sectionCards = [
     count: platforms.length,
   },
   {
-    label: "Industry",
+    label: "Industries",
     Icon: Briefcase,
     href: "/industries",
     description: "Explore apprenticeships by industry",
