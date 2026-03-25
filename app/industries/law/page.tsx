@@ -8,6 +8,7 @@ import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
 import {
   blogs,
+  communities,
   firms,
   organisations,
   resources,
@@ -26,6 +27,7 @@ const navItems = [
 const SECTION_IDS = {
   firms: "law-section-firms",
   organisations: "law-section-organisations",
+  communities: "law-section-communities",
   resources: "law-section-resources",
   blogs: "law-section-blogs",
 } as const;
@@ -33,6 +35,7 @@ const SECTION_IDS = {
 const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.firms, label: "Firms" },
   { id: SECTION_IDS.organisations, label: "Organisations" },
+  { id: SECTION_IDS.communities, label: "Communities" },
   { id: SECTION_IDS.resources, label: "Resources" },
   { id: SECTION_IDS.blogs, label: "Blogs" },
 ];
@@ -259,6 +262,7 @@ export default function LawIndustryPage() {
 
   const firmsRef = useRef<HTMLElement | null>(null);
   const organisationsRef = useRef<HTMLElement | null>(null);
+  const communitiesRef = useRef<HTMLElement | null>(null);
   const resourcesRef = useRef<HTMLElement | null>(null);
   const blogsRef = useRef<HTMLElement | null>(null);
 
@@ -271,6 +275,7 @@ export default function LawIndustryPage() {
     const sections = [
       firmsRef.current,
       organisationsRef.current,
+      communitiesRef.current,
       resourcesRef.current,
       blogsRef.current,
     ].filter((n): n is HTMLElement => n !== null);
@@ -366,6 +371,26 @@ export default function LawIndustryPage() {
                   name={org.name}
                   description={org.description}
                   href={org.url}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={communitiesRef}
+            id={SECTION_IDS.communities}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Communities" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {communities.map((item) => (
+                <OrganisationCard
+                  key={item.url}
+                  name={item.name}
+                  description={item.description}
+                  href={item.url}
                 />
               ))}
             </div>

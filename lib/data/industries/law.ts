@@ -153,10 +153,25 @@ export const organisations = [
     description: "Corporate network supporting diverse talent into law.",
     url: "https://www.linkedin.com/company/seo-london-corporate-law/",
   },
+];
+
+export const communities = [
   {
     name: "Legally Apprentice",
     description: "Community for students pursuing legal apprenticeships.",
-    url: "https://legallyapprentice.com",
+    url: "https://www.linkedin.com/company/legally-apprentice/",
+  },
+  {
+    name: "MyLaunchpad",
+    description:
+      "Platform helping young people launch their careers through apprenticeships.",
+    url: "https://www.linkedin.com/company/mylaunchpaduk/posts/?feedView=all",
+  },
+  {
+    name: "Black Apprentice Network",
+    description:
+      "Supporting and empowering Black apprentices through networking, career support, and professional development.",
+    url: "https://www.blackapprenticenetwork.co.uk/",
   },
 ];
 
