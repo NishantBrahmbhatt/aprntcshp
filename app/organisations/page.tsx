@@ -220,6 +220,30 @@ export const organisations = [
     logo: "/logos/prospects_ac_uk_logo.jpg",
     category: "Organisation",
   },
+  {
+    name: "Best Apprenticeships",
+    description:
+      "Browse and compare apprenticeship opportunities by employer, sector and location.",
+    url: "https://www.bestapprenticeships.com/",
+    logo: "/logos/best_apprenticeships_logo.jpg",
+    category: "Organisation",
+  },
+  {
+    name: "LegalCheek",
+    description:
+      "Legal careers news, insight and resources for students exploring law and training contracts.",
+    url: "https://www.legalcheek.com/",
+    logo: "/logos/legal_cheek_logo.jpg",
+    category: "Organisation",
+  },
+  {
+    name: "The Mentors Collective",
+    description:
+      "Community connecting mentors and mentees with guidance for early careers and professional growth.",
+    url: "https://www.linkedin.com/company/thementorscollective/",
+    logo: "/logos/the_mentors_collective_logo.jpg",
+    category: "Organisation",
+  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
