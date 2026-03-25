@@ -11,6 +11,7 @@ import {
   communities,
   firms,
   organisations,
+  podcasts,
   resources,
 } from "@/lib/data/industries/law";
 
@@ -30,6 +31,7 @@ const SECTION_IDS = {
   communities: "law-section-communities",
   resources: "law-section-resources",
   blogs: "law-section-blogs",
+  podcasts: "law-section-podcasts",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -38,6 +40,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.communities, label: "Communities" },
   { id: SECTION_IDS.resources, label: "Resources" },
   { id: SECTION_IDS.blogs, label: "Blogs" },
+  { id: SECTION_IDS.podcasts, label: "Podcasts" },
 ];
 
 const cardShell =
@@ -265,6 +268,7 @@ export default function LawIndustryPage() {
   const communitiesRef = useRef<HTMLElement | null>(null);
   const resourcesRef = useRef<HTMLElement | null>(null);
   const blogsRef = useRef<HTMLElement | null>(null);
+  const podcastsRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -278,6 +282,7 @@ export default function LawIndustryPage() {
       communitiesRef.current,
       resourcesRef.current,
       blogsRef.current,
+      podcastsRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -421,7 +426,7 @@ export default function LawIndustryPage() {
           <section
             ref={blogsRef}
             id={SECTION_IDS.blogs}
-            className="scroll-mt-[72px] space-y-4 pt-10"
+            className="scroll-mt-[72px] space-y-4 py-10"
           >
             <SectionHeading title="Blogs" />
             <div className="grid gap-5 md:grid-cols-2">
@@ -431,6 +436,26 @@ export default function LawIndustryPage() {
                   name={blog.name}
                   description={blog.description}
                   href={blog.url}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={podcastsRef}
+            id={SECTION_IDS.podcasts}
+            className="scroll-mt-[72px] space-y-4 pt-10"
+          >
+            <SectionHeading title="Podcasts" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {podcasts.map((item) => (
+                <OrganisationCard
+                  key={item.url}
+                  name={item.name}
+                  description={item.description}
+                  href={item.url}
                 />
               ))}
             </div>

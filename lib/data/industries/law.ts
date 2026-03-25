@@ -149,6 +149,12 @@ export const organisations = [
     url: "https://www.aspiringsolicitors.co.uk/",
   },
   {
+    name: "Equal Opportunity",
+    description:
+      "Community focused on fair access and opportunity in professional careers, including law.",
+    url: "https://www.linkedin.com/company/equalopportunity/",
+  },
+  {
     name: "SEO London",
     description: "Corporate network supporting diverse talent into law.",
     url: "https://www.linkedin.com/company/seo-london-corporate-law/",
@@ -195,8 +201,22 @@ export const resources = [
 
 export const blogs = [
   {
+    name: "Elite Law Network",
+    description:
+      "Network sharing insight and opportunities for aspiring legal professionals.",
+    url: "https://www.linkedin.com/company/elite-law-network/",
+  },
+  {
     name: "LegalCheek",
     description: "News, rankings and guides for the legal profession.",
     url: "https://www.legalcheek.com/",
+  },
+];
+
+export const podcasts = [
+  {
+    name: "Becoming a lawyer",
+    description: "Podcast exploring routes into law and life in the legal profession.",
+    url: "https://www.linkedin.com/company/becoming-a-lawyer-show/",
   },
 ];
