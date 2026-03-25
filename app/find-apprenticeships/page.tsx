@@ -101,6 +101,36 @@ export const platforms = [
     description: "Apprenticeship opportunities via RISE Network (free account needed).",
     href: "https://risenetwork.online/apprenticeships",
   },
+  {
+    title: "All About School Leavers",
+    source: "All About School Leavers",
+    description: "Apprenticeship and school leaver opportunities across the UK.",
+    href: "https://www.allaboutschoolleavers.co.uk/jobs/apprenticeships",
+  },
+  {
+    title: "Best Apprenticeships",
+    source: "Best Apprenticeships",
+    description: "Browse apprenticeships by employer, sector and location.",
+    href: "https://www.bestapprenticeships.com/find-apprenticeships/",
+  },
+  {
+    title: "Success at School",
+    source: "Success at School",
+    description: "Search apprenticeship and school leaver vacancies.",
+    href: "https://www.successatschool.org/jobs",
+  },
+  {
+    title: "Talentix",
+    source: "Talentix",
+    description: "Track and find apprenticeship opportunities.",
+    href: "https://talentix.co.uk/apprenticeship-tracker",
+  },
+  {
+    title: "Young Professionals",
+    source: "Young Professionals",
+    description: "Apprenticeship opportunities for young people across the UK.",
+    href: "https://apprenticeships.co.uk/jobs/role/apprenticeships",
+  },
 ];
 
 function Navbar() {
