@@ -10,6 +10,7 @@ import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { communities } from "@/app/communities/page";
 import { cvResourcesCount } from "@/app/cv-resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
+import { industryGridItems } from "@/app/industries/industry-grid";
 import { organisations } from "@/app/organisations/page";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -36,6 +37,13 @@ const sectionCards = [
     href: "/find-apprenticeships",
     description: "Every major apprenticeship tracker",
     count: platforms.length,
+  },
+  {
+    label: "Industries",
+    Icon: Briefcase,
+    href: "/industries",
+    description: "Explore apprenticeships by industry",
+    count: industryGridItems.length,
   },
   {
     label: "Resources",
