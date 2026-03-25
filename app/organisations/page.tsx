@@ -45,6 +45,14 @@ export const organisations = [
     category: "Organisation",
   },
   {
+    name: "Skills Development Scotland",
+    description:
+      "Scotland's national skills agency providing career information, advice and guidance.",
+    url: "https://www.myworldofwork.co.uk/",
+    logo: "/logos/skills_development_scotland_logo.jpg",
+    category: "Organisation",
+  },
+  {
     name: "WIZE Foundation",
     description:
       "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
