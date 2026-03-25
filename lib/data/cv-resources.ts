@@ -100,11 +100,6 @@ export const interviewPrep = [
     href: "https://www.gradcracker.com/career-centre/5/interviews/432/how-to-impress-at-an-interview",
   },
   {
-    title: "Standing Out at Assessment Centres",
-    source: "Gradcracker",
-    href: "https://www.gradcracker.com/career-centre/6/assessment-centres/433/standing-out-at-assessment-centres",
-  },
-  {
     title: "Interview Tips",
     source: "Prospects",
     href: "https://www.prospects.ac.uk/careers-advice/interview-tips",
