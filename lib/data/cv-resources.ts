@@ -79,6 +79,21 @@ export const cvAdvice = [
 
 export const coverLetters = [
   {
+    title: "How to Write a Cover Letter",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/cover-letters/",
+  },
+  {
+    title: "How to Write a Cover Letter",
+    source: "National Careers Service",
+    href: "https://nationalcareers.service.gov.uk/careers-advice/covering-letter",
+  },
+  {
+    title: "How to Write a Personal Statement for Your CV",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/writing-a-personal-statement-for-your-cv/",
+  },
+  {
     title: "How to Write an Apprenticeship Cover Letter",
     source: "Higherin",
     href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cover-letter",
@@ -92,6 +107,11 @@ export const coverLetters = [
     title: "How to Write an Apprenticeship Personal Statement",
     source: "Higherin",
     href: "https://higherin.com/careers-advice/application-tips/apprenticeship-personal-statement",
+  },
+  {
+    title: "How to Write an Apprenticeship Personal Statement",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/apprenticeship-personal-statement/",
   },
 ];
 
