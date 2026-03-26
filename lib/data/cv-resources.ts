@@ -164,6 +164,32 @@ export const interviewPrep = [
     source: "Prospects",
     href: "https://www.prospects.ac.uk/careers-advice/interview-tips",
   },
+  {
+    title: "CVs, Applications and Interviews",
+    source: "My World of Work",
+    href: "https://www.myworldofwork.co.uk/cvs-applications-and-interviews",
+  },
+];
+
+export const assessmentCentre = [
+  {
+    title: "Standing Out at Assessment Centres",
+    source: "Gradcracker",
+    href: "https://www.gradcracker.com/career-centre/6/assessment-centres/433/standing-out-at-assessment-centres",
+  },
+];
+
+export const getInspired = [
+  {
+    title: "Apprenticeship Blogs",
+    source: "Placer Apprenticeships",
+    href: "https://apprenticeships.placer.co.uk/blog",
+  },
+  {
+    title: "Apprentice Story Films",
+    source: "Amazing Apprenticeships",
+    href: "https://www.amazingapprenticeships.com/apprentice-story-films/",
+  },
 ];
 
 export const workExperience = [
@@ -228,5 +254,7 @@ export const cvResourcesCount =
   coverLetters.length +
   apprenticeshipGuides.length +
   interviewPrep.length +
+  assessmentCentre.length +
   workExperience.length +
-  linkedinPersonalBrand.length;
+  linkedinPersonalBrand.length +
+  getInspired.length;

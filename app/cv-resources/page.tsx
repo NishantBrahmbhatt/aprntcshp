@@ -8,9 +8,11 @@ import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
 import {
   apprenticeshipGuides,
+  assessmentCentre,
   coverLetters,
   cvAdvice,
   cvResourcesCount,
+  getInspired,
   interviewPrep,
   linkedinPersonalBrand,
   templates,
@@ -35,8 +37,10 @@ const SECTION_IDS = {
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
   interviewPrep: "resources-section-interview-prep",
+  assessmentCentre: "resources-section-assessment-centre",
   workExperience: "resources-section-work-experience",
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
+  getInspired: "resources-section-get-inspired",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -48,11 +52,13 @@ const SECTION_PILLS: { id: string; label: string }[] = [
     label: "Cover Letters & Personal Statements",
   },
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
+  { id: SECTION_IDS.assessmentCentre, label: "Assessment Centre" },
   { id: SECTION_IDS.workExperience, label: "Work Experience" },
   {
     id: SECTION_IDS.linkedinPersonalBrand,
     label: "LinkedIn & Personal Brand",
   },
+  { id: SECTION_IDS.getInspired, label: "Get Inspired" },
 ];
 
 function Navbar() {
@@ -245,8 +251,10 @@ export default function CvResourcesPage() {
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
   const interviewPrepRef = useRef<HTMLElement | null>(null);
+  const assessmentCentreRef = useRef<HTMLElement | null>(null);
   const workExperienceRef = useRef<HTMLElement | null>(null);
   const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
+  const getInspiredRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -260,8 +268,10 @@ export default function CvResourcesPage() {
       writingCvRef.current,
       coverLettersRef.current,
       interviewPrepRef.current,
+      assessmentCentreRef.current,
       workExperienceRef.current,
       linkedinPersonalBrandRef.current,
+      getInspiredRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -423,6 +433,26 @@ export default function CvResourcesPage() {
           <SectionDivider />
 
           <section
+            ref={assessmentCentreRef}
+            id={SECTION_IDS.assessmentCentre}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Assessment Centre" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {assessmentCentre.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
             ref={workExperienceRef}
             id={SECTION_IDS.workExperience}
             className="scroll-mt-[72px] space-y-4 py-10"
@@ -450,6 +480,26 @@ export default function CvResourcesPage() {
             <SectionHeading title="LinkedIn & Personal Brand" />
             <div className="grid gap-5 md:grid-cols-2">
               {linkedinPersonalBrand.map((card) => (
+                <LinkCard
+                  key={card.href}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={getInspiredRef}
+            id={SECTION_IDS.getInspired}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Get Inspired" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {getInspired.map((card) => (
                 <LinkCard
                   key={card.href}
                   title={card.title}
