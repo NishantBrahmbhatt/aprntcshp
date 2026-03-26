@@ -37,6 +37,14 @@ export const organisations = [
     category: "Organisation",
   },
   {
+    name: "Equal Opportunity",
+    description:
+      "Community focused on fair access and opportunity in professional careers.",
+    url: "https://www.linkedin.com/company/equalopportunity/",
+    logo: "/logos/equalopportunity_logo.jpg",
+    category: "Organisation",
+  },
+  {
     name: "Success at School",
     description:
       "Careers platform helping students explore options, including apprenticeships, after school.",
