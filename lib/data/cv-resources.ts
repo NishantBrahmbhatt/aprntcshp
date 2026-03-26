@@ -21,9 +21,34 @@ export const templates = [
 
 export const cvAdvice = [
   {
-    title: "How to Write an Apprenticeship CV",
-    source: "Higherin",
-    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cv",
+    title: "How to Write a CV",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/how-to-write-a-cv/",
+  },
+  {
+    title: "CV Sections Explained",
+    source: "National Careers Service",
+    href: "https://nationalcareers.service.gov.uk/careers-advice/cv-sections",
+  },
+  {
+    title: "How to Put Together the Perfect CV",
+    source: "Gradcracker",
+    href: "https://www.gradcracker.com/career-centre/2/cv-and-cover-letters/428/how-to-put-together-the-perfect-cv-and-cover-letter",
+  },
+  {
+    title: "How to Write a Great First CV",
+    source: "My Great First Job",
+    href: "https://www.mygreatfirstjob.com/post/recording-how-write-a-great-first-cv",
+  },
+  {
+    title: "How to Write a CV",
+    source: "Success at School",
+    href: "https://www.successatschool.org/advice/applying-for-jobs/how-to-write-a-cv-updated-for-2024/201",
+  },
+  {
+    title: "Example CVs",
+    source: "Prospects",
+    href: "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/example-cvs/",
   },
   {
     title: "How to Write a Winning CV Without a Degree",
@@ -31,9 +56,24 @@ export const cvAdvice = [
     href: "https://notgoingtouni.co.uk/blogs/how-to-write-a-winning-cv-and-cover-letter-without-a-degree",
   },
   {
-    title: "How to Write a CV",
-    source: "Success at School",
-    href: "https://www.successatschool.org/advice/applying-for-jobs/how-to-write-a-cv-updated-for-2024/201",
+    title: "How to Write an Apprenticeship CV",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cv",
+  },
+  {
+    title: "How to Write an Apprenticeship CV",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/apprenticeship-cv/",
+  },
+  {
+    title: "Apprenticeship CV Tips",
+    source: "Best Apprenticeships",
+    href: "https://www.bestapprenticeships.com/apprenticeship-cv-tips/",
+  },
+  {
+    title: "CVs, Applications and Interviews",
+    source: "My World of Work",
+    href: "https://www.myworldofwork.co.uk/cvs-applications-and-interviews",
   },
 ];
 
