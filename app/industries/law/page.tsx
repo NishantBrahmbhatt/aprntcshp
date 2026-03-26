@@ -120,19 +120,19 @@ function LawSectionsNav({
   }, [activeSectionId]);
 
   const inactivePillClass =
-    "rounded-full border border-solid border-[#2a2a2a] bg-[#111] px-4 py-[6px] text-[12px] whitespace-nowrap text-neutral-500 transition-[transform,background-color,color] duration-300 ease hover:-translate-y-[2px]";
+    "rounded-full border border-solid border-[#2a2a2a] bg-[#111] px-3 py-1 text-[12px] whitespace-nowrap text-neutral-500 transition-[transform,background-color,color] duration-300 ease md:px-4 md:py-[6px] hover:-translate-y-[2px]";
   const activePillClass =
-    "rounded-full border border-solid border-white bg-white px-4 py-[6px] text-[12px] whitespace-nowrap text-black transition-[transform,background-color,color] duration-300 ease";
+    "rounded-full border border-solid border-white bg-white px-3 py-1 text-[12px] whitespace-nowrap text-black transition-[transform,background-color,color] duration-300 ease md:px-4 md:py-[6px]";
 
   return (
     <nav
       aria-label="Law guide sections"
-      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/95 px-0 py-3 backdrop-blur-sm md:px-6"
+      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f] px-0 py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm md:px-6"
     >
       <div
         ref={scrollContainerRef}
         style={{ scrollbarWidth: "none" }}
-        className="flex flex-nowrap justify-center gap-2 overflow-x-auto px-4 md:px-0 [&::-webkit-scrollbar]:hidden"
+        className="flex flex-nowrap justify-start gap-2 overflow-x-auto px-4 md:justify-center md:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {SECTION_PILLS.map((pill) => {
           const isActive = activeSectionId === pill.id;
