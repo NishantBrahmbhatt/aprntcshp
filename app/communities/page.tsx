@@ -8,6 +8,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
+import { communities } from "@/lib/data/communities";
+
+export { communities };
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -17,184 +20,6 @@ const navItems = [
   { label: "Industries", href: "/industries" },
   { label: "Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
-];
-
-export const communities = [
-  {
-    name: "Apprentease",
-    description:
-      "Peer-led community helping students secure apprenticeships through resources, mentorship, and support.",
-    url: "https://discord.com/invite/UXKYgRB6ux",
-    logo: "/logos/apprentease.jpg",
-  },
-  {
-    name: "Apprentilink",
-    description:
-      "Connecting students to apprenticeship opportunities and communities across the UK.",
-    url: "https://www.allapprenticenetwork.co.uk/?utm_source=chatgpt.com",
-    logo: "/logos/apprentilink.jpg",
-  },
-  {
-    name: "Apprentadream",
-    description:
-      "Helping students plan, apply for, and secure apprenticeships with practical guidance.",
-    url: "https://www.apprentadream.co.uk/",
-    logo: "/logos/apprentadreamlogo.jpg",
-  },
-  {
-    name: "Arab Asian Network",
-    description:
-      "Network connecting Asian and Arab apprentices and students exploring apprenticeship routes.",
-    url: "https://www.linkedin.com/company/asianarabnetwork/",
-    logo: "/logos/aan.jpg",
-  },
-  {
-    name: "Black Apprenticeship Network",
-    description:
-      "Supporting and empowering Black apprentices through networking, career support, and professional development.",
-    url: "https://www.blackapprenticenetwork.co.uk/",
-    logo: "/logos/ban2.png",
-  },
-  {
-    name: "Hindu Apprentice Network",
-    description:
-      "Supporting Hindu apprentices and students considering apprenticeship pathways in the UK.",
-    url: "https://www.linkedin.com/in/hindu-apprentice-network-uk-7874a338b/",
-    logo: "/logos/hinduapprenticeshipsnetworklogo.jpg",
-  },
-  {
-    name: "Investate",
-    description:
-      "Student-led initiative introducing young people to investing, finance, and related pathways.",
-    url: "https://www.linkedin.com/company/investate-uk/posts/?feedView=all",
-    logo: "/logos/investate.jpg",
-  },
-  {
-    name: "Mentup",
-    description:
-      "Mentorship-focused support for UK students looking to break into apprenticeships.",
-    url: "https://www.linkedin.com/company/mentup-uk/",
-    logo: "/logos/mentuplogo.jpg",
-  },
-  {
-    name: "Muslim Apprentice Community",
-    description:
-      "Community space for Muslim apprentices and aspiring apprentices across the UK.",
-    url: "https://www.linkedin.com/company/muslim-apprentice-community/about/",
-    logo: "/logos/muslim_apprentice_community_logo.jpg",
-  },
-  {
-    name: "Women in Apprenticeships Network",
-    description:
-      "Network focused on supporting women in apprenticeships through community and resources.",
-    url: "https://www.womeninapprenticeshipsnetwork.org/",
-    logo: "/logos/womeninapprenticeshipsnetworklogo.png",
-  },
-  {
-    name: "Apprenticeship Insider",
-    description:
-      "Resource helping students research apprenticeship schemes and opportunities in detail.",
-    url: "https://sumptuous-book-021.notion.site/The-Apprenticeship-Insider-Database-fef90e89b2484b48a5d35af8c8e226c3",
-    logo: "/logos/apprenticeshipinsider.png",
-  },
-  {
-    name: "LACE Network",
-    description:
-      "A community for aspiring, current and alumni apprentices. Hosts online and in-person networking events to help members build their network and navigate their apprenticeship journey.",
-    url: "https://linktr.ee/LACENetwork",
-    logo: "/logos/lacenetworklogo.jpg",
-  },
-  {
-    name: "Leaf Pathways",
-    description:
-      "Pathways and support for young people exploring apprenticeships and early careers.",
-    url: "https://leafpathways.com/",
-    logo: "/logos/leaf_pathways_logo.jpg",
-  },
-  {
-    name: "OuterCircle",
-    description:
-      "UK apprenticeship community connecting apprentices with peers, resources, and opportunities.",
-    url: "https://outer-circle.uk/",
-    logo: "/logos/outercircle_logo.jpg",
-  },
-  {
-    name: "RISE Network",
-    description:
-      "Community connecting students with apprenticeship opportunities.",
-    url: "https://risenetwork.online/",
-    logo: "/logos/risenetwork.jpg",
-  },
-  {
-    name: "Muslim Apprentice Network",
-    description:
-      "Supporting Muslim students exploring apprenticeship pathways.",
-    url: "https://muslimapprenticenetwork.com/",
-    logo: "/logos/muslim_apprentice_network_logo.png",
-  },
-  {
-    name: "Association of Muslim Apprentices",
-    description:
-      "Organisation supporting Muslim apprentices professionally and personally.",
-    url: "https://www.linkedin.com/company/association-of-muslim-apprentices/",
-    logo: "/logos/theassociationofmuslimapprenticeslogo.png",
-  },
-  {
-    name: "NetworKING",
-    description:
-      "Networking community for apprentices across the UK.",
-    url: "https://www.networkinguk.com/index.php",
-    logo: "/logos/networkinguk_logo.jpg",
-  },
-  {
-    name: "Northern Link",
-    description:
-      "Regional community connecting apprentices and students across Northern England.",
-    url: "https://chat.whatsapp.com/J1XHe86TKGlHbNfRTLqAFF",
-    logo: "/logos/northernlinkorg_logo.jpg",
-  },
-  {
-    name: "Ellavate",
-    description:
-      "Community empowering young women in apprenticeships.",
-    url: "https://www.linkedin.com/company/3llavate/posts/",
-    logo: "/logos/ellavatelogo.jpg",
-  },
-  {
-    name: "Legally Apprentice",
-    description:
-      "Community for students pursuing legal apprenticeships.",
-    url: "https://www.linkedin.com/company/legally-apprentice/about/",
-    logo: "/logos/legally_apprentice_logo.jpg",
-  },
-  {
-    name: "Aspiring Legal Network",
-    description:
-      "Community supporting aspiring legal professionals, including those pursuing legal apprenticeships.",
-    url: "https://www.linkedin.com/company/aspiringlegalnetwork/",
-    logo: "/logos/aspiringlegalnetwork_logo.jpg",
-  },
-  {
-    name: "Black Law Network",
-    description:
-      "Community connecting and supporting Black legal talent across study and early careers.",
-    url: "https://www.blacklawnetwork.com/",
-    logo: "/logos/black_law_network_logo.jpg",
-  },
-  {
-    name: "MyLaunchpad",
-    description:
-      "Platform helping young people launch their careers through apprenticeships.",
-    url: "https://www.linkedin.com/company/mylaunchpaduk/",
-    logo: "/logos/mylaunchpaduk_logo.jpg",
-  },
-  {
-    name: "Apprentice Alliance",
-    description:
-      "Alliance connecting apprentices and employers across the UK.",
-    url: "https://www.linkedin.com/company/apprentice-alliance/",
-    logo: "/logos/apprenticealliancelogo.jpg",
-  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
@@ -269,15 +94,38 @@ function CommunitiesGrid({ searchTerm }: { searchTerm: string }) {
             href={org.url}
             target="_blank"
             rel="noreferrer"
-            className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
+            className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
             <div className="flex items-start gap-4">
               <OrganisationLogo src={org.logo} alt={org.name} />
-              <div className="space-y-1">
+              <div>
                 <h2 className="text-base font-semibold text-neutral-50">
                   {org.name}
                 </h2>
-                <p className="text-xs text-neutral-400">{org.description}</p>
+                <div
+                  className="flex flex-wrap gap-[6px]"
+                  style={{
+                    borderTop: "1px solid #1a1a1a",
+                    marginTop: 10,
+                    paddingTop: 10,
+                  }}
+                >
+                  {org.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        background: "#1a1a1a",
+                        border: "1px solid #2a2a2a",
+                        borderRadius: "999px",
+                        padding: "2px 10px",
+                        fontSize: "11px",
+                        color: "#888",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             <ExternalLink
