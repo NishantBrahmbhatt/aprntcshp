@@ -197,6 +197,41 @@ export const resources = [
     source: "LegalCheek",
     href: "https://www.legalcheek.com/the-solicitor-apprenticeship-most-list/",
   },
+  {
+    title: "Everything You Need to Know About Law Apprenticeships",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/apprenticeships/everything-you-need-to-know-about-law-apprenticeships-updated-for-2025/834",
+  },
+  {
+    title: "Magic Circle Law Firms Guide",
+    source: "Higherin",
+    href: "https://higherin.com/career-guides/legal-law/magic-circle-law-firms",
+  },
+  {
+    title: "Law and Legal Studies Guide",
+    source: "UCAS",
+    href: "https://www.ucas.com/explore/industry-guides/law-and-legal-studies",
+  },
+  {
+    title: "Legal, Finance and Accounting Apprenticeships",
+    source: "Gov.uk",
+    href: "https://www.apprenticeships.gov.uk/apprentices/browse-by-interests/legal-finance-accounting",
+  },
+  {
+    title: "Law Opportunities",
+    source: "Get My First Job",
+    href: "https://www.getmyfirstjob.co.uk/discover-opportunities/industry-sectors/Law/7",
+  },
+  {
+    title: "Qualifying as a Solicitor Through an Apprenticeship",
+    source: "Law Society",
+    href: "https://www.lawsociety.org.uk/career-advice/becoming-a-solicitor/qualifying-without-a-degree/apprenticeships",
+  },
+  {
+    title: "Legal Apprenticeships Guide",
+    source: "Apprenticeship Guide",
+    href: "https://apprenticeshipguide.co.uk/apprenticeship-category/industry-sectors/legal-apprenticeships/",
+  },
 ];
 
 export const blogs = [
