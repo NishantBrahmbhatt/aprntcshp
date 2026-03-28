@@ -20,14 +20,17 @@ export function SiteFooter() {
       >
         Feedback & suggestions
       </a>
-      <a
-        href="https://aprntcshp.featurebase.app/changelog"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-center text-neutral-500 no-underline transition-[color] duration-200 ease hover:text-white"
-      >
-        Library last updated {buildTime}
-      </a>
+      <div className="text-center text-neutral-500">
+        Last updated {buildTime} →{" "}
+        <a
+          href="https://aprntcshp.featurebase.app/changelog"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-500 no-underline transition-[color] duration-200 ease hover:text-white"
+        >
+          see what changed
+        </a>
+      </div>
       <div className="flex w-full justify-center md:justify-end">
         <FooterTagline />
       </div>
