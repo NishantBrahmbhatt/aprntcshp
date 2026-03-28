@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
+import { organisations } from "@/lib/data/organisations";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -17,241 +18,6 @@ const navItems = [
   { label: "Industries", href: "/industries" },
   { label: "Resources", href: "/cv-resources" },
   { label: "Communities", href: "/communities" },
-];
-
-export const organisations = [
-  {
-    name: "Amazing Apprenticeships",
-    description:
-      "Debunking misconceptions around apprenticeships and helping more students access them.",
-    url: "https://www.amazingapprenticeships.com/",
-    logo: "/logos/amazing_apprenticeships_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Equity Ed",
-    description:
-      "A student-run organisation giving all students access to extracurricular opportunities.",
-    url: "https://www.equityed.co.uk/",
-    logo: "/logos/equityed_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Equal Opportunity",
-    description:
-      "Community focused on fair access and opportunity in professional careers.",
-    url: "https://www.linkedin.com/company/equalopportunity/",
-    logo: "/logos/equalopportunity_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Success at School",
-    description:
-      "Careers platform helping students explore options, including apprenticeships, after school.",
-    url: "https://www.successatschool.org",
-    logo: "/logos/success_at_school_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Skills Development Scotland",
-    description:
-      "Scotland's national skills agency providing career information, advice and guidance.",
-    url: "https://www.myworldofwork.co.uk/",
-    logo: "/logos/skills_development_scotland_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "WIZE Foundation",
-    description:
-      "Helping students from disadvantaged backgrounds step into pathways they might not otherwise reach.",
-    url: "https://www.wizefoundation.com/",
-    logo: "/logos/wizefoundation_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Movement to Work",
-    description:
-      "Connecting young people with employer work experience and apprenticeship opportunities.",
-    url: "https://www.mtwplacements.com",
-    logo: "/logos/movement_to_work_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "My Great First Job",
-    description:
-      "Connecting young people with jobs, apprenticeships, and early career opportunities.",
-    url: "https://www.mygreatfirstjob.com/",
-    logo: "/logos/my_great_first_job_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Higherin",
-    description:
-      "Student community with apprenticeship reviews, career advice, and day-in-the-life content.",
-    url: "https://higherin.com",
-    logo: "/logos/ratemyapp_ship_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "UCAS",
-    description:
-      "The UK's official university and apprenticeship application platform with guides and vacancies.",
-    url: "https://www.ucas.com/explore/search/apprenticeships",
-    logo: "/logos/ucas_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Essex Opportunities",
-    description:
-      "Local hub connecting Essex students with apprenticeship and employment opportunities.",
-    url: "https://www.essexopportunities.co.uk/apprenticeship-hub/",
-    logo: "/logos/essexopportunitieslogo.png",
-    category: "Organisation",
-  },
-  {
-    name: "Apprenticeships.gov.uk",
-    description:
-      "The government's official apprenticeship search and information service.",
-    url: "https://www.apprenticeships.gov.uk/apprentices",
-    logo: "/logos/apprenticeshipsgov_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Apprenticeships.scot",
-    description:
-      "Scotland's national apprenticeship service — information, support, and vacancy search for Scottish apprenticeships.",
-    url: "https://www.apprenticeships.scot/",
-    logo: "/logos/apprenticeships%20in%20scotland.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Pathway CTM",
-    description:
-      "Careers and employability programme helping students access apprenticeships, school leaver schemes, and opportunities.",
-    url: "https://pathwayctm.com/",
-    logo: "/logos/pathwayctm_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "GetMyFirstJob",
-    description:
-      "Search platform connecting young people with apprenticeship, traineeship, and early careers roles.",
-    url: "https://www.getmyfirstjob.co.uk/",
-    logo: "/logos/getmyfirstjob_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "NotGoingToUni",
-    description:
-      "Platform highlighting alternatives to traditional university, including apprenticeships, degree apprenticeships, and school leaver routes.",
-    url: "https://notgoingtouni.co.uk/",
-    logo: "/logos/notgoingtounicouk_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "GradCracker",
-    description:
-      "STEM careers platform listing internships, placements, graduate schemes, and degree apprenticeships.",
-    url: "https://www.gradcracker.com/search/all-disciplines/degree-apprenticeships",
-    logo: "/logos/gradcracker_ltd_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Apprentice Nation",
-    description:
-      "Platform supporting apprentices with resources, events, and community.",
-    url: "https://apprenticenation.co.uk/",
-    logo: "/logos/apprenticenation_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Placer Apprenticeships",
-    description:
-      "Search apprenticeship vacancies by location and sector.",
-    url: "https://apprenticeships.placer.co.uk/",
-    logo: "/logos/placer_apprenticeships_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Sprout",
-    description:
-      "Apprenticeship tools including AI mock interviews, CV review, and company-specific resources.",
-    url: "https://sprout.careers/",
-    logo: "/logos/sproutcareer_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Apprentis",
-    description:
-      "App-based platform helping students find and apply for apprenticeships.",
-    url: "https://www.apprentisapp.com/",
-    logo: "/logos/apprentis_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Apprentatips",
-    description:
-      "Newsletter sharing tips and advice for apprenticeship applicants.",
-    url: "https://apprentatips.beehiiv.com/",
-    logo: "/logos/apprentatipslogo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Talentix",
-    description:
-      "Connecting young people with employers, training, and career opportunities.",
-    url: "https://talentix.co.uk/home",
-    logo: "/logos/talentix_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Opportune.fyi",
-    description:
-      "Early careers platform sharing opportunities, insights, and resources for students and apprentices.",
-    url: "https://www.linkedin.com/company/opportune-fyi/",
-    logo: "/logos/opportune_fyi_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "The Apprenticeship Guide",
-    description:
-      "Guide and information hub helping students explore apprenticeship routes across the UK.",
-    url: "https://apprenticeshipguide.co.uk/",
-    logo: "/logos/the_apprenticeship_guide_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Prospects",
-    description:
-      "Careers guidance site with apprenticeship advice, resources, and pathway information.",
-    url: "https://www.prospects.ac.uk/jobs-and-work-experience/apprenticeships/",
-    logo: "/logos/prospects_ac_uk_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "Best Apprenticeships",
-    description:
-      "Browse and compare apprenticeship opportunities by employer, sector and location.",
-    url: "https://www.bestapprenticeships.com/",
-    logo: "/logos/best_apprenticeships_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "LegalCheek",
-    description:
-      "Legal careers news, insight and resources for students exploring law and training contracts.",
-    url: "https://www.legalcheek.com/",
-    logo: "/logos/legal_cheek_logo.jpg",
-    category: "Organisation",
-  },
-  {
-    name: "The Mentors Collective",
-    description:
-      "Community connecting mentors and mentees with guidance for early careers and professional growth.",
-    url: "https://www.linkedin.com/company/thementorscollective/",
-    logo: "/logos/the_mentors_collective_logo.jpg",
-    category: "Organisation",
-  },
 ];
 
 function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
@@ -326,15 +92,38 @@ function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
             href={org.url}
             target="_blank"
             rel="noreferrer"
-            className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
+            className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
             <div className="flex items-start gap-4">
               <OrganisationLogo src={org.logo} alt={org.name} />
-              <div className="space-y-1">
+              <div>
                 <h2 className="text-base font-semibold text-neutral-50">
                   {org.name}
                 </h2>
-                <p className="text-xs text-neutral-400">{org.description}</p>
+                <div
+                  className="flex flex-wrap gap-[6px]"
+                  style={{
+                    borderTop: "1px solid #1a1a1a",
+                    marginTop: 10,
+                    paddingTop: 10,
+                  }}
+                >
+                  {org.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        background: "#1a1a1a",
+                        border: "1px solid #2a2a2a",
+                        borderRadius: "999px",
+                        padding: "2px 10px",
+                        fontSize: "11px",
+                        color: "#888",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             <ExternalLink

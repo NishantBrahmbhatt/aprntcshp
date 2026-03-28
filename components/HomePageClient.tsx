@@ -11,7 +11,7 @@ import { communities } from "@/app/communities/page";
 import { cvResourcesCount } from "@/app/cv-resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
-import { organisations } from "@/app/organisations/page";
+import { organisations } from "@/lib/data/organisations";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
