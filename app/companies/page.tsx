@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
-import { organisations } from "@/lib/data/organisations";
+import { companies } from "@/lib/data/companies";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -21,7 +21,7 @@ const navItems = [
   { label: "Communities", href: "/communities" },
 ];
 
-function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
+function CompanyLogo({ src, alt }: { src: string; alt: string }) {
   const [errored, setErrored] = useState(false);
 
   if (errored) {
@@ -59,72 +59,44 @@ function PageHeader() {
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
           <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
-            Organisations
+            Companies
           </span>
         </h1>
         <p className="text-sm sm:text-base text-neutral-500 max-w-2xl">
-          Independent organisations working to help UK students access apprenticeships.
+          Explore apprenticeship opportunities at leading UK employers.
         </p>
       </div>
     </section>
   );
 }
 
-function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
-  const sortedOrganisations = [...organisations].sort((a, b) =>
+function CompaniesGrid({ searchTerm }: { searchTerm: string }) {
+  const sorted = [...companies].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
 
   const trimmedQuery = searchTerm.trim().toLowerCase();
-  const filteredOrganisations = trimmedQuery
-    ? sortedOrganisations.filter((org) => {
-        const name = org.name.toLowerCase();
-        const description = org.description.toLowerCase();
-        return name.includes(trimmedQuery) || description.includes(trimmedQuery);
-      })
-    : sortedOrganisations;
+  const filtered = trimmedQuery
+    ? sorted.filter((c) => c.name.toLowerCase().includes(trimmedQuery))
+    : sorted;
 
   return (
     <section className="space-y-4">
       <div className="grid gap-5 md:grid-cols-2">
-        {filteredOrganisations.map((org) => (
+        {filtered.map((c) => (
           <a
-            key={org.name}
-            href={org.url}
+            key={c.name}
+            href={c.url}
             target="_blank"
             rel="noreferrer"
             className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex items-start justify-between gap-4 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
             <div className="flex items-start gap-4">
-              <OrganisationLogo src={org.logo} alt={org.name} />
+              <CompanyLogo src={c.logo} alt={c.name} />
               <div>
                 <h2 className="text-base font-semibold text-neutral-50">
-                  {org.name}
+                  {c.name}
                 </h2>
-                <div
-                  className="flex flex-wrap gap-[6px]"
-                  style={{
-                    borderTop: "1px solid #1a1a1a",
-                    marginTop: 10,
-                    paddingTop: 10,
-                  }}
-                >
-                  {org.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        background: "#1a1a1a",
-                        border: "1px solid #2a2a2a",
-                        borderRadius: "999px",
-                        padding: "2px 10px",
-                        fontSize: "11px",
-                        color: "#888",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
             <ExternalLink
@@ -138,7 +110,7 @@ function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
   );
 }
 
-export default function OrganisationsPage() {
+export default function CompaniesPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
@@ -156,7 +128,7 @@ export default function OrganisationsPage() {
                 ref={searchInputRef}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search organisations..."
+                placeholder="Search companies..."
                 className={`w-full bg-[#111] border border-[#333] rounded-[8px] py-3 pl-4 text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#666] focus:shadow-[0_0_0_1px_#444] focus:outline-none ${searchTerm ? "pr-10" : "pr-4"}`}
               />
               {searchTerm ? (
@@ -171,11 +143,10 @@ export default function OrganisationsPage() {
               ) : null}
             </div>
           </div>
-          <OrganisationsGrid searchTerm={searchTerm} />
+          <CompaniesGrid searchTerm={searchTerm} />
         </div>
         <SiteFooter />
       </main>
     </div>
   );
 }
-

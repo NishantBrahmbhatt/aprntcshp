@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Briefcase, Building2, FileText, Search, Users } from "lucide-react";
+import { Briefcase, Building2, FileText, Landmark, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,6 +11,7 @@ import { communities } from "@/app/communities/page";
 import { cvResourcesCount } from "@/app/cv-resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
+import { companies } from "@/lib/data/companies";
 import { organisations } from "@/lib/data/organisations";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
@@ -18,6 +19,7 @@ const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
+  { label: "Companies", Icon: Landmark, href: "/companies" },
   { label: "Industries", Icon: Briefcase, href: "/industries" },
   { label: "Resources", Icon: FileText, href: "/cv-resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
@@ -37,6 +39,13 @@ const sectionCards = [
     href: "/find-apprenticeships",
     description: "Every major apprenticeship tracker",
     count: platforms.length,
+  },
+  {
+    label: "Companies",
+    Icon: Landmark,
+    href: "/companies",
+    description: "Apprenticeship opportunities at leading UK employers",
+    count: companies.length,
   },
   {
     label: "Industries",
