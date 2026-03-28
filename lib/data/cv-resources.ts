@@ -75,6 +75,31 @@ export const cvAdvice = [
     source: "My World of Work",
     href: "https://www.myworldofwork.co.uk/cvs-applications-and-interviews",
   },
+  {
+    title: "5 Ways to Improve Your CV",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/5-ways-to-improve-your-cv/502",
+  },
+  {
+    title: "How to Write a CV",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/how-to-write-a-cv-updated-for-2024/201",
+  },
+  {
+    title: "My First CV Template",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/my-first-cv-template-updated-for-2024/200",
+  },
+  {
+    title: "Apprenticeship CV Guide",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cv",
+  },
+  {
+    title: "How to Create a CV",
+    source: "King's Trust",
+    href: "https://www.kingstrust.org.uk/how-we-can-help/tools-resources/finding-job/how-to-create-cv",
+  },
 ];
 
 export const coverLetters = [
@@ -113,6 +138,26 @@ export const coverLetters = [
     source: "Best Apprenticeships",
     href: "https://www.bestapprenticeships.com/apprenticeship-personal-statement/",
   },
+  {
+    title: "How Long Should a Cover Letter Be?",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/how-long-should-a-cover-letter-be/522",
+  },
+  {
+    title: "How to Write a Cover Letter",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/how-to-write-a-cover-letter/275",
+  },
+  {
+    title: "Apprenticeship Personal Statement Guide",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-personal-statement",
+  },
+  {
+    title: "Apprenticeship Cover Letter Guide",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cover-letter",
+  },
 ];
 
 export const apprenticeshipGuides = [
@@ -135,6 +180,61 @@ export const apprenticeshipGuides = [
     title: "Apprenticeships",
     source: "My World of Work",
     href: "https://www.myworldofwork.co.uk/apprenticeships",
+  },
+  {
+    title: "What is an Apprenticeship?",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/apprenticeships/what-is-an-apprenticeship/68",
+  },
+  {
+    title: "Degree Apprenticeships — Are They for Me?",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/apprenticeships/degree-apprenticeships-what-are-they-and-are-they-for-me/582",
+  },
+  {
+    title: "Degree Apprenticeships",
+    source: "Higherin",
+    href: "https://higherin.com/schemes/degree-apprenticeships",
+  },
+  {
+    title: "How to Apply for an Apprenticeship",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/apply-for-apprenticeship",
+  },
+  {
+    title: "Application Toolkit",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/application-toolkit",
+  },
+  {
+    title: "Apprenticeships for 18 Year Olds",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/exploring-options/apprenticeships-18-year-olds",
+  },
+  {
+    title: "Apprenticeships for 16 Year Olds",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/exploring-options/apprenticeships-16-year-olds",
+  },
+  {
+    title: "Apprenticeship Application Timeline",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/exploring-options/apprenticeship-application-timeline",
+  },
+  {
+    title: "What is an Apprenticeship?",
+    source: "UCAS",
+    href: "https://www.ucas.com/apprenticeships/what-is-an-apprenticeship",
+  },
+  {
+    title: "Degree Apprenticeships",
+    source: "UCAS",
+    href: "https://www.ucas.com/apprenticeships/degree-apprenticeships",
+  },
+  {
+    title: "A Guide to Apprenticeship Applications",
+    source: "Apprenticeships.gov.uk",
+    href: "https://assets.ctfassets.net/8kbr1n52z8s2/sSy3aWTEOGm6lOdmtTj5x/48fc386261df2d17ef906ebdcd8c02af/PDF-a-guide-to-apprenticeship-applications.pdf",
   },
 ];
 
@@ -169,6 +269,64 @@ export const interviewPrep = [
     source: "My World of Work",
     href: "https://www.myworldofwork.co.uk/cvs-applications-and-interviews",
   },
+  {
+    title: "How to Ace Your Apprenticeship Interview",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/apprenticeships/how-to-ace-your-apprenticeship-interview/445",
+  },
+  {
+    title: "How to Answer What Are Your Weaknesses",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/how-to-answer-what-are-your-weaknesses/637",
+  },
+  {
+    title: "Competency Based Interview Questions",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/how-to-answer-competency-based-interview-questions/629",
+  },
+  {
+    title: "Interview Checklist",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/job-interview-checklist-essential-dos-and-don-ts/165",
+  },
+  {
+    title: "Job Interview Techniques",
+    source: "Success at School",
+    href: "https://successatschool.org/advice/applying-for-jobs/skill-up-using-job-interview-techniques-to-succeed/164",
+  },
+  {
+    title: "Apprenticeship Interview Questions",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/apprenticeship-interview-questions",
+  },
+  {
+    title: "How to Ace a Video Interview",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/ace-video-interview",
+  },
+  {
+    title: "Interview Toolkit",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/interview-toolkit",
+  },
+  {
+    title: "Interview Tips",
+    source: "King's Trust",
+    href: "https://www.kingstrust.org.uk/how-we-can-help/tools-resources/finding-job/interview-tips",
+  },
+];
+
+export const psychometricTests = [
+  {
+    title: "Apprenticeship Aptitude Tests",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/apprenticeship-aptitude-tests",
+  },
+  {
+    title: "Psychometric Tests Guide",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/application-tips/psychometric-tests",
+  },
 ];
 
 export const assessmentCentre = [
@@ -176,6 +334,16 @@ export const assessmentCentre = [
     title: "Standing Out at Assessment Centres",
     source: "Gradcracker",
     href: "https://www.gradcracker.com/career-centre/6/assessment-centres/433/standing-out-at-assessment-centres",
+  },
+  {
+    title: "Virtual Assessment Centres",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/virtual-assessment-centres",
+  },
+  {
+    title: "Apprenticeship Assessment Centres",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/interview-tips/apprenticeship-assessment-centres",
   },
 ];
 
@@ -189,6 +357,31 @@ export const getInspired = [
     title: "Apprentice Story Films",
     source: "Amazing Apprenticeships",
     href: "https://www.amazingapprenticeships.com/apprentice-story-films/",
+  },
+  {
+    title: "Apprenticeship Success Stories",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/working-life/apprenticeship-success-stories",
+  },
+  {
+    title: "Real Stories",
+    source: "Gov.uk",
+    href: "https://www.apprenticeships.gov.uk/apprentices/real-stories",
+  },
+  {
+    title: "Case Studies",
+    source: "Not Going to Uni",
+    href: "https://notgoingtouni.co.uk/case-studies#",
+  },
+  {
+    title: "Apprentice Stories",
+    source: "Apprenticeships.scot",
+    href: "https://www.apprenticeships.scot/apprentice-stories/",
+  },
+  {
+    title: "Success Stories",
+    source: "Apprenticeship Guide",
+    href: "https://apprenticeshipguide.co.uk/success-overview/",
   },
 ];
 
@@ -246,6 +439,16 @@ export const linkedinPersonalBrand = [
     source: "My Great First Job",
     href: "https://www.mygreatfirstjob.com/post/how-to-develop-your-personal-brand-webinar-recording",
   },
+  {
+    title: "Create the Ultimate LinkedIn Profile",
+    source: "Higherin",
+    href: "https://higherin.com/careers-advice/working-life/create-ultimate-linkedin-profile",
+  },
+  {
+    title: "Rock Your LinkedIn Profile",
+    source: "LinkedIn Learning",
+    href: "https://www.linkedin.com/learning/rock-your-linkedin-profile/connect-to-opportunity-with-linkedin",
+  },
 ];
 
 export const cvResourcesCount =
@@ -254,6 +457,7 @@ export const cvResourcesCount =
   coverLetters.length +
   apprenticeshipGuides.length +
   interviewPrep.length +
+  psychometricTests.length +
   assessmentCentre.length +
   workExperience.length +
   linkedinPersonalBrand.length +

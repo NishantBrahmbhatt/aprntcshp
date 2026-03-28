@@ -15,6 +15,7 @@ import {
   getInspired,
   interviewPrep,
   linkedinPersonalBrand,
+  psychometricTests,
   templates,
   workExperience,
 } from "@/lib/data/cv-resources";
@@ -38,6 +39,7 @@ const SECTION_IDS = {
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
   interviewPrep: "resources-section-interview-prep",
+  psychometricTests: "resources-section-psychometric-tests",
   assessmentCentre: "resources-section-assessment-centre",
   workExperience: "resources-section-work-experience",
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
@@ -53,6 +55,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
     label: "Cover Letters & Personal Statements",
   },
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
+  { id: SECTION_IDS.psychometricTests, label: "Psychometric Tests" },
   { id: SECTION_IDS.assessmentCentre, label: "Assessment Centre" },
   { id: SECTION_IDS.workExperience, label: "Work Experience" },
   {
@@ -252,6 +255,7 @@ export default function CvResourcesPage() {
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
   const interviewPrepRef = useRef<HTMLElement | null>(null);
+  const psychometricTestsRef = useRef<HTMLElement | null>(null);
   const assessmentCentreRef = useRef<HTMLElement | null>(null);
   const workExperienceRef = useRef<HTMLElement | null>(null);
   const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
@@ -269,6 +273,7 @@ export default function CvResourcesPage() {
       writingCvRef.current,
       coverLettersRef.current,
       interviewPrepRef.current,
+      psychometricTestsRef.current,
       assessmentCentreRef.current,
       workExperienceRef.current,
       linkedinPersonalBrandRef.current,
@@ -341,7 +346,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {apprenticeshipGuides.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -382,7 +387,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {cvAdvice.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -402,7 +407,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {coverLetters.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -422,7 +427,27 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {interviewPrep.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={psychometricTestsRef}
+            id={SECTION_IDS.psychometricTests}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Psychometric Tests" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {psychometricTests.map((card) => (
+                <LinkCard
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -442,7 +467,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {assessmentCentre.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -462,7 +487,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {workExperience.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -482,7 +507,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {linkedinPersonalBrand.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
@@ -502,7 +527,7 @@ export default function CvResourcesPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {getInspired.map((card) => (
                 <LinkCard
-                  key={card.href}
+                  key={`${card.title}-${card.href}`}
                   title={card.title}
                   source={card.source}
                   href={card.href}
