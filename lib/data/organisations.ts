@@ -18,6 +18,15 @@ export const organisations: Organisation[] = [
     tags: ["Resources", "Careers Advice", "Events"],
   },
   {
+    name: "Apprentago",
+    description:
+      "UK platform helping students discover and explore apprenticeship opportunities.",
+    url: "https://apprentago.co.uk/",
+    logo: "/logos/apprentago_logo.jpg",
+    category: "Organisation",
+    tags: ["Job Board", "Resources", "Careers Advice"],
+  },
+  {
     name: "Equity Ed",
     description:
       "A student-run organisation giving all students access to extracurricular opportunities.",
@@ -52,6 +61,15 @@ export const organisations: Organisation[] = [
     logo: "/logos/skills_development_scotland_logo.jpg",
     category: "Organisation",
     tags: ["Careers Advice", "Resources", "Job Board"],
+  },
+  {
+    name: "Skills to Succeed Academy",
+    description:
+      "Free online learning and careers resources to build skills for work and apprenticeships.",
+    url: "https://s2sacademy.com/login/",
+    logo: "/logos/skills_to_succeed_logo.png",
+    category: "Organisation",
+    tags: ["Resources", "Careers Advice", "Free Tools"],
   },
   {
     name: "WIZE Foundation",
@@ -97,6 +115,15 @@ export const organisations: Organisation[] = [
     logo: "/logos/ucas_logo.jpg",
     category: "Organisation",
     tags: ["Job Board", "Careers Advice", "Resources"],
+  },
+  {
+    name: "Unifrog",
+    description:
+      "Careers platform for schools with apprenticeship guidance, tools, and student know-how.",
+    url: "https://www.unifrog.org/know-how/an-introduction-to-apprenticeships",
+    logo: "/logos/unifrog.jpg",
+    category: "Organisation",
+    tags: ["Resources", "Careers Advice", "Free Tools"],
   },
   {
     name: "Essex Opportunities",
