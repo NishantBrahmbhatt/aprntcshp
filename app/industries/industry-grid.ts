@@ -10,4 +10,10 @@ export const industryGridItems = [
     description:
       "Finance, banking, accounting and insurance apprenticeships.",
   },
+  {
+    href: "/industries/tech",
+    title: "Tech",
+    description:
+      "Software, data, AI, cyber security and IT apprenticeships.",
+  },
 ] as const;
