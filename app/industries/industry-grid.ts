@@ -52,4 +52,10 @@ export const industryGridItems = [
     description:
       "Teaching, teaching assistant, childcare and playwork apprenticeships.",
   },
+  {
+    href: "/industries/business",
+    title: "Business & Administration",
+    description:
+      "Business, administration and management apprenticeships.",
+  },
 ] as const;
