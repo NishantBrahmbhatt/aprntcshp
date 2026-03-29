@@ -53,6 +53,30 @@ export default function RootLayout({
             'window.Featurebase && Featurebase("initialize_feedback_widget", { organization: "aprntcshp", theme: "dark", locale: "en" });'
           }
         </Script>
+        <Script id="featurebase-init-changelog" strategy="afterInteractive">
+          {`window.Featurebase && Featurebase("init_changelog_widget", {
+  organization: "aprntcshp",
+  theme: "dark",
+  locale: "en",
+  changelogCard: {
+    enabled: true,
+    layout: {
+      position: "bottom-right",
+      marginBottom: 80,
+      marginSide: 20
+    },
+    theme: {
+      borderRadius: 8,
+      backgroundColor: "#141414",
+      titleColor: "#ffffff",
+      descriptionColor: "#888888",
+      borderColor: "#2a2a2a"
+    }
+  },
+  popup: { enabled: false },
+  dropdown: { enabled: false }
+});`}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
