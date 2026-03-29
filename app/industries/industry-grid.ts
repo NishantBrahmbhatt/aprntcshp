@@ -64,4 +64,10 @@ export const industryGridItems = [
     description:
       "Catering, hospitality, events, travel and food manufacturing apprenticeships.",
   },
+  {
+    href: "/industries/transport",
+    title: "Transport & Logistics",
+    description:
+      "Aviation, rail, supply chain and automotive apprenticeships.",
+  },
 ] as const;
