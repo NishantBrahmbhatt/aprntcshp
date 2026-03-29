@@ -40,4 +40,10 @@ export const industryGridItems = [
     description:
       "Architecture, trades, electrical, gas and property apprenticeships.",
   },
+  {
+    href: "/industries/agriculture",
+    title: "Agriculture, Environmental & Animal Care",
+    description:
+      "Environmental, sustainability, animal care and horticulture apprenticeships.",
+  },
 ] as const;
