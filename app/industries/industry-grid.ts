@@ -70,4 +70,10 @@ export const industryGridItems = [
     description:
       "Aviation, rail, supply chain and automotive apprenticeships.",
   },
+  {
+    href: "/industries/hair-beauty",
+    title: "Hair & Beauty",
+    description:
+      "Hairdressing, barbering, beauty therapy and tattoo apprenticeships.",
+  },
 ] as const;
