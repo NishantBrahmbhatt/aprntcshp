@@ -58,4 +58,10 @@ export const industryGridItems = [
     description:
       "Business, administration and management apprenticeships.",
   },
+  {
+    href: "/industries/catering-hospitality",
+    title: "Catering & Hospitality",
+    description:
+      "Catering, hospitality, events, travel and food manufacturing apprenticeships.",
+  },
 ] as const;
