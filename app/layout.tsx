@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { CustomCursor } from "@/components/CustomCursor";
 import { CursorGlow } from "@/components/CursorGlow";
@@ -41,6 +42,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ backgroundColor: "#0a0a0a" }}>
+      <head>
+        <Script id="featurebase-sdk-loader" strategy="afterInteractive">
+          {
+            '!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);'
+          }
+        </Script>
+        <Script id="featurebase-init-feedback" strategy="afterInteractive">
+          {
+            'window.Featurebase && Featurebase("initialize_feedback_widget", { organization: "aprntcshp", theme: "dark", locale: "en" });'
+          }
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ backgroundColor: "#0a0a0a" }}
