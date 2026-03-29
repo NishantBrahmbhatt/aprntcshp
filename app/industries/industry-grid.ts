@@ -46,4 +46,10 @@ export const industryGridItems = [
     description:
       "Environmental, sustainability, animal care and horticulture apprenticeships.",
   },
+  {
+    href: "/industries/education",
+    title: "Education, Teaching & Childcare",
+    description:
+      "Teaching, teaching assistant, childcare and playwork apprenticeships.",
+  },
 ] as const;
