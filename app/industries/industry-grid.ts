@@ -34,4 +34,10 @@ export const industryGridItems = [
     description:
       "Digital marketing, sales, customer service and HR apprenticeships.",
   },
+  {
+    href: "/industries/construction",
+    title: "Construction, Architecture & the Built Environment",
+    description:
+      "Architecture, trades, electrical, gas and property apprenticeships.",
+  },
 ] as const;
