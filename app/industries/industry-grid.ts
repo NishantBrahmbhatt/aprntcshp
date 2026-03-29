@@ -22,4 +22,10 @@ export const industryGridItems = [
     description:
       "Aerospace, civil, electrical, marine and manufacturing apprenticeships.",
   },
+  {
+    href: "/industries/creative",
+    title: "Creative",
+    description:
+      "Media, design, fashion, heritage and marketing apprenticeships.",
+  },
 ] as const;
