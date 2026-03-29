@@ -26,6 +26,12 @@ export const industryGridItems = [
     href: "/industries/creative",
     title: "Creative",
     description:
-      "Media, design, fashion, heritage and marketing apprenticeships.",
+      "Media, design, fashion and heritage apprenticeships.",
+  },
+  {
+    href: "/industries/sales-marketing",
+    title: "Sales, Marketing & Procurement",
+    description:
+      "Digital marketing, sales, customer service and HR apprenticeships.",
   },
 ] as const;

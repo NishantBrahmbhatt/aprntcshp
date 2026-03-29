@@ -148,16 +148,3 @@ export const heritageAndConservation: CreativeResource[] = [
     href: "https://www.bestapprenticeships.com/painting-decorating-apprenticeships/",
   },
 ];
-
-export const marketingAndSales: CreativeResource[] = [
-  {
-    title: "Marketing Degree Apprenticeships",
-    source: "Best Apprenticeships",
-    href: "https://www.bestapprenticeships.com/marketing-degree-apprenticeships/",
-  },
-  {
-    title: "Sales Apprenticeships",
-    source: "Best Apprenticeships",
-    href: "https://www.bestapprenticeships.com/sales-apprenticeships/",
-  },
-];

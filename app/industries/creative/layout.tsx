@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "APRNTCSHP/Creative",
   description:
-    "Everything you need to pursue a creative apprenticeship — media, design, fashion, heritage, and marketing pathways.",
+    "Everything you need to pursue a creative apprenticeship — media, design, fashion, and heritage pathways.",
 };
 
 export default function CreativeIndustryLayout({

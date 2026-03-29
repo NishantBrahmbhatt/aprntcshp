@@ -7,12 +7,11 @@ import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
 import {
-  designAndVisualArts,
-  fashionAndTextiles,
+  customerServiceAndHR,
   general,
-  heritageAndConservation,
-  mediaAndJournalism,
-} from "@/lib/data/industries/creative";
+  marketing,
+  sales,
+} from "@/lib/data/industries/sales-marketing";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -26,19 +25,17 @@ const navItems = [
 ];
 
 const SECTION_IDS = {
-  general: "creative-section-general",
-  media: "creative-section-media",
-  design: "creative-section-design",
-  fashion: "creative-section-fashion",
-  heritage: "creative-section-heritage",
+  general: "sales-marketing-section-general",
+  marketing: "sales-marketing-section-marketing",
+  sales: "sales-marketing-section-sales",
+  customerServiceAndHR: "sales-marketing-section-customer-hr",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.general, label: "General" },
-  { id: SECTION_IDS.media, label: "Media & Journalism" },
-  { id: SECTION_IDS.design, label: "Design & Visual Arts" },
-  { id: SECTION_IDS.fashion, label: "Fashion & Textiles" },
-  { id: SECTION_IDS.heritage, label: "Heritage & Conservation" },
+  { id: SECTION_IDS.marketing, label: "Marketing" },
+  { id: SECTION_IDS.sales, label: "Sales" },
+  { id: SECTION_IDS.customerServiceAndHR, label: "Customer Service & HR" },
 ];
 
 const cardShell =
@@ -63,11 +60,12 @@ function PageHeader() {
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
           <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
-            Creative
+            Sales, Marketing & Procurement
           </span>
         </h1>
         <p className="text-sm sm:text-base text-neutral-500 max-w-2xl">
-          Everything you need to pursue a creative apprenticeship.
+          Everything you need to pursue a sales, marketing or procurement
+          apprenticeship.
         </p>
       </div>
     </section>
@@ -84,7 +82,7 @@ function SectionHeading({ title }: { title: string }) {
   );
 }
 
-function CreativeSectionsNav({
+function SalesMarketingSectionsNav({
   activeSectionId,
   onPillClick,
 }: {
@@ -124,7 +122,7 @@ function CreativeSectionsNav({
 
   return (
     <nav
-      aria-label="Creative guide sections"
+      aria-label="Sales, marketing and procurement guide sections"
       className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f] px-0 py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm md:px-6"
     >
       <div
@@ -185,15 +183,14 @@ function ResourceCard({
   );
 }
 
-export default function CreativeIndustryPage() {
+export default function SalesMarketingIndustryPage() {
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const ratiosRef = useRef<Record<string, number>>({});
 
   const generalRef = useRef<HTMLElement | null>(null);
-  const mediaRef = useRef<HTMLElement | null>(null);
-  const designRef = useRef<HTMLElement | null>(null);
-  const fashionRef = useRef<HTMLElement | null>(null);
-  const heritageRef = useRef<HTMLElement | null>(null);
+  const marketingRef = useRef<HTMLElement | null>(null);
+  const salesRef = useRef<HTMLElement | null>(null);
+  const customerHrRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -203,10 +200,9 @@ export default function CreativeIndustryPage() {
   useLayoutEffect(() => {
     const sections = [
       generalRef.current,
-      mediaRef.current,
-      designRef.current,
-      fashionRef.current,
-      heritageRef.current,
+      marketingRef.current,
+      salesRef.current,
+      customerHrRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
     if (sections.length === 0) return;
@@ -261,7 +257,7 @@ export default function CreativeIndustryPage() {
         <div className="flex-1">
           <PageHeader />
 
-          <CreativeSectionsNav
+          <SalesMarketingSectionsNav
             activeSectionId={activeSectionId}
             onPillClick={scrollToSection}
           />
@@ -287,13 +283,13 @@ export default function CreativeIndustryPage() {
           <SectionDivider />
 
           <section
-            ref={mediaRef}
-            id={SECTION_IDS.media}
+            ref={marketingRef}
+            id={SECTION_IDS.marketing}
             className="scroll-mt-[72px] space-y-4 py-10"
           >
-            <SectionHeading title="Media & Journalism" />
+            <SectionHeading title="Marketing" />
             <div className="grid gap-5 md:grid-cols-2">
-              {mediaAndJournalism.map((r) => (
+              {marketing.map((r) => (
                 <ResourceCard
                   key={r.href}
                   title={r.title}
@@ -307,13 +303,13 @@ export default function CreativeIndustryPage() {
           <SectionDivider />
 
           <section
-            ref={designRef}
-            id={SECTION_IDS.design}
+            ref={salesRef}
+            id={SECTION_IDS.sales}
             className="scroll-mt-[72px] space-y-4 py-10"
           >
-            <SectionHeading title="Design & Visual Arts" />
+            <SectionHeading title="Sales" />
             <div className="grid gap-5 md:grid-cols-2">
-              {designAndVisualArts.map((r) => (
+              {sales.map((r) => (
                 <ResourceCard
                   key={r.href}
                   title={r.title}
@@ -327,33 +323,13 @@ export default function CreativeIndustryPage() {
           <SectionDivider />
 
           <section
-            ref={fashionRef}
-            id={SECTION_IDS.fashion}
-            className="scroll-mt-[72px] space-y-4 py-10"
-          >
-            <SectionHeading title="Fashion & Textiles" />
-            <div className="grid gap-5 md:grid-cols-2">
-              {fashionAndTextiles.map((r) => (
-                <ResourceCard
-                  key={r.href}
-                  title={r.title}
-                  source={r.source}
-                  href={r.href}
-                />
-              ))}
-            </div>
-          </section>
-
-          <SectionDivider />
-
-          <section
-            ref={heritageRef}
-            id={SECTION_IDS.heritage}
+            ref={customerHrRef}
+            id={SECTION_IDS.customerServiceAndHR}
             className="scroll-mt-[72px] space-y-4 pt-10"
           >
-            <SectionHeading title="Heritage & Conservation" />
+            <SectionHeading title="Customer Service & HR" />
             <div className="grid gap-5 md:grid-cols-2">
-              {heritageAndConservation.map((r) => (
+              {customerServiceAndHR.map((r) => (
                 <ResourceCard
                   key={r.href}
                   title={r.title}
