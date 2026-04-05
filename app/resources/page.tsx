@@ -22,9 +22,18 @@ import {
   psychometricTests,
   templates,
   workExperience,
+  type CvResourceType,
 } from "@/lib/data/cv-resources";
 
 export { cvResourcesCount };
+
+function ResourceTypePill({ type }: { type: CvResourceType }) {
+  return (
+    <span className="shrink-0 rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] font-normal tracking-[0.05em] text-[#666]">
+      {type}
+    </span>
+  );
+}
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -189,12 +198,14 @@ function DownloadCard({
   href,
   download,
   dateAdded,
+  type,
 }: {
   name: string;
   description: string;
   href: string;
   download?: boolean;
   dateAdded?: string;
+  type: CvResourceType;
 }) {
   return (
     <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] text-sm text-neutral-200 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none p-5">
@@ -216,8 +227,14 @@ function DownloadCard({
           <FileText className="h-5 w-5 text-neutral-300" aria-hidden="true" />
         </div>
         <div className="min-w-0 space-y-1">
-          <h3 className="text-base font-semibold text-neutral-50">{name}</h3>
-          <p className="text-xs text-neutral-400">{description}</p>
+          <h3 className="min-w-0 text-base font-semibold text-neutral-50">
+            {name}
+          </h3>
+          <p className="flex min-w-0 flex-wrap items-center gap-[6px] text-xs text-neutral-400">
+            <span>{description}</span>
+            <span aria-hidden>·</span>
+            <ResourceTypePill type={type} />
+          </p>
         </div>
       </div>
       <div className="mt-4">
@@ -246,11 +263,13 @@ function LinkCard({
   source,
   href,
   dateAdded,
+  type,
 }: {
   title: string;
   source: string;
   href: string;
   dateAdded?: string;
+  type: CvResourceType;
 }) {
   return (
     <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none">
@@ -273,8 +292,14 @@ function LinkCard({
         className="group/link flex w-full min-w-0 items-start gap-4 md:pr-12"
       >
         <div className="min-w-0 space-y-1">
-          <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
-          <p className="text-xs text-neutral-400">{source}</p>
+          <h3 className="min-w-0 text-base font-semibold text-neutral-50">
+            {title}
+          </h3>
+          <p className="flex min-w-0 flex-wrap items-center gap-[6px] text-xs text-neutral-400">
+            <span>{source}</span>
+            <span aria-hidden>·</span>
+            <ResourceTypePill type={type} />
+          </p>
         </div>
       </a>
       <div className="flex w-full items-center gap-2">
@@ -391,6 +416,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -415,6 +441,7 @@ export default function CvResourcesPage() {
                   description={t.description}
                   href={t.href}
                   download={"download" in t ? t.download : undefined}
+                  type={t.type}
                   dateAdded={
                     "dateAdded" in t ? t.dateAdded : undefined
                   }
@@ -438,6 +465,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -461,6 +489,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -484,6 +513,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -507,6 +537,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -530,6 +561,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -553,6 +585,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -576,6 +609,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
@@ -599,6 +633,7 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  type={card.type}
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
