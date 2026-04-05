@@ -11,6 +11,7 @@ import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
 import { SearchNoResultsEmptyState } from "@/components/SearchNoResultsEmptyState";
 import { TagFilterPills } from "@/components/TagFilterPills";
+import { TagTooltipPill } from "@/components/TagTooltipPill";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
@@ -127,7 +128,7 @@ function OrganisationsGrid({
         {filteredOrganisations.map((org) => (
           <div
             key={org.name}
-            className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
+            className="relative overflow-visible border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
             <NewBadge dateAdded={org.dateAdded} />
             <div className="absolute top-[14px] right-[14px] z-[2] hidden md:block md:top-5 md:right-5">
@@ -162,19 +163,7 @@ function OrganisationsGrid({
                     }}
                   >
                     {org.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        style={{
-                          background: "#1a1a1a",
-                          border: "1px solid #2a2a2a",
-                          borderRadius: "999px",
-                          padding: "2px 10px",
-                          fontSize: "11px",
-                          color: "#888",
-                        }}
-                      >
-                        {tag}
-                      </span>
+                      <TagTooltipPill key={tag} tag={tag} />
                     ))}
                   </div>
                 </div>
