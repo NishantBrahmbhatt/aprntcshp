@@ -1,0 +1,30 @@
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes notFoundGlitchShake {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(-2px, 1px);
+    }
+    40% {
+      transform: translate(2px, -1px);
+    }
+    60% {
+      transform: translate(-1px, -1px);
+    }
+    80% {
+      transform: translate(1px, 1px);
+    }
+  }
+}
+
+.glitching {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .glitching {
+    animation: notFoundGlitchShake 0.12s steps(2, end) infinite;
+  }
+}
