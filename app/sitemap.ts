@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://www.aprntcshp.co.uk/cv-resources",
+      url: "https://www.aprntcshp.co.uk/resources",
       lastModified,
       changeFrequency: "weekly",
       priority: 0.8,

@@ -14,7 +14,7 @@ const navItems = [
   { label: "Find Apprenticeships", href: "/find-apprenticeships" },
   { label: "Companies", href: "/companies" },
   { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/cv-resources" },
+  { label: "Resources", href: "/resources" },
   { label: "Communities", href: "/communities" },
 ];
 

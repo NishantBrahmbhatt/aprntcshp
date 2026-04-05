@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { communities } from "@/app/communities/page";
-import { cvResourcesCount } from "@/app/cv-resources/page";
+import { cvResourcesCount } from "@/app/resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
 import { companies } from "@/lib/data/companies";
@@ -21,7 +21,7 @@ const sectionTiles = [
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
   { label: "Companies", Icon: Landmark, href: "/companies" },
   { label: "Industries", Icon: Briefcase, href: "/industries" },
-  { label: "Resources", Icon: FileText, href: "/cv-resources" },
+  { label: "Resources", Icon: FileText, href: "/resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
@@ -57,7 +57,7 @@ const sectionCards = [
   {
     label: "Resources",
     Icon: FileText,
-    href: "/cv-resources",
+    href: "/resources",
     description: "Templates, guides and advice for your application",
     count: cvResourcesCount,
   },
