@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { IndustryBreadcrumb } from "@/components/IndustryBreadcrumb";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
@@ -63,6 +64,7 @@ function SectionDivider() {
 function PageHeader() {
   return (
     <section className="pt-16 pb-10">
+      <IndustryBreadcrumb industryLabel="Law" />
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
           <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
