@@ -9,6 +9,7 @@ import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
+import { SearchNoResultsEmptyState } from "@/components/SearchNoResultsEmptyState";
 import { TagFilterPills } from "@/components/TagFilterPills";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
@@ -84,9 +85,11 @@ function PageHeader() {
 function CommunitiesGrid({
   searchTerm,
   activeTag,
+  onResetSearchAndFilters,
 }: {
   searchTerm: string;
   activeTag: string | null;
+  onResetSearchAndFilters: () => void;
 }) {
   const sortedCommunities = [...communities].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
@@ -104,6 +107,17 @@ function CommunitiesGrid({
   if (activeTag !== null) {
     filteredCommunities = filteredCommunities.filter((org) =>
       org.tags.includes(activeTag),
+    );
+  }
+
+  const showSearchEmpty =
+    trimmedQuery.length > 0 && filteredCommunities.length === 0;
+
+  if (showSearchEmpty) {
+    return (
+      <SearchNoResultsEmptyState
+        onClearSearchAndFilters={onResetSearchAndFilters}
+      />
     );
   }
 
@@ -220,7 +234,14 @@ export default function CommunitiesPage() {
               onChange={setActiveTag}
             />
           </div>
-          <CommunitiesGrid searchTerm={searchTerm} activeTag={activeTag} />
+          <CommunitiesGrid
+            searchTerm={searchTerm}
+            activeTag={activeTag}
+            onResetSearchAndFilters={() => {
+              setSearchTerm("");
+              setActiveTag(null);
+            }}
+          />
         </div>
         <SiteFooter />
       </main>

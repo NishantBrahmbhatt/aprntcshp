@@ -9,6 +9,7 @@ import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
+import { SearchNoResultsEmptyState } from "@/components/SearchNoResultsEmptyState";
 import { TagFilterPills } from "@/components/TagFilterPills";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
@@ -82,9 +83,11 @@ function PageHeader() {
 function OrganisationsGrid({
   searchTerm,
   activeTag,
+  onResetSearchAndFilters,
 }: {
   searchTerm: string;
   activeTag: string | null;
+  onResetSearchAndFilters: () => void;
 }) {
   const sortedOrganisations = [...organisations].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
@@ -102,6 +105,17 @@ function OrganisationsGrid({
   if (activeTag !== null) {
     filteredOrganisations = filteredOrganisations.filter((org) =>
       org.tags.includes(activeTag),
+    );
+  }
+
+  const showSearchEmpty =
+    trimmedQuery.length > 0 && filteredOrganisations.length === 0;
+
+  if (showSearchEmpty) {
+    return (
+      <SearchNoResultsEmptyState
+        onClearSearchAndFilters={onResetSearchAndFilters}
+      />
     );
   }
 
@@ -218,7 +232,14 @@ export default function OrganisationsPage() {
               onChange={setActiveTag}
             />
           </div>
-          <OrganisationsGrid searchTerm={searchTerm} activeTag={activeTag} />
+          <OrganisationsGrid
+            searchTerm={searchTerm}
+            activeTag={activeTag}
+            onResetSearchAndFilters={() => {
+              setSearchTerm("");
+              setActiveTag(null);
+            }}
+          />
         </div>
         <SiteFooter />
       </main>
