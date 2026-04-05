@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ExternalLink, FileText } from "lucide-react";
+import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
@@ -198,7 +199,19 @@ function DownloadCard({
   return (
     <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] text-sm text-neutral-200 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none p-5">
       <NewBadge dateAdded={dateAdded} />
-      <div className="flex items-start gap-4">
+      <div className="absolute top-5 right-5 z-[2] hidden md:block">
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          {...(download ? { download: "" } : {})}
+          className="shrink-0 text-neutral-500 transition-colors duration-200 ease hover:text-neutral-300"
+          aria-label="Open resource in new tab"
+        >
+          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+      </div>
+      <div className="flex items-start gap-4 md:pr-12">
         <div className="mt-0.5 h-10 w-10 shrink-0 bg-neutral-900 flex items-center justify-center">
           <FileText className="h-5 w-5 text-neutral-300" aria-hidden="true" />
         </div>
@@ -213,14 +226,16 @@ function DownloadCard({
           target="_blank"
           rel="noreferrer"
           {...(download ? { download: "" } : {})}
-          className="inline-flex items-center gap-2 text-xs font-medium text-neutral-300 hover:text-neutral-100 tracking-wide transition-colors"
+          className="inline-flex items-center text-xs font-medium text-neutral-300 hover:text-neutral-100 tracking-wide transition-colors"
         >
           Download Now
-          <ExternalLink className="hidden md:block h-3.5 w-3.5 text-neutral-500" aria-hidden="true" />
         </a>
       </div>
-      <div className="mt-3 flex w-full justify-end">
-        <VoteButton resourceId={voteResourceId(name, description)} />
+      <div className="mt-3 flex w-full items-center gap-2">
+        <CopyCardLinkButton href={href} />
+        <div className="ml-auto">
+          <VoteButton resourceId={voteResourceId(name, description)} />
+        </div>
       </div>
     </div>
   );
@@ -238,25 +253,35 @@ function LinkCard({
   dateAdded?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none">
+    <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none">
       <NewBadge dateAdded={dateAdded} />
+      <div className="absolute top-5 right-5 z-[2] hidden md:block">
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="shrink-0 text-neutral-500 transition-colors duration-200 ease hover:text-neutral-300"
+          aria-label={`Open ${title} in new tab`}
+        >
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
       <a
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="group/link flex w-full min-w-0 items-start justify-between gap-4"
+        className="group/link flex w-full min-w-0 items-start gap-4 md:pr-12"
       >
         <div className="min-w-0 space-y-1">
           <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
           <p className="text-xs text-neutral-400">{source}</p>
         </div>
-        <ExternalLink
-          className="hidden md:block mt-1 h-4 w-4 shrink-0 text-neutral-500 group-hover/link:text-neutral-300"
-          aria-hidden="true"
-        />
       </a>
-      <div className="flex w-full justify-end">
-        <VoteButton resourceId={voteResourceId(title, source)} />
+      <div className="flex w-full items-center gap-2">
+        <CopyCardLinkButton href={href} />
+        <div className="ml-auto">
+          <VoteButton resourceId={voteResourceId(title, source)} />
+        </div>
       </div>
     </div>
   );
