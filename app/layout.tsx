@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import { BackToTopButton } from "@/components/BackToTopButton";
 import { CustomCursor } from "@/components/CustomCursor";
 import { CursorGlow } from "@/components/CursorGlow";
 import { KeyboardShortcutsProvider } from "@/components/KeyboardShortcutsProvider";
@@ -85,6 +86,7 @@ export default function RootLayout({
         <div className="relative z-10">
           <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
         </div>
+        <BackToTopButton />
         <CursorGlow />
         <CustomCursor />
         <Analytics />
