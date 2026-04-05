@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ExternalLink, FileText } from "lucide-react";
+import { NewBadge } from "@/components/NewBadge";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
@@ -186,14 +187,17 @@ function DownloadCard({
   description,
   href,
   download,
+  dateAdded,
 }: {
   name: string;
   description: string;
   href: string;
   download?: boolean;
+  dateAdded?: string;
 }) {
   return (
     <div className="relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] text-sm text-neutral-200 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none p-5">
+      <NewBadge dateAdded={dateAdded} />
       <div className="flex items-start gap-4">
         <div className="mt-0.5 h-10 w-10 shrink-0 bg-neutral-900 flex items-center justify-center">
           <FileText className="h-5 w-5 text-neutral-300" aria-hidden="true" />
@@ -226,13 +230,16 @@ function LinkCard({
   title,
   source,
   href,
+  dateAdded,
 }: {
   title: string;
   source: string;
   href: string;
+  dateAdded?: string;
 }) {
   return (
     <div className="group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none">
+      <NewBadge dateAdded={dateAdded} />
       <a
         href={href}
         target="_blank"
@@ -359,6 +366,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -380,6 +390,9 @@ export default function CvResourcesPage() {
                   description={t.description}
                   href={t.href}
                   download={"download" in t ? t.download : undefined}
+                  dateAdded={
+                    "dateAdded" in t ? t.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -400,6 +413,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -420,6 +436,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -440,6 +459,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -460,6 +482,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -480,6 +505,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -500,6 +528,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -520,6 +551,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>
@@ -540,6 +574,9 @@ export default function CvResourcesPage() {
                   title={card.title}
                   source={card.source}
                   href={card.href}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
                 />
               ))}
             </div>

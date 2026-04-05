@@ -4,6 +4,7 @@ export type Community = {
   url: string;
   logo: string;
   tags: string[];
+  dateAdded?: string;
 };
 
 export const communities: Community[] = [
@@ -174,6 +175,7 @@ export const communities: Community[] = [
     url: "https://www.linkedin.com/company/legally-apprentice/about/",
     logo: "/logos/legally_apprentice_logo.jpg",
     tags: ["Sector Specific", "Community", "Resources"],
+    dateAdded: "2026-04-05",
   },
   {
     name: "Aspiring Legal Network",
@@ -182,6 +184,7 @@ export const communities: Community[] = [
     url: "https://www.linkedin.com/company/aspiringlegalnetwork/",
     logo: "/logos/aspiringlegalnetwork_logo.jpg",
     tags: ["Sector Specific", "Mentorship", "Networking"],
+    dateAdded: "2026-04-05",
   },
   {
     name: "Black Law Network",
@@ -190,6 +193,7 @@ export const communities: Community[] = [
     url: "https://www.blacklawnetwork.com/",
     logo: "/logos/black_law_network_logo.jpg",
     tags: ["Identity Led", "Sector Specific", "Networking"],
+    dateAdded: "2026-04-05",
   },
   {
     name: "MyLaunchpad",
@@ -198,6 +202,7 @@ export const communities: Community[] = [
     url: "https://www.linkedin.com/company/mylaunchpaduk/",
     logo: "/logos/mylaunchpaduk_logo.jpg",
     tags: ["Careers Advice", "Mentorship", "Resources"],
+    dateAdded: "2026-04-05",
   },
   {
     name: "Apprentice Alliance",
@@ -206,5 +211,6 @@ export const communities: Community[] = [
     url: "https://www.linkedin.com/company/apprentice-alliance/",
     logo: "/logos/apprenticealliancelogo.jpg",
     tags: ["Networking", "Events", "Community"],
+    dateAdded: "2026-04-05",
   },
 ];

@@ -2,6 +2,7 @@ export type Company = {
   name: string;
   url: string;
   logo: string;
+  dateAdded?: string;
 };
 
 export const companies: Company[] = [
@@ -179,25 +180,30 @@ export const companies: Company[] = [
     name: "Sky",
     url: "https://www.bestapprenticeships.com/sky-apprenticeships-guide/",
     logo: "/logos/sky_logo.jpg",
+    dateAdded: "2026-04-05",
   },
   {
     name: "Thales",
     url: "https://notgoingtouni.co.uk/provider/thales-uk",
     logo: "/logos/thales_logo.jpg",
+    dateAdded: "2026-04-05",
   },
   {
     name: "TfL",
     url: "https://www.bestapprenticeships.com/tfl-apprenticeships-guide/",
     logo: "/logos/transport_for_london_logo.jpg",
+    dateAdded: "2026-04-05",
   },
   {
     name: "Virgin Media",
     url: "https://www.bestapprenticeships.com/virgin-media-apprenticeships/",
     logo: "/logos/virgin_media_logo.jpg",
+    dateAdded: "2026-04-05",
   },
   {
     name: "WTW",
     url: "https://notgoingtouni.co.uk/provider/wtw",
     logo: "/logos/wtwcorporate_logo.jpg",
+    dateAdded: "2026-04-05",
   },
 ];

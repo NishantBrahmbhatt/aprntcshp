@@ -16,6 +16,7 @@ export const templates = [
     description: "Minimal LaTeX template, best for tech roles.",
     href: "https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs",
     external: true,
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -99,6 +100,7 @@ export const cvAdvice = [
     title: "How to Create a CV",
     source: "King's Trust",
     href: "https://www.kingstrust.org.uk/how-we-can-help/tools-resources/finding-job/how-to-create-cv",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -157,6 +159,7 @@ export const coverLetters = [
     title: "Apprenticeship Cover Letter Guide",
     source: "Higherin",
     href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cover-letter",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -235,6 +238,7 @@ export const apprenticeshipGuides = [
     title: "A Guide to Apprenticeship Applications",
     source: "Apprenticeships.gov.uk",
     href: "https://assets.ctfassets.net/8kbr1n52z8s2/sSy3aWTEOGm6lOdmtTj5x/48fc386261df2d17ef906ebdcd8c02af/PDF-a-guide-to-apprenticeship-applications.pdf",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -313,6 +317,7 @@ export const interviewPrep = [
     title: "Interview Tips",
     source: "King's Trust",
     href: "https://www.kingstrust.org.uk/how-we-can-help/tools-resources/finding-job/interview-tips",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -326,6 +331,7 @@ export const psychometricTests = [
     title: "Psychometric Tests Guide",
     source: "Higherin",
     href: "https://higherin.com/careers-advice/application-tips/psychometric-tests",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -344,6 +350,7 @@ export const assessmentCentre = [
     title: "Apprenticeship Assessment Centres",
     source: "Higherin",
     href: "https://higherin.com/careers-advice/interview-tips/apprenticeship-assessment-centres",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -382,6 +389,7 @@ export const getInspired = [
     title: "Success Stories",
     source: "Apprenticeship Guide",
     href: "https://apprenticeshipguide.co.uk/success-overview/",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -415,6 +423,7 @@ export const workExperience = [
     title: "Work Experience Opportunities",
     source: "Uptree",
     href: "https://uptree.co/events/",
+    dateAdded: "2026-04-05",
   },
 ];
 
@@ -448,6 +457,7 @@ export const linkedinPersonalBrand = [
     title: "Rock Your LinkedIn Profile",
     source: "LinkedIn Learning",
     href: "https://www.linkedin.com/learning/rock-your-linkedin-profile/connect-to-opportunity-with-linkedin",
+    dateAdded: "2026-04-05",
   },
 ];
 
