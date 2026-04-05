@@ -7,6 +7,7 @@ import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { TagFilterPills } from "@/components/TagFilterPills";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
@@ -15,6 +16,10 @@ import { communities } from "@/lib/data/communities";
 export { communities };
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
+
+const communityTagsUnique = Array.from(
+  new Set(communities.flatMap((c) => c.tags)),
+).sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
@@ -74,19 +79,31 @@ function PageHeader() {
   );
 }
 
-function CommunitiesGrid({ searchTerm }: { searchTerm: string }) {
+function CommunitiesGrid({
+  searchTerm,
+  activeTag,
+}: {
+  searchTerm: string;
+  activeTag: string | null;
+}) {
   const sortedCommunities = [...communities].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
 
   const trimmedQuery = searchTerm.trim().toLowerCase();
-  const filteredCommunities = trimmedQuery
+  let filteredCommunities = trimmedQuery
     ? sortedCommunities.filter((org) => {
         const name = org.name.toLowerCase();
         const description = org.description.toLowerCase();
         return name.includes(trimmedQuery) || description.includes(trimmedQuery);
       })
     : sortedCommunities;
+
+  if (activeTag !== null) {
+    filteredCommunities = filteredCommunities.filter((org) =>
+      org.tags.includes(activeTag),
+    );
+  }
 
   return (
     <section className="space-y-4">
@@ -153,6 +170,7 @@ function CommunitiesGrid({ searchTerm }: { searchTerm: string }) {
 
 export default function CommunitiesPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
@@ -163,7 +181,7 @@ export default function CommunitiesPage() {
         <Navbar />
         <div className="flex-1">
           <PageHeader />
-          <div className="pb-6">
+          <div className="pb-6 space-y-4">
             <div className="relative w-full max-w-2xl">
               <input
                 ref={searchInputRef}
@@ -183,8 +201,13 @@ export default function CommunitiesPage() {
                 </button>
               ) : null}
             </div>
+            <TagFilterPills
+              tags={communityTagsUnique}
+              selectedTag={activeTag}
+              onChange={setActiveTag}
+            />
           </div>
-          <CommunitiesGrid searchTerm={searchTerm} />
+          <CommunitiesGrid searchTerm={searchTerm} activeTag={activeTag} />
         </div>
         <SiteFooter />
       </main>

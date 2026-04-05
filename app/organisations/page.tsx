@@ -7,12 +7,17 @@ import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { TagFilterPills } from "@/components/TagFilterPills";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
 import { organisations } from "@/lib/data/organisations";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
+
+const organisationTagsUnique = Array.from(
+  new Set(organisations.flatMap((o) => o.tags)),
+).sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
 
 const navItems = [
   { label: "Organisations", href: "/organisations" },
@@ -72,19 +77,31 @@ function PageHeader() {
   );
 }
 
-function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
+function OrganisationsGrid({
+  searchTerm,
+  activeTag,
+}: {
+  searchTerm: string;
+  activeTag: string | null;
+}) {
   const sortedOrganisations = [...organisations].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
 
   const trimmedQuery = searchTerm.trim().toLowerCase();
-  const filteredOrganisations = trimmedQuery
+  let filteredOrganisations = trimmedQuery
     ? sortedOrganisations.filter((org) => {
         const name = org.name.toLowerCase();
         const description = org.description.toLowerCase();
         return name.includes(trimmedQuery) || description.includes(trimmedQuery);
       })
     : sortedOrganisations;
+
+  if (activeTag !== null) {
+    filteredOrganisations = filteredOrganisations.filter((org) =>
+      org.tags.includes(activeTag),
+    );
+  }
 
   return (
     <section className="space-y-4">
@@ -151,6 +168,7 @@ function OrganisationsGrid({ searchTerm }: { searchTerm: string }) {
 
 export default function OrganisationsPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
@@ -161,7 +179,7 @@ export default function OrganisationsPage() {
         <Navbar />
         <div className="flex-1">
           <PageHeader />
-          <div className="pb-6">
+          <div className="pb-6 space-y-4">
             <div className="relative w-full max-w-2xl">
               <input
                 ref={searchInputRef}
@@ -181,8 +199,13 @@ export default function OrganisationsPage() {
                 </button>
               ) : null}
             </div>
+            <TagFilterPills
+              tags={organisationTagsUnique}
+              selectedTag={activeTag}
+              onChange={setActiveTag}
+            />
           </div>
-          <OrganisationsGrid searchTerm={searchTerm} />
+          <OrganisationsGrid searchTerm={searchTerm} activeTag={activeTag} />
         </div>
         <SiteFooter />
       </main>
