@@ -1,20 +1,135 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Briefcase, Building2, FileText, Landmark, Search, Users } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
-import { communities } from "@/app/communities/page";
+import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import { cvResourcesCount } from "@/app/resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
+import {
+  apprenticeshipGuides,
+  assessmentCentre,
+  coverLetters,
+  cvAdvice,
+  getInspired,
+  interviewPrep,
+  linkedinPersonalBrand,
+  psychometricTests,
+  templates,
+  workExperience,
+} from "@/lib/data/cv-resources";
+import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import { organisations } from "@/lib/data/organisations";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
+
+type GlobalSearchHit = {
+  id: string;
+  name: string;
+  category: string;
+  href: string;
+  external: boolean;
+  haystack: string;
+};
+
+function externalFromHref(href: string) {
+  return /^https?:\/\//i.test(href);
+}
+
+const globalSearchHits: GlobalSearchHit[] = (() => {
+  const hits: GlobalSearchHit[] = [];
+
+  organisations.forEach((org, i) => {
+    hits.push({
+      id: `organisation-${i}`,
+      name: org.name,
+      category: "Organisation",
+      href: org.url,
+      external: true,
+      haystack: `${org.name} ${org.description} ${org.tags.join(" ")}`.toLowerCase(),
+    });
+  });
+
+  communities.forEach((c, i) => {
+    hits.push({
+      id: `community-${i}`,
+      name: c.name,
+      category: "Community",
+      href: c.url,
+      external: true,
+      haystack: `${c.name} ${c.description} ${c.tags.join(" ")}`.toLowerCase(),
+    });
+  });
+
+  companies.forEach((co, i) => {
+    hits.push({
+      id: `company-${i}`,
+      name: co.name,
+      category: "Company",
+      href: co.url,
+      external: true,
+      haystack: co.name.toLowerCase(),
+    });
+  });
+
+  platforms.forEach((p, i) => {
+    hits.push({
+      id: `platform-${i}`,
+      name: p.title,
+      category: "Platform",
+      href: p.href,
+      external: true,
+      haystack: `${p.title} ${p.description} ${p.source}`.toLowerCase(),
+    });
+  });
+
+  const addResourceTitles = (
+    items: readonly { title: string; source: string; href: string }[],
+    key: string,
+  ) => {
+    items.forEach((item, i) => {
+      hits.push({
+        id: `resource-${key}-${i}`,
+        name: item.title,
+        category: "Resource",
+        href: item.href,
+        external: externalFromHref(item.href),
+        haystack: `${item.title} ${item.source}`.toLowerCase(),
+      });
+    });
+  };
+
+  addResourceTitles(cvAdvice, "cv-advice");
+  addResourceTitles(coverLetters, "cover-letters");
+  addResourceTitles(apprenticeshipGuides, "apprenticeship-guides");
+  addResourceTitles(interviewPrep, "interview-prep");
+  addResourceTitles(psychometricTests, "psychometric-tests");
+  addResourceTitles(assessmentCentre, "assessment-centre");
+  addResourceTitles(workExperience, "work-experience");
+  addResourceTitles(linkedinPersonalBrand, "linkedin-personal-brand");
+  addResourceTitles(getInspired, "get-inspired");
+
+  templates.forEach((t, i) => {
+    hits.push({
+      id: `resource-template-${i}`,
+      name: t.name,
+      category: "Resource",
+      href: t.href,
+      external:
+        externalFromHref(t.href) ||
+        Boolean((t as { external?: boolean }).external),
+      haystack: `${t.name} ${t.description}`.toLowerCase(),
+    });
+  });
+
+  return hits;
+})();
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
@@ -70,6 +185,77 @@ const sectionCards = [
   },
 ];
 
+
+function LandingGlobalSearch() {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState("");
+  const clearSearch = useCallback(() => setQuery(""), []);
+  useRegisterSiteSearch(searchInputRef, clearSearch);
+
+  const trimmed = query.trim().toLowerCase();
+  const results = useMemo(() => {
+    if (!trimmed) return [];
+    return globalSearchHits.filter((h) => h.haystack.includes(trimmed));
+  }, [trimmed]);
+
+  return (
+    <div className="relative mt-10 w-full max-w-2xl">
+      <input
+        ref={searchInputRef}
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search organisations, companies, resources, communities..."
+        autoComplete="off"
+        aria-label="Site search"
+        className="w-full rounded-[8px] border border-[#333] bg-[#111] px-4 py-3 text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#666] focus:shadow-[0_0_0_1px_#444] focus:outline-none"
+      />
+      {trimmed ? (
+        <div
+          className="absolute left-0 right-0 top-full z-30 mt-2 max-h-80 overflow-y-auto rounded-lg border border-neutral-800 bg-[#111] py-1 shadow-lg"
+          role="listbox"
+          aria-label="Search results"
+        >
+          {results.length === 0 ? (
+            <p className="px-4 py-4 text-center text-sm text-neutral-500">
+              No results found
+            </p>
+          ) : (
+            results.map((hit) => (
+              <div key={hit.id} role="presentation">
+                {hit.external ? (
+                  <a
+                    href={hit.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
+                    role="option"
+                  >
+                    <span className="text-sm text-neutral-100">{hit.name}</span>
+                    <span className="text-xs text-neutral-500">
+                      {hit.category}
+                    </span>
+                  </a>
+                ) : (
+                  <Link
+                    href={hit.href}
+                    className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
+                    role="option"
+                  >
+                    <span className="text-sm text-neutral-100">{hit.name}</span>
+                    <span className="text-xs text-neutral-500">
+                      {hit.category}
+                    </span>
+                  </Link>
+                )}
+              </div>
+            ))
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 function Navbar() {
   return (
@@ -187,6 +373,7 @@ export default function HomePageClient() {
         <Navbar />
         <div className="flex-1 pt-16 pb-20">
           <HeroSection />
+          <LandingGlobalSearch />
           <SectionDivider />
           <SectionsRow />
         </div>
