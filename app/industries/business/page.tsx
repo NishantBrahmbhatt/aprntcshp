@@ -74,7 +74,7 @@ function BusinessSectionsNav({
   activeSectionId: string | null;
   onPillClick: (sectionId: string) => void;
 }) {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
   const pillButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   useEffect(() => {
@@ -107,14 +107,12 @@ function BusinessSectionsNav({
 
   return (
     <nav
+      ref={scrollContainerRef}
       aria-label="Business and administration guide sections"
-      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f] px-0 py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm md:px-6"
+      style={{ scrollbarWidth: "none" }}
+      className="sticky top-0 z-20 -mx-6 flex w-full flex-nowrap overflow-x-auto border-b border-[#1a1a1a]/80 bg-[#0f0f0f] px-0 py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
     >
-      <div
-        ref={scrollContainerRef}
-        style={{ scrollbarWidth: "none" }}
-        className="flex flex-nowrap justify-start gap-2 overflow-x-auto px-4 md:justify-center md:px-0 [&::-webkit-scrollbar]:hidden"
-      >
+      <div className="flex w-max flex-nowrap justify-start gap-2 px-6">
         {SECTION_PILLS.map((pill) => {
           const isActive = activeSectionId === pill.id;
           return (

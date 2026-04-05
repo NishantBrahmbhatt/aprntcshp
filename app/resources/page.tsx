@@ -112,7 +112,7 @@ function ResourcesSectionNav({
   activeSectionId: string | null;
   onPillClick: (sectionId: string) => void;
 }) {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
   const pillButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   useEffect(() => {
@@ -141,14 +141,12 @@ function ResourcesSectionNav({
 
   return (
     <nav
+      ref={scrollContainerRef}
       aria-label="Resources sections"
-      className="sticky top-0 z-20 -mx-6 border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/92 px-0 py-3 md:px-6 backdrop-blur-sm"
+      style={{ scrollbarWidth: "none" }}
+      className="sticky top-0 z-20 -mx-6 flex w-full flex-nowrap overflow-x-auto border-b border-[#1a1a1a]/80 bg-[#0f0f0f]/92 px-0 py-3 backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
     >
-      <div
-        ref={scrollContainerRef}
-        style={{ scrollbarWidth: "none" }}
-        className="flex flex-nowrap gap-2 justify-start overflow-x-auto md:overflow-visible md:justify-center px-4 md:px-0 [&::-webkit-scrollbar]:hidden"
-      >
+      <div className="flex w-max flex-nowrap justify-start gap-2 px-6">
         {SECTION_PILLS.map((pill) => {
           const isActive = activeSectionId === pill.id;
           return (
