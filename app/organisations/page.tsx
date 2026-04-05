@@ -48,6 +48,8 @@ function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
         width={56}
         height={56}
         className="w-full h-full object-contain"
+        loading="lazy"
+        decoding="async"
         onError={() => setErrored(true)}
       />
     </div>
