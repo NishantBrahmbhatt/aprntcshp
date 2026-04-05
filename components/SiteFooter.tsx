@@ -10,7 +10,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center md:justify-items-stretch gap-3 md:gap-4 px-4 py-6 md:px-0 md:py-0 text-[11px] sm:text-xs text-neutral-500">
-      <div className="flex justify-start justify-self-start md:w-full md:justify-self-stretch">
+      <div className="flex w-full justify-center justify-self-center md:w-full md:justify-self-stretch md:justify-start">
         <button
           type="button"
           onClick={() =>
