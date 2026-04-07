@@ -11,18 +11,14 @@ export function SiteFooter() {
   return (
     <footer className="mt-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center md:justify-items-stretch gap-3 md:gap-4 px-4 py-6 md:px-0 md:py-0 text-[11px] sm:text-xs text-neutral-500">
       <div className="flex w-full justify-center justify-self-center md:w-full md:justify-self-stretch md:justify-start">
-        <button
-          type="button"
-          onClick={() =>
-            window.postMessage({
-              target: "FeaturebaseWidget",
-              data: { action: "openFeedbackWidget" },
-            })
-          }
+        <a
+          href="https://aprntcshp.featurebase.app"
+          target="_blank"
+          rel="noopener noreferrer"
           className="cursor-pointer border-0 bg-transparent p-0 font-inherit whitespace-nowrap tracking-[0.22em] uppercase text-neutral-400 hover:text-white transition-[color] duration-200 ease"
         >
           Feedback & suggestions
-        </button>
+        </a>
       </div>
       <div className="text-center text-neutral-500">
         Last updated {buildTime} →{" "}
