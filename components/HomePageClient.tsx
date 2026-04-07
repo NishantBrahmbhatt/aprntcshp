@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
+import { SearchEmptyState } from "@/components/EmptyState";
 import { cvResourcesCount } from "@/app/resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
@@ -210,48 +211,48 @@ function LandingGlobalSearch() {
         aria-label="Site search"
         className="w-full rounded-[8px] border border-[#333] bg-[#111] px-4 py-3 text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#666] focus:shadow-[0_0_0_1px_#444] focus:outline-none"
       />
-      {trimmed ? (
+      {trimmed && results.length > 0 ? (
         <div
           className="absolute left-0 right-0 top-full z-30 mt-2 max-h-80 overflow-y-auto rounded-lg border border-neutral-800 bg-[#111] py-1 shadow-lg"
           role="listbox"
           aria-label="Search results"
         >
-          {results.length === 0 ? (
-            <p className="px-4 py-4 text-center text-sm text-neutral-500">
-              No results found
-            </p>
-          ) : (
-            results.map((hit) => (
-              <div key={hit.id} role="presentation">
-                {hit.external ? (
-                  <a
-                    href={hit.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
-                    role="option"
-                  >
-                    <span className="text-sm text-neutral-100">{hit.name}</span>
-                    <span className="text-xs text-neutral-500">
-                      {hit.category}
-                    </span>
-                  </a>
-                ) : (
-                  <Link
-                    href={hit.href}
-                    className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
-                    role="option"
-                  >
-                    <span className="text-sm text-neutral-100">{hit.name}</span>
-                    <span className="text-xs text-neutral-500">
-                      {hit.category}
-                    </span>
-                  </Link>
-                )}
-              </div>
-            ))
-          )}
+          {results.map((hit) => (
+            <div key={hit.id} role="presentation">
+              {hit.external ? (
+                <a
+                  href={hit.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
+                  role="option"
+                >
+                  <span className="text-sm text-neutral-100">{hit.name}</span>
+                  <span className="text-xs text-neutral-500">
+                    {hit.category}
+                  </span>
+                </a>
+              ) : (
+                <Link
+                  href={hit.href}
+                  className="flex flex-col gap-0.5 px-3 py-2.5 no-underline hover:bg-neutral-900/60"
+                  role="option"
+                >
+                  <span className="text-sm text-neutral-100">{hit.name}</span>
+                  <span className="text-xs text-neutral-500">
+                    {hit.category}
+                  </span>
+                </Link>
+              )}
+            </div>
+          ))}
         </div>
+      ) : null}
+      {trimmed && results.length === 0 ? (
+        <SearchEmptyState
+          title="Nothing found in the library"
+          onClear={clearSearch}
+        />
       ) : null}
     </div>
   );

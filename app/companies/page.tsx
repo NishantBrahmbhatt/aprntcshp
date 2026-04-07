@@ -10,6 +10,7 @@ import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
 import { VoteButton } from "@/components/VoteButton";
+import { SearchEmptyState } from "@/components/EmptyState";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
 import { companies } from "@/lib/data/companies";
@@ -76,7 +77,13 @@ function PageHeader() {
   );
 }
 
-function CompaniesGrid({ searchTerm }: { searchTerm: string }) {
+function CompaniesGrid({
+  searchTerm,
+  onClearSearch,
+}: {
+  searchTerm: string;
+  onClearSearch: () => void;
+}) {
   const sorted = [...companies].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
@@ -85,6 +92,15 @@ function CompaniesGrid({ searchTerm }: { searchTerm: string }) {
   const filtered = trimmedQuery
     ? sorted.filter((c) => c.name.toLowerCase().includes(trimmedQuery))
     : sorted;
+
+  if (trimmedQuery.length > 0 && filtered.length === 0) {
+    return (
+      <SearchEmptyState
+        title="Nothing found in the library"
+        onClear={onClearSearch}
+      />
+    );
+  }
 
   return (
     <section className="space-y-4">
@@ -167,7 +183,7 @@ export default function CompaniesPage() {
               ) : null}
             </div>
           </div>
-          <CompaniesGrid searchTerm={searchTerm} />
+          <CompaniesGrid searchTerm={searchTerm} onClearSearch={clearSearch} />
         </div>
         <SiteFooter />
       </main>
