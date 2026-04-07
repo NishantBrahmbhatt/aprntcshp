@@ -1,16 +1,42 @@
 "use client";
 
+import { FaLinkedin, FaReddit } from "react-icons/fa";
 import { FooterTagline } from "@/components/FooterTagline";
 
 const FALLBACK_LAST_UPDATED = "1 January 2025";
+
+function FooterSocialLinks({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <a
+        href="https://www.reddit.com/user/AprntcshpOfficial/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Aprntcshp on Reddit"
+        className="text-[#555] transition-[color] duration-200 ease hover:text-[#888]"
+      >
+        <FaReddit className="h-4 w-4" aria-hidden />
+      </a>
+      <a
+        href="https://www.linkedin.com/company/aprntcshp/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Aprntcshp on LinkedIn"
+        className="text-[#555] transition-[color] duration-200 ease hover:text-[#888]"
+      >
+        <FaLinkedin className="h-4 w-4" aria-hidden />
+      </a>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   const buildTime =
     process.env.NEXT_PUBLIC_LAST_UPDATED || FALLBACK_LAST_UPDATED;
 
   return (
-    <footer className="mt-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center md:justify-items-stretch gap-3 md:gap-4 px-4 py-6 md:px-0 md:py-0 text-[11px] sm:text-xs text-neutral-500">
-      <div className="flex w-full justify-center justify-self-center md:w-full md:justify-self-stretch md:justify-start">
+    <footer className="mt-10 flex flex-col items-center gap-3 px-4 py-6 md:grid md:grid-cols-3 md:items-center md:justify-items-stretch md:gap-4 md:px-0 md:py-0 text-[11px] sm:text-xs text-neutral-500">
+      <div className="order-1 flex w-full justify-center justify-self-center md:order-none md:w-full md:justify-self-stretch md:justify-start">
         <a
           href="https://aprntcshp.featurebase.app"
           target="_blank"
@@ -20,7 +46,7 @@ export function SiteFooter() {
           Feedback & suggestions
         </a>
       </div>
-      <div className="text-center text-neutral-500">
+      <div className="order-2 text-center text-neutral-500 md:order-none">
         Last updated {buildTime} →{" "}
         <a
           href="https://aprntcshp.featurebase.app/changelog"
@@ -30,10 +56,12 @@ export function SiteFooter() {
         >
           see what changed
         </a>
+        <FooterSocialLinks className="mt-2 hidden justify-center gap-2 md:flex" />
       </div>
-      <div className="flex w-full justify-center md:justify-end">
+      <div className="order-3 flex w-full justify-center md:order-none md:justify-end">
         <FooterTagline />
       </div>
+      <FooterSocialLinks className="order-4 flex justify-center gap-2 md:hidden" />
     </footer>
   );
 }
