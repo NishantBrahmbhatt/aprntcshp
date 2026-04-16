@@ -1,7 +1,6 @@
 "use client";
 
-const HREF =
-  "https://play.workadventu.re/@/aprntcshp/aprntcshp/aprtncshp-world";
+const HREF = "https://www.linkedin.com/in/nishantbrahmbhatt/";
 
 export function FooterTagline() {
   return (
