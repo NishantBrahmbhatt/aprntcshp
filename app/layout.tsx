@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     title: "APRNTCSHP",
   },
   icons: {
+    icon: "/icon.png",
     apple: "/aprntcshp_logo.png",
   },
 };
