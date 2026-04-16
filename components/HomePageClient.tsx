@@ -1,7 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Briefcase, Building2, FileText, Landmark, Search, Users } from "lucide-react";
+import {
+  Briefcase,
+  Building2,
+  FileText,
+  Landmark,
+  Layers,
+  Search,
+  Users,
+} from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -131,6 +139,8 @@ const globalSearchHits: GlobalSearchHit[] = (() => {
 
   return hits;
 })();
+
+const VISITED_STORAGE_KEY = "aprntcshp_visited";
 
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
@@ -273,6 +283,54 @@ function SectionDivider() {
   return <div className="mt-10 border-t border-neutral-800" />;
 }
 
+function StartHereGuidedPath() {
+  const options = [
+    {
+      href: "/find-apprenticeships",
+      label: "Find apprenticeships",
+      Icon: Search,
+    },
+    {
+      href: "/resources",
+      label: "Build my application",
+      Icon: FileText,
+    },
+    {
+      href: "/industries",
+      label: "Explore by industry",
+      Icon: Layers,
+    },
+  ] as const;
+
+  return (
+    <section className="mt-10" aria-labelledby="start-here-heading">
+      <h2
+        id="start-here-heading"
+        className="text-sm font-normal tracking-[0.05em] text-neutral-500"
+      >
+        Not sure where to start?
+      </h2>
+      <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+        {options.map(({ href, label, Icon }) => (
+          <Link
+            key={href}
+            href={href}
+            className="group flex items-center gap-3 rounded-[10px] border border-solid border-[#2a2a2a] bg-[#111] px-5 py-4 text-[13px] text-[#888] transition-all duration-300 ease hover:-translate-y-0.5 hover:border-[#383838] hover:text-white"
+          >
+            <Icon
+              className="size-4 shrink-0 text-neutral-500 transition-[color] duration-300 ease group-hover:text-white"
+              aria-hidden
+            />
+            <span className="transition-[color] duration-300 ease group-hover:text-white">
+              {label}
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function easeOutCubic(t: number) {
   return 1 - (1 - t) ** 3;
 }
@@ -368,6 +426,21 @@ function SectionsRow() {
 }
 
 export default function HomePageClient() {
+  const [showStartHere, setShowStartHere] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(VISITED_STORAGE_KEY)) {
+        setShowStartHere(false);
+      } else {
+        localStorage.setItem(VISITED_STORAGE_KEY, "1");
+        setShowStartHere(true);
+      }
+    } catch {
+      setShowStartHere(false);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
@@ -375,7 +448,14 @@ export default function HomePageClient() {
         <div className="flex-1 pt-16 pb-20">
           <HeroSection />
           <LandingGlobalSearch />
-          <SectionDivider />
+          {showStartHere === true ? (
+            <>
+              <StartHereGuidedPath />
+              <div className="mt-10 border-t border-neutral-800" />
+            </>
+          ) : showStartHere === false ? (
+            <SectionDivider />
+          ) : null}
           <SectionsRow />
         </div>
         <SiteFooter />
