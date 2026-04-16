@@ -17,6 +17,7 @@ import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import { SearchEmptyState } from "@/components/EmptyState";
+import { MostUsefulResourcesSection } from "@/components/MostUsefulResourcesSection";
 import { cvResourcesCount } from "@/app/resources/page";
 import { platforms } from "@/app/find-apprenticeships/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
@@ -457,6 +458,7 @@ export default function HomePageClient() {
             <SectionDivider />
           ) : null}
           <SectionsRow />
+          <MostUsefulResourcesSection />
         </div>
         <SiteFooter />
       </main>
