@@ -119,9 +119,9 @@ function HairBeautySectionsNav({
       ref={scrollContainerRef}
       aria-label="Hair and beauty guide sections"
       style={{ scrollbarWidth: "none" }}
-      className="sticky top-0 z-20 -mx-6 flex w-full flex-nowrap overflow-x-auto border-b border-[#1a1a1a]/80 bg-[#0f0f0f] px-0 py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
+      className="sticky top-0 z-20 flex w-full flex-nowrap overflow-x-auto border-b border-[#1a1a1a]/80 bg-[#0f0f0f] py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
     >
-      <div className="flex w-max flex-nowrap justify-start gap-2 px-6">
+      <div className="flex w-max min-w-0 flex-nowrap justify-start gap-2 pr-6">
         {SECTION_PILLS.map((pill) => {
           const isActive = activeSectionId === pill.id;
           return (
