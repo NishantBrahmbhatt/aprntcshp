@@ -37,6 +37,7 @@ import {
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import { organisations } from "@/lib/data/organisations";
+import { logSearch } from "@/lib/supabase";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -299,6 +300,19 @@ function LandingGlobalSearch() {
     if (!trimmed) return [];
     return globalSearchHits.filter((h) => h.haystack.includes(trimmed));
   }, [trimmed]);
+
+  useEffect(() => {
+    const trimmedQuery = query.trim();
+    if (trimmedQuery.length < 2) return;
+
+    const timeoutId = window.setTimeout(() => {
+      void logSearch(trimmedQuery, "landing", results.length);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [query, results.length]);
 
   return (
     <div className="relative mt-10 w-full max-w-2xl">

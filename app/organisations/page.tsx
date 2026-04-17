@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
@@ -16,6 +16,7 @@ import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
 import { organisations } from "@/lib/data/organisations";
+import { logSearch } from "@/lib/supabase";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -190,6 +191,41 @@ export default function OrganisationsPage() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
+
+  const searchResultsCount = useMemo(() => {
+    const sortedOrganisations = [...organisations].sort((a, b) =>
+      a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+    );
+    const trimmedQuery = searchTerm.trim().toLowerCase();
+    let filteredOrganisations = trimmedQuery
+      ? sortedOrganisations.filter((org) => {
+          const name = org.name.toLowerCase();
+          const description = org.description.toLowerCase();
+          return name.includes(trimmedQuery) || description.includes(trimmedQuery);
+        })
+      : sortedOrganisations;
+
+    if (activeTag !== null) {
+      filteredOrganisations = filteredOrganisations.filter((org) =>
+        org.tags.includes(activeTag),
+      );
+    }
+
+    return filteredOrganisations.length;
+  }, [searchTerm, activeTag]);
+
+  useEffect(() => {
+    const trimmedQuery = searchTerm.trim();
+    if (trimmedQuery.length < 2) return;
+
+    const timeoutId = window.setTimeout(() => {
+      void logSearch(trimmedQuery, "organisations", searchResultsCount);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [searchTerm, searchResultsCount]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
@@ -16,6 +16,7 @@ import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
 import { communities } from "@/lib/data/communities";
+import { logSearch } from "@/lib/supabase";
 
 export { communities };
 
@@ -192,6 +193,41 @@ export default function CommunitiesPage() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
+
+  const searchResultsCount = useMemo(() => {
+    const sortedCommunities = [...communities].sort((a, b) =>
+      a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+    );
+    const trimmedQuery = searchTerm.trim().toLowerCase();
+    let filteredCommunities = trimmedQuery
+      ? sortedCommunities.filter((community) => {
+          const name = community.name.toLowerCase();
+          const description = community.description.toLowerCase();
+          return name.includes(trimmedQuery) || description.includes(trimmedQuery);
+        })
+      : sortedCommunities;
+
+    if (activeTag !== null) {
+      filteredCommunities = filteredCommunities.filter((community) =>
+        community.tags.includes(activeTag),
+      );
+    }
+
+    return filteredCommunities.length;
+  }, [searchTerm, activeTag]);
+
+  useEffect(() => {
+    const trimmedQuery = searchTerm.trim();
+    if (trimmedQuery.length < 2) return;
+
+    const timeoutId = window.setTimeout(() => {
+      void logSearch(trimmedQuery, "communities", searchResultsCount);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [searchTerm, searchResultsCount]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">

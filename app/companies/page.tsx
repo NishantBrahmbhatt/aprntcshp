@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
@@ -14,6 +14,7 @@ import { SearchEmptyState } from "@/components/EmptyState";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { Orbitron } from "next/font/google";
 import { companies } from "@/lib/data/companies";
+import { logSearch } from "@/lib/supabase";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -155,6 +156,30 @@ export default function CompaniesPage() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
+
+  const searchResultsCount = useMemo(() => {
+    const sorted = [...companies].sort((a, b) =>
+      a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+    );
+    const trimmedQuery = searchTerm.trim().toLowerCase();
+    const filtered = trimmedQuery
+      ? sorted.filter((company) => company.name.toLowerCase().includes(trimmedQuery))
+      : sorted;
+    return filtered.length;
+  }, [searchTerm]);
+
+  useEffect(() => {
+    const trimmedQuery = searchTerm.trim();
+    if (trimmedQuery.length < 2) return;
+
+    const timeoutId = window.setTimeout(() => {
+      void logSearch(trimmedQuery, "companies", searchResultsCount);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [searchTerm, searchResultsCount]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
