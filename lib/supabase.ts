@@ -11,3 +11,16 @@ export async function logSearch(query: string, page: string, resultsCount: numbe
     results_count: resultsCount
   })
 }
+
+export async function logSuggestion(payload: {
+  url: string
+  description: string
+  category: string
+}) {
+  const { error } = await supabase.from('suggestions').insert({
+    url: payload.url,
+    description: payload.description,
+    category: payload.category
+  })
+  return { error }
+}

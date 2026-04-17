@@ -7,6 +7,7 @@ import {
   Building2,
   ChevronLeft,
   FileText,
+  Lightbulb,
   Menu,
   Search,
   Share2,
@@ -17,6 +18,7 @@ import {
 import { Orbitron } from "next/font/google";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { SharePageModal } from "@/components/SharePageModal";
+import { SuggestResourceModal } from "@/components/SuggestResourceModal";
 import { SearchEmptyState } from "@/components/EmptyState";
 import { platforms } from "@/app/find-apprenticeships/page";
 import {
@@ -354,6 +356,8 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
 export function SiteNavbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+  const [suggestOpen, setSuggestOpen] = useState(false);
+  const [glitching, setGlitching] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -397,8 +401,13 @@ export function SiteNavbar() {
               borderRadius: "24px",
             }}
           />
-          <NavbarLogo orbitronClassName={orbitron.className} />
-          <div className="flex items-center gap-0.5 md:gap-1">
+          <NavbarLogo
+            orbitronClassName={orbitron.className}
+            onGlitchChange={(active) => setGlitching(active)}
+          />
+          <div
+            className={`flex items-center gap-0.5 md:gap-1 transition-opacity duration-500 sm:opacity-100 ${glitching ? "opacity-0" : "opacity-100"}`}
+          >
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
@@ -409,15 +418,28 @@ export function SiteNavbar() {
             >
               <Search size={18} aria-hidden />
             </button>
-            <button
-              type="button"
-              onClick={() => setShareOpen(true)}
-              aria-label="Share page"
-              className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
-              style={{ cursor: "pointer" }}
-            >
-              <Share2 size={18} aria-hidden />
-            </button>
+            <div className="hidden sm:flex">
+              <button
+                type="button"
+                onClick={() => setShareOpen(true)}
+                aria-label="Share page"
+                className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+                style={{ cursor: "pointer" }}
+              >
+                <Share2 size={18} aria-hidden />
+              </button>
+            </div>
+            <div className="hidden sm:flex">
+              <button
+                type="button"
+                onClick={() => setSuggestOpen(true)}
+                aria-label="Suggest a resource"
+                className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+                style={{ cursor: "pointer" }}
+              >
+                <Lightbulb size={18} aria-hidden />
+              </button>
+            </div>
             <div className="relative" ref={menuRef}>
               <button
                 type="button"
@@ -457,12 +479,37 @@ export function SiteNavbar() {
                       <span>{label}</span>
                     </Link>
                   ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setSuggestOpen(true);
+                    }}
+                    className="flex w-full items-center gap-3 border-b border-[#1a1a1a] px-4 py-3 text-left text-sm text-neutral-400 transition-all duration-200 hover:bg-white/5 hover:text-white"
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Lightbulb size={15} className="text-[#666]" aria-hidden />
+                    <span>Suggest</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setShareOpen(true);
+                    }}
+                    className="flex w-full items-center gap-3 border-b border-[#1a1a1a] px-4 py-3 text-left text-sm text-neutral-400 transition-all duration-200 last:border-b-0 hover:bg-white/5 hover:text-white"
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Share2 size={15} className="text-[#666]" aria-hidden />
+                    <span>Share</span>
+                  </button>
                 </div>
               ) : null}
             </div>
           </div>
         </div>
         <SharePageModal open={shareOpen} onClose={() => setShareOpen(false)} />
+        <SuggestResourceModal open={suggestOpen} onClose={() => setSuggestOpen(false)} />
       </header>
     </>
   );

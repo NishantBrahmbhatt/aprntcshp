@@ -26,9 +26,10 @@ function graphemes(s: string): string[] {
 
 type NavbarLogoProps = {
   orbitronClassName: string;
+  onGlitchChange?: (active: boolean) => void;
 };
 
-export function NavbarLogo({ orbitronClassName }: NavbarLogoProps) {
+export function NavbarLogo({ orbitronClassName, onGlitchChange }: NavbarLogoProps) {
   const [text, setText] = useState(LOGO_DEFAULT);
   const runningRef = useRef(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -109,6 +110,7 @@ export function NavbarLogo({ orbitronClassName }: NavbarLogoProps) {
     if (runningRef.current) return;
     runningRef.current = true;
     try {
+      onGlitchChange?.(true);
       await runResolve(graphemes(EASTER_TARGET));
       await new Promise<void>((r) => {
         const id = setTimeout(r, 2000);
@@ -116,11 +118,12 @@ export function NavbarLogo({ orbitronClassName }: NavbarLogoProps) {
       });
       await runResolve(graphemes(LOGO_DEFAULT));
     } finally {
+      onGlitchChange?.(false);
       runningRef.current = false;
       clearTimers();
       setText(LOGO_DEFAULT);
     }
-  }, [runResolve, clearTimers]);
+  }, [runResolve, clearTimers, onGlitchChange]);
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLAnchorElement>) => {
