@@ -4,6 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { ExternalLink } from "lucide-react";
 import { IndustryBreadcrumb } from "@/components/IndustryBreadcrumb";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PageRating } from "@/components/PageRating";
 import { NavbarLogo } from "@/components/NavbarLogo";
 import { NavbarNavLinks } from "@/components/NavbarNavLinks";
 import { Orbitron } from "next/font/google";
@@ -462,6 +463,7 @@ export default function LawIndustryPage() {
             </div>
           </section>
         </div>
+        <PageRating pageName="law" />
         <SiteFooter />
       </main>
     </div>
