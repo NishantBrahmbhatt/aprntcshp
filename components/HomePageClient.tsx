@@ -9,6 +9,7 @@ import {
   Building,
   ClipboardList,
   Code,
+  ChevronLeft,
   GraduationCap,
   HardHat,
   Leaf,
@@ -20,6 +21,7 @@ import {
   PenLine,
   Scale,
   Scissors,
+  SlidersHorizontal,
   Sparkles,
   ExternalLink,
   FileText,
@@ -30,6 +32,7 @@ import {
   UtensilsCrossed,
   Users,
   Wrench,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -379,14 +382,203 @@ function LandingGlobalSearch() {
   );
 }
 
-function Navbar() {
+function Navbar({
+  searchOpen,
+  onSearchOpen,
+  onSearchClose,
+}: {
+  searchOpen: boolean;
+  onSearchOpen: () => void;
+  onSearchClose: () => void;
+}) {
   return (
     <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
       <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks
-        items={sectionTiles.map(({ label, href }) => ({ label, href }))}
-      />
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={searchOpen ? onSearchClose : onSearchOpen}
+          aria-label="Open search"
+          aria-pressed={searchOpen}
+          className="border-none bg-transparent p-1 text-[#888] transition-colors duration-200 hover:text-white"
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+        >
+          <Search size={18} aria-hidden />
+        </button>
+        <NavbarNavLinks
+          items={sectionTiles.map(({ label, href }) => ({ label, href }))}
+        />
+      </div>
     </header>
+  );
+}
+
+function SearchOverlay({ onClose }: { onClose: () => void }) {
+  const [query, setQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const trimmed = query.trim().toLowerCase();
+  const results = useMemo(() => {
+    return globalSearchHits.filter(
+      (h) =>
+        (selectedCategory ? h.category === selectedCategory : true) &&
+        (!trimmed || h.haystack.includes(trimmed)),
+    );
+  }, [selectedCategory, trimmed]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0a0a0a]"
+      style={{ position: "fixed", inset: 0, zIndex: 50, background: "#0a0a0a" }}
+    >
+      <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-6 py-4">
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+          style={{ cursor: "pointer" }}
+        >
+          <ChevronLeft size={16} aria-hidden />
+          <span>Back</span>
+        </button>
+        <div className="relative flex flex-1 items-center">
+          <Search
+            size={16}
+            aria-hidden
+            className="pointer-events-none absolute left-3 text-[#555]"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search organisations, companies, resources, communities..."
+            autoComplete="off"
+            aria-label="Site search"
+            className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none"
+          />
+          {query ? (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors duration-200 hover:text-white"
+              style={{ cursor: "pointer" }}
+            >
+              <X size={18} aria-hidden />
+            </button>
+          ) : null}
+        </div>
+        <button
+          type="button"
+          onClick={() => setFilterOpen(true)}
+          className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+          style={{ cursor: "pointer" }}
+        >
+          <SlidersHorizontal size={16} aria-hidden />
+          <span>Filters</span>
+        </button>
+      </div>
+      <div className="mx-auto w-full max-w-7xl px-6 pb-10">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {results.map((hit) => {
+            const cardClass = `${FEATURED_CARD_CLASS} flex-col gap-1 no-underline text-inherit`;
+            return hit.external ? (
+              <a
+                key={hit.id}
+                href={hit.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClass}
+              >
+                <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
+                <span className="relative z-[1] w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666]">
+                  {hit.category}
+                </span>
+              </a>
+            ) : (
+              <Link key={hit.id} href={hit.href} className={cardClass}>
+                <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
+                <span className="relative z-[1] w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666]">
+                  {hit.category}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+      {filterOpen ? (
+        <div
+          className="fixed right-0 top-0 bottom-0 z-[60] flex flex-col gap-6 overflow-y-auto border-l border-[#2a2a2a] bg-[#111] p-8"
+          style={{
+            position: "fixed",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: "380px",
+            background: "#111",
+            borderLeft: "1px solid #2a2a2a",
+            zIndex: 60,
+            padding: "32px",
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-medium text-neutral-100">Filter</h2>
+            <button
+              type="button"
+              onClick={() => setFilterOpen(false)}
+              aria-label="Close filters"
+              className="text-neutral-500 transition-colors duration-200 hover:text-white"
+              style={{ cursor: "pointer" }}
+            >
+              <X size={18} aria-hidden />
+            </button>
+          </div>
+          <p className="text-sm tracking-widest text-neutral-500 uppercase">Categories</p>
+          <div className="flex flex-wrap">
+            {["All", "Organisation", "Community", "Company", "Platform", "Resource"].map(
+              (category) => {
+                const isActive =
+                  category === "All" ? selectedCategory === null : selectedCategory === category;
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setSelectedCategory(category === "All" ? null : category)}
+                    className={`mr-2 mb-2 rounded-full border px-3 py-1.5 text-xs transition-all duration-200 ${
+                      isActive
+                        ? "border-[#555] bg-[#222] text-white"
+                        : "border-[#2a2a2a] bg-transparent text-[#666] hover:text-[#aaa]"
+                    }`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {category}
+                  </button>
+                );
+              },
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={() => setFilterOpen(false)}
+            className="mt-auto w-full rounded-xl border border-[#333] bg-[#222] py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+            style={{ cursor: "pointer" }}
+          >
+            Close
+          </button>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -610,6 +802,7 @@ function NewToLibrarySection() {
 }
 
 export default function HomePageClient() {
+  const [searchOpen, setSearchOpen] = useState(false);
   const [showStartHere, setShowStartHere] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -627,11 +820,15 @@ export default function HomePageClient() {
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <Navbar
+          searchOpen={searchOpen}
+          onSearchOpen={() => setSearchOpen(true)}
+          onSearchClose={() => setSearchOpen(false)}
+        />
         <div className="flex-1 pt-16 pb-20">
           <HeroSection />
-          <LandingGlobalSearch />
           {showStartHere === true ? (
             <>
               <StartHereGuidedPath />
