@@ -15,12 +15,14 @@ import {
   Leaf,
   Linkedin,
   Mail,
+  Menu,
   Megaphone,
   MessageSquare,
   Palette,
   PenLine,
   Scale,
   Scissors,
+  Share2,
   SlidersHorizontal,
   Sparkles,
   ExternalLink,
@@ -39,7 +41,7 @@ import Image from "next/image";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { SharePageModal } from "@/components/SharePageModal";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import { SearchEmptyState } from "@/components/EmptyState";
 import { MostUsefulResourcesSection } from "@/components/MostUsefulResourcesSection";
@@ -383,32 +385,126 @@ function LandingGlobalSearch() {
 }
 
 function Navbar({
+  hidden,
   searchOpen,
   onSearchOpen,
   onSearchClose,
 }: {
+  hidden: boolean;
   searchOpen: boolean;
   onSearchOpen: () => void;
   onSearchClose: () => void;
 }) {
+  const [shareOpen, setShareOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    function handleMouseDown(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => document.removeEventListener("mousedown", handleMouseDown);
+  }, [menuOpen]);
+
   return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={searchOpen ? onSearchClose : onSearchOpen}
-          aria-label="Open search"
-          aria-pressed={searchOpen}
-          className="border-none bg-transparent p-1 text-[#888] transition-colors duration-200 hover:text-white"
-          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
-        >
-          <Search size={18} aria-hidden />
-        </button>
-        <NavbarNavLinks
-          items={sectionTiles.map(({ label, href }) => ({ label, href }))}
+    <header
+      className={`w-full bg-transparent py-1.5 ${hidden ? "invisible pointer-events-none" : ""}`}
+      style={{ position: "sticky", top: 0, zIndex: 50 }}
+    >
+      <div
+        className="relative overflow-visible flex h-14 w-full items-center justify-between rounded-[24px] border border-[#2a2a2a]"
+        style={{
+          background: "linear-gradient(160deg, #202020 0%, #111 100%)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          paddingLeft: "24px",
+          paddingRight: "8px",
+          boxShadow:
+            "inset 0 1px 0 rgba(255,255,255,0.13), inset 0 0 0 1px rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.3)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "40px",
+            background: "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)",
+            pointerEvents: "none",
+            borderRadius: "24px",
+          }}
         />
+        <NavbarLogo orbitronClassName={orbitron.className} />
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={onSearchOpen}
+            aria-label="Open search"
+            aria-pressed={searchOpen}
+            className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+            style={{ cursor: "pointer" }}
+          >
+            <Search size={18} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={() => setShareOpen(true)}
+            aria-label="Share page"
+            className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+            style={{ cursor: "pointer" }}
+          >
+            <Share2 size={18} aria-hidden />
+          </button>
+          <div className="relative" ref={menuRef}>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+              style={{ cursor: "pointer" }}
+            >
+              <Menu size={18} aria-hidden />
+            </button>
+            {menuOpen ? (
+              <div
+                className="absolute overflow-hidden"
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 8px)",
+                  right: 0,
+                  width: "220px",
+                  background: "linear-gradient(160deg, #202020 0%, #111 100%)",
+                  border: "1px solid #2a2a2a",
+                  borderRadius: "16px",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.13), inset 0 0 0 1px rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)",
+                  overflow: "hidden",
+                  zIndex: 60,
+                }}
+              >
+                {sectionTiles.map(({ label, Icon, href }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 border-b border-[#1a1a1a] px-4 py-3 text-sm text-neutral-400 no-underline transition-all duration-200 last:border-b-0 hover:bg-white/5 hover:text-white"
+                  >
+                    <Icon size={15} className="text-[#666]" aria-hidden />
+                    <span>{label}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
+      <SharePageModal open={shareOpen} onClose={() => setShareOpen(false)} />
     </header>
   );
 }
@@ -419,12 +515,10 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const trimmed = query.trim().toLowerCase();
   const results = useMemo(() => {
-    return globalSearchHits.filter(
-      (h) =>
-        (selectedCategory ? h.category === selectedCategory : true) &&
-        (!trimmed || h.haystack.includes(trimmed)),
-    );
-  }, [selectedCategory, trimmed]);
+    return !trimmed
+      ? globalSearchHits
+      : globalSearchHits.filter((h) => h.haystack.includes(trimmed));
+  }, [trimmed]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -582,10 +676,6 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
   );
 }
 
-function SectionDivider() {
-  return <div className="mt-10 border-t border-neutral-800" />;
-}
-
 function StartHereGuidedPath() {
   const options = [
     {
@@ -635,91 +725,18 @@ function StartHereGuidedPath() {
 }
 
 function HeroSection() {
-  const heroLogos = [
-    "/logos/amazing_apprenticeships_logo.jpg",
-    "/logos/ucas_logo.jpg",
-    "/logos/apprenticeshipsgov_logo.jpg",
-    "/logos/getmyfirstjob_logo.jpg",
-    "/logos/ratemyapp_ship_logo.jpg",
-    "/logos/notgoingtounicouk_logo.jpg",
-    "/logos/success_at_school_logo.jpg",
-    "/logos/gradcracker_ltd_logo.jpg",
-    "/logos/unifrog.jpg",
-    "/logos/apprenticenation_logo.jpg",
-  ] as const;
-
   return (
-    <section className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12" id="hero">
-      <div className="space-y-7 text-left">
+    <section className="grid grid-cols-1" id="hero">
+      <div className="space-y-2 text-left">
         <div className="space-y-4">
           <p className="text-[10px] font-medium tracking-[0.3em] text-neutral-500 uppercase">
           The UK&apos;s apprenticeship hub
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-neutral-50">
             <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
               Every apprenticeship resource, in one place.
             </span>
           </h1>
-        </div>
-      </div>
-      <div className="hidden md:flex md:items-center md:justify-end md:pt-1">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          {heroLogos.map((logo, index) => (
-            <div
-              key={`hero-logo-${index}`}
-              className="z-10"
-              style={{
-                width: "80px",
-                height: "80px",
-                borderRadius: "18px",
-                marginLeft: index === 0 ? "0" : "-16px",
-                background: "#1a1a1a",
-                border: "1px solid #2a2a2a",
-                overflow: "hidden",
-                flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
-                transform:
-                  index === 0
-                    ? "translateY(0px)"
-                    : index === 1
-                      ? "translateY(-40px)"
-                      : index === 2
-                        ? "translateY(-60px)"
-                        : index === 3
-                          ? "translateY(-40px)"
-                          : index === 4
-                            ? "translateY(0px)"
-                            : index === 5
-                              ? "translateY(40px)"
-                              : index === 6
-                                ? "translateY(60px)"
-                                : index === 7
-                                  ? "translateY(40px)"
-                                  : "translateY(0px)",
-              }}
-            >
-              <img
-                src={logo}
-                alt=""
-                style={{
-                  width: "55%",
-                  height: "55%",
-                  objectFit: "contain",
-                  filter: "grayscale(1)",
-                  opacity: 0.7,
-                }}
-              />
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -728,7 +745,7 @@ function HeroSection() {
 
 function SectionsRow() {
   return (
-    <section className="mt-10" id="sections">
+    <section className="mt-4" id="sections">
       <div
         className="grid gap-3"
         style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
@@ -823,20 +840,14 @@ export default function HomePageClient() {
       {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
         <Navbar
+          hidden={searchOpen}
           searchOpen={searchOpen}
           onSearchOpen={() => setSearchOpen(true)}
           onSearchClose={() => setSearchOpen(false)}
         />
-        <div className="flex-1 pt-16 pb-20">
+        <div className="flex-1 pt-4 pb-20">
           <HeroSection />
-          {showStartHere === true ? (
-            <>
-              <StartHereGuidedPath />
-              <div className="mt-10 border-t border-neutral-800" />
-            </>
-          ) : showStartHere === false ? (
-            <SectionDivider />
-          ) : null}
+          {showStartHere === true ? <StartHereGuidedPath /> : null}
           <SectionsRow />
           <MostUsefulResourcesSection />
           <NewToLibrarySection />
