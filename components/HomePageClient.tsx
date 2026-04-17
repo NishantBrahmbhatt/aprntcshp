@@ -514,6 +514,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
   const trimmed = query.trim().toLowerCase();
+  const clearSearch = useCallback(() => setQuery(""), []);
   const results = useMemo(() => {
     return !trimmed
       ? globalSearchHits
@@ -532,52 +533,71 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
       className="fixed inset-0 z-50 overflow-y-auto bg-[#0a0a0a]"
       style={{ position: "fixed", inset: 0, zIndex: 50, background: "#0a0a0a" }}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-6 py-4">
-        <button
-          type="button"
-          onClick={onClose}
-          className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
-          style={{ cursor: "pointer" }}
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 10,
+          background: "#0a0a0a",
+          paddingTop: "12px",
+          paddingBottom: "12px",
+        }}
+      >
+        <div
+          className="mx-auto flex w-full max-w-7xl items-center gap-3"
+          style={{
+            paddingTop: "12px",
+            paddingBottom: "12px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+          }}
         >
-          <ChevronLeft size={16} aria-hidden />
-          <span>Back</span>
-        </button>
-        <div className="relative flex flex-1 items-center">
-          <Search
-            size={16}
-            aria-hidden
-            className="pointer-events-none absolute left-3 text-[#555]"
-          />
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search organisations, companies, resources, communities..."
-            autoComplete="off"
-            aria-label="Site search"
-            className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none"
-          />
-          {query ? (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              aria-label="Clear search"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors duration-200 hover:text-white"
-              style={{ cursor: "pointer" }}
-            >
-              <X size={18} aria-hidden />
-            </button>
-          ) : null}
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+            style={{ cursor: "pointer" }}
+          >
+            <ChevronLeft size={16} aria-hidden />
+            <span>Back</span>
+          </button>
+          <div className="relative flex flex-1 items-center">
+            <Search
+              size={16}
+              aria-hidden
+              className="pointer-events-none absolute left-3 text-[#555]"
+            />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search organisations, companies, resources, communities..."
+              autoComplete="off"
+              aria-label="Site search"
+              className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none"
+            />
+            {query ? (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors duration-200 hover:text-white"
+                style={{ cursor: "pointer" }}
+              >
+                <X size={18} aria-hidden />
+              </button>
+            ) : null}
+          </div>
+          <button
+            type="button"
+            onClick={() => setFilterOpen(true)}
+            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+            style={{ cursor: "pointer" }}
+          >
+            <SlidersHorizontal size={16} aria-hidden />
+            <span>Filters</span>
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={() => setFilterOpen(true)}
-          className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
-          style={{ cursor: "pointer" }}
-        >
-          <SlidersHorizontal size={16} aria-hidden />
-          <span>Filters</span>
-        </button>
       </div>
       <div className="mx-auto w-full max-w-7xl px-6 pb-10">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -606,6 +626,9 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
             );
           })}
         </div>
+        {trimmed && results.length === 0 ? (
+          <SearchEmptyState title="Nothing found in the library" onClear={clearSearch} />
+        ) : null}
       </div>
       {filterOpen ? (
         <div
