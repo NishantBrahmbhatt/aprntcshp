@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Briefcase,
   Building2,
+  ExternalLink,
   FileText,
   Landmark,
   Layers,
@@ -196,6 +197,95 @@ const sectionCards = [
     count: communities.length,
   },
 ];
+
+const FEATURED_CARD_CLASS =
+  "group relative overflow-hidden flex flex-row items-start justify-between gap-4 rounded-xl border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none";
+
+type NewLibraryItem = {
+  id: string;
+  name: string;
+  href: string;
+  categoryLabel: "Organisation" | "Community" | "Company" | "Resource";
+  dateAdded: string;
+};
+
+const newLibraryItems: NewLibraryItem[] = (() => {
+  const all: NewLibraryItem[] = [];
+
+  organisations.forEach((item, index) => {
+    if (!item.dateAdded) return;
+    all.push({
+      id: `organisation-${index}`,
+      name: item.name,
+      href: item.url,
+      categoryLabel: "Organisation",
+      dateAdded: item.dateAdded,
+    });
+  });
+
+  communities.forEach((item, index) => {
+    if (!item.dateAdded) return;
+    all.push({
+      id: `community-${index}`,
+      name: item.name,
+      href: item.url,
+      categoryLabel: "Community",
+      dateAdded: item.dateAdded,
+    });
+  });
+
+  companies.forEach((item, index) => {
+    if (!item.dateAdded) return;
+    all.push({
+      id: `company-${index}`,
+      name: item.name,
+      href: item.url,
+      categoryLabel: "Company",
+      dateAdded: item.dateAdded,
+    });
+  });
+
+  templates.forEach((item, index) => {
+    if (!item.dateAdded) return;
+    all.push({
+      id: `resource-template-${index}`,
+      name: item.name,
+      href: item.href,
+      categoryLabel: "Resource",
+      dateAdded: item.dateAdded,
+    });
+  });
+
+  [
+    cvAdvice,
+    coverLetters,
+    apprenticeshipGuides,
+    interviewPrep,
+    psychometricTests,
+    assessmentCentre,
+    getInspired,
+    workExperience,
+    linkedinPersonalBrand,
+  ].forEach((resourceArray, resourceArrayIndex) => {
+    resourceArray.forEach((item, itemIndex) => {
+      if (!("dateAdded" in item) || !item.dateAdded) return;
+      all.push({
+        id: `resource-${resourceArrayIndex}-${itemIndex}`,
+        name: item.title,
+        href: item.href,
+        categoryLabel: "Resource",
+        dateAdded: item.dateAdded,
+      });
+    });
+  });
+
+  return all
+    .sort(
+      (a, b) =>
+        new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime(),
+    )
+    .slice(0, 5);
+})();
 
 
 function LandingGlobalSearch() {
@@ -426,6 +516,46 @@ function SectionsRow() {
   );
 }
 
+function NewToLibrarySection() {
+  if (newLibraryItems.length === 0) return null;
+
+  return (
+    <section className="mt-10" aria-labelledby="new-to-library-heading">
+      <h2
+        id="new-to-library-heading"
+        className="text-sm font-medium tracking-wide text-neutral-500 uppercase"
+      >
+        New to the library
+      </h2>
+      <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-5">
+        {newLibraryItems.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${FEATURED_CARD_CLASS} no-underline text-inherit`}
+          >
+            <div className="relative z-[1] min-w-0 flex-1 space-y-1.5">
+              <p className="text-base font-semibold text-neutral-100 leading-snug">
+                {item.name}
+              </p>
+              <span className="rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] font-normal tracking-[0.05em] text-[#666]">
+                {item.categoryLabel}
+              </span>
+            </div>
+            <ExternalLink
+              className="relative z-[1] h-5 w-5 shrink-0 text-neutral-500 transition-colors group-hover:text-neutral-200"
+              strokeWidth={2}
+              aria-hidden
+            />
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function HomePageClient() {
   const [showStartHere, setShowStartHere] = useState<boolean | null>(null);
 
@@ -459,6 +589,7 @@ export default function HomePageClient() {
           ) : null}
           <SectionsRow />
           <MostUsefulResourcesSection />
+          <NewToLibrarySection />
         </div>
         <SiteFooter />
       </main>
