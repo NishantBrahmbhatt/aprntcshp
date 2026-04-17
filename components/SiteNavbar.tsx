@@ -186,7 +186,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
         }}
       >
         <div
-          className="mx-auto flex w-full max-w-7xl items-center gap-3"
+          className="mx-auto flex w-full max-w-7xl items-center gap-2 sm:gap-3"
           style={{
             paddingTop: "12px",
             paddingBottom: "12px",
@@ -197,11 +197,11 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
           <button
             type="button"
             onClick={onClose}
-            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-3 py-3 sm:px-5 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
             style={{ cursor: "pointer" }}
           >
             <ChevronLeft size={16} aria-hidden />
-            <span>Back</span>
+            <span className="hidden sm:inline">Back</span>
           </button>
           <div className="relative flex flex-1 items-center">
             <Search
@@ -216,7 +216,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
               placeholder="Search organisations, companies, resources, communities..."
               autoComplete="off"
               aria-label="Site search"
-              className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none"
+              className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden"
             />
             {query ? (
               <button
@@ -233,11 +233,11 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
           <button
             type="button"
             onClick={() => setFilterOpen(true)}
-            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-5 py-3 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
+            className="flex shrink-0 items-center gap-2 rounded-2xl border border-[#2a2a2a] bg-[#111] px-3 py-3 sm:px-5 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
             style={{ cursor: "pointer" }}
           >
             <SlidersHorizontal size={16} aria-hidden />
-            <span>Filters</span>
+            <span className="hidden sm:inline">Filters</span>
           </button>
         </div>
       </div>
@@ -280,18 +280,28 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
             top: 0,
             right: 0,
             bottom: 0,
-            width: "380px",
+            width: "min(380px, 85vw)",
             background: "#111",
             borderLeft: "1px solid #2a2a2a",
             zIndex: 60,
-            padding: "32px",
+            padding: "24px",
+            paddingLeft: "20px",
+            paddingRight: "20px",
             overflowY: "auto",
             display: "flex",
             flexDirection: "column",
             gap: "24px",
           }}
         >
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
             <h2 className="text-lg font-medium text-neutral-100">Filter</h2>
             <button
               type="button"
@@ -366,13 +376,11 @@ export function SiteNavbar() {
         style={{ position: "relative", zIndex: 10 }}
       >
         <div
-          className="relative overflow-visible flex h-14 w-full items-center justify-between rounded-[24px] border border-[#2a2a2a]"
+          className="relative overflow-visible flex h-12 md:h-14 w-full items-center justify-between rounded-[20px] md:rounded-[24px] border border-[#2a2a2a] pl-4 pr-1 md:pl-6 md:pr-2"
           style={{
             background: "linear-gradient(160deg, #202020 0%, #111 100%)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            paddingLeft: "24px",
-            paddingRight: "8px",
             boxShadow:
               "inset 0 1px 0 rgba(255,255,255,0.13), inset 0 0 0 1px rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.3)",
           }}
@@ -390,13 +398,13 @@ export function SiteNavbar() {
             }}
           />
           <NavbarLogo orbitronClassName={orbitron.className} />
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 md:gap-1">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Open search"
               aria-pressed={searchOpen}
-              className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+              className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
               style={{ cursor: "pointer" }}
             >
               <Search size={18} aria-hidden />
@@ -405,7 +413,7 @@ export function SiteNavbar() {
               type="button"
               onClick={() => setShareOpen(true)}
               aria-label="Share page"
-              className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+              className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
               style={{ cursor: "pointer" }}
             >
               <Share2 size={18} aria-hidden />
@@ -416,7 +424,7 @@ export function SiteNavbar() {
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-label="Open menu"
                 aria-expanded={menuOpen}
-                className="flex h-10 w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
+                className="flex h-9 w-9 md:h-10 md:w-11 items-center justify-center rounded-[20px] border border-transparent bg-transparent text-[#888] transition-all duration-200 ease hover:border-[#2a2a2a] hover:bg-[#1a1a1a] hover:text-white"
                 style={{ cursor: "pointer" }}
               >
                 <Menu size={18} aria-hidden />
