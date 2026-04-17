@@ -2,14 +2,34 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  BookOpen,
+  Brain,
   Briefcase,
   Building2,
+  Building,
+  ClipboardList,
+  Code,
+  GraduationCap,
+  HardHat,
+  Leaf,
+  Linkedin,
+  Mail,
+  Megaphone,
+  MessageSquare,
+  Palette,
+  PenLine,
+  Scale,
+  Scissors,
+  Sparkles,
   ExternalLink,
   FileText,
-  Landmark,
   Layers,
   Search,
+  TrendingUp,
+  Truck,
+  UtensilsCrossed,
   Users,
+  Wrench,
 } from "lucide-react";
 import Link from "next/link";
 import { Orbitron } from "next/font/google";
@@ -148,55 +168,40 @@ const VISITED_STORAGE_KEY = "aprntcshp_visited";
 const sectionTiles = [
   { label: "Organisations", Icon: Building2, href: "/organisations" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
-  { label: "Companies", Icon: Landmark, href: "/companies" },
+  { label: "Companies", Icon: Briefcase, href: "/companies" },
   { label: "Industries", Icon: Briefcase, href: "/industries" },
   { label: "Resources", Icon: FileText, href: "/resources" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 
-const sectionCards = [
-  {
-    label: "Organisations",
-    Icon: Building2,
-    href: "/organisations",
-    description: "Independent organisations supporting UK apprentices",
-    count: organisations.length,
-  },
-  {
-    label: "Apprenticeship Trackers",
-    Icon: Search,
-    href: "/find-apprenticeships",
-    description: "Every major apprenticeship tracker",
-    count: platforms.length,
-  },
-  {
-    label: "Companies",
-    Icon: Landmark,
-    href: "/companies",
-    description: "Apprenticeship opportunities at leading UK employers",
-    count: companies.length,
-  },
-  {
-    label: "Industries",
-    Icon: Briefcase,
-    href: "/industries",
-    description: "Explore apprenticeships by industry",
-    count: industryGridItems.length,
-  },
-  {
-    label: "Resources",
-    Icon: FileText,
-    href: "/resources",
-    description: "Templates, guides and advice for your application",
-    count: cvResourcesCount,
-  },
-  {
-    label: "Communities",
-    Icon: Users,
-    href: "/communities",
-    description: "Peer networks and communities to join",
-    count: communities.length,
-  },
+const iconGridTiles = [
+  { label: "Organisations", Icon: Building, href: "/organisations" },
+  { label: "Communities", Icon: Users, href: "/communities" },
+  { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
+  { label: "Companies", Icon: Briefcase, href: "/companies" },
+  { label: "Apprenticeship Guides", Icon: BookOpen, href: "/resources#apprenticeship-guides" },
+  { label: "CV Templates", Icon: FileText, href: "/resources#templates" },
+  { label: "Writing Your CV", Icon: PenLine, href: "/resources#writing-your-cv" },
+  { label: "Cover Letters", Icon: Mail, href: "/resources#cover-letters" },
+  { label: "Interview Prep", Icon: MessageSquare, href: "/resources#interview-prep" },
+  { label: "Psychometric Tests", Icon: Brain, href: "/resources#psychometric-tests" },
+  { label: "Assessment Centres", Icon: ClipboardList, href: "/resources#assessment-centre" },
+  { label: "Work Experience", Icon: Briefcase, href: "/resources#work-experience" },
+  { label: "LinkedIn & Personal Brand", Icon: Linkedin, href: "/resources#linkedin" },
+  { label: "Get Inspired", Icon: Sparkles, href: "/resources#get-inspired" },
+  { label: "Law", Icon: Scale, href: "/industries/law" },
+  { label: "Finance", Icon: TrendingUp, href: "/industries/finance" },
+  { label: "Tech", Icon: Code, href: "/industries/tech" },
+  { label: "Engineering", Icon: Wrench, href: "/industries/engineering" },
+  { label: "Creative", Icon: Palette, href: "/industries/creative" },
+  { label: "Sales & Marketing", Icon: Megaphone, href: "/industries/sales-marketing" },
+  { label: "Construction", Icon: HardHat, href: "/industries/construction" },
+  { label: "Agriculture", Icon: Leaf, href: "/industries/agriculture" },
+  { label: "Education", Icon: GraduationCap, href: "/industries/education" },
+  { label: "Business", Icon: Building2, href: "/industries/business" },
+  { label: "Catering & Hospitality", Icon: UtensilsCrossed, href: "/industries/catering-hospitality" },
+  { label: "Transport", Icon: Truck, href: "/industries/transport" },
+  { label: "Hair & Beauty", Icon: Scissors, href: "/industries/hair-beauty" },
 ];
 
 const FEATURED_CARD_CLASS =
@@ -436,43 +441,6 @@ function StartHereGuidedPath() {
   );
 }
 
-function easeOutCubic(t: number) {
-  return 1 - (1 - t) ** 3;
-}
-
-function CountUpSegment({ target }: { target: number }) {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    let raf = 0;
-    let cancelled = false;
-    const start = performance.now();
-    const duration = 800;
-
-    const tick = (now: number) => {
-      if (cancelled) return;
-      const t = Math.min(1, (now - start) / duration);
-      setValue(Math.round(easeOutCubic(t) * target));
-      if (t < 1) {
-        raf = requestAnimationFrame(tick);
-      }
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(raf);
-    };
-  }, [target]);
-
-  return (
-    <span className="inline-grid shrink-0 tabular-nums">
-      <span className="invisible col-start-1 row-start-1">{target}</span>
-      <span className="col-start-1 row-start-1">{value}</span>
-    </span>
-  );
-}
-
 function HeroSection() {
   return (
     <section className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12" id="hero">
@@ -502,27 +470,31 @@ function HeroSection() {
 function SectionsRow() {
   return (
     <section className="mt-10" id="sections">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {sectionCards.map((card) => (
+      <div
+        className="grid gap-3"
+        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+      >
+        {iconGridTiles.map((tile) => (
           <Link
-            key={card.href}
-            href={card.href}
-            className="group relative overflow-hidden flex flex-col gap-4 rounded-xl bg-[linear-gradient(160deg,#202020_0%,#111_100%)] border border-[#2a2a2a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0f0f]"
+            key={tile.href}
+            href={tile.href}
+            className="group relative overflow-hidden flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[12px] border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] px-4 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-all duration-300 ease hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
-            <div className="flex items-start gap-4">
-              <card.Icon
-                className="h-6 w-6 text-neutral-200 mt-1"
-                aria-hidden="true"
-              />
-              <div className="space-y-2">
-                <h2 className="text-base sm:text-lg font-semibold text-neutral-100">
-                  <CountUpSegment target={card.count} /> {card.label}
-                </h2>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            </div>
+            <tile.Icon
+              className="relative z-[1] h-6 w-6 text-[#888] transition-all duration-300 ease group-hover:text-white"
+              aria-hidden="true"
+            />
+            <span
+              className="relative z-[1] text-xs font-medium leading-[1.3] text-[#888] transition-all duration-300 ease group-hover:text-white"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {tile.label}
+            </span>
           </Link>
         ))}
       </div>
