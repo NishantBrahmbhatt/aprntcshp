@@ -363,7 +363,7 @@ export function SiteNavbar() {
       {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
       <header
         className={`w-full bg-transparent py-0 ${searchOpen ? "invisible pointer-events-none" : ""}`}
-        style={{ position: "sticky", top: 0, zIndex: 50 }}
+        style={{ position: "relative", zIndex: 10 }}
       >
         <div
           className="relative overflow-visible flex h-14 w-full items-center justify-between rounded-[24px] border border-[#2a2a2a]"
