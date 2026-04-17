@@ -3,20 +3,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { industryGridItems } from "@/app/industries/industry-grid";
 import { SiteFooter } from "@/components/SiteFooter";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
-import { Orbitron } from "next/font/google";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
+import { SiteNavbar } from "@/components/SiteNavbar";
 
 export const metadata: Metadata = {
   title: "APRNTCSHP/Industries",
@@ -24,20 +11,11 @@ export const metadata: Metadata = {
     "Explore UK apprenticeships by industry — sector guides, employers, and resources in one place.",
 };
 
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
-  );
-}
-
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex-1">
           <section className="pt-16 pb-10">
             <div className="space-y-3">

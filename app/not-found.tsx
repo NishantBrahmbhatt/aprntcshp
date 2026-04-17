@@ -2,22 +2,9 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Orbitron } from "next/font/google";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import styles from "./not-found.module.css";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
 
 const TEXT_404 = "404";
 const TEXT_LOST = "...you're lost";
@@ -120,20 +107,11 @@ function Glitch404Title() {
   );
 }
 
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
-  );
-}
-
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex flex-1 flex-col">
           <div className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center sm:py-20 md:py-28">
             <div className="flex min-h-[5rem] flex-col items-center justify-center sm:min-h-[6rem] md:min-h-[7rem]">

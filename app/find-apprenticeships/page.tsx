@@ -2,20 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
-import { Orbitron } from "next/font/google";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
+import { SiteNavbar } from "@/components/SiteNavbar";
 
 export const platforms = [
   {
@@ -134,15 +121,6 @@ export const platforms = [
   },
 ];
 
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
-  );
-}
-
 function PageHeader() {
   return (
     <section className="pt-16 pb-10">
@@ -192,7 +170,7 @@ export default function FindApprenticeshipsPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex-1">
           <PageHeader />
           <section className="space-y-4">

@@ -5,9 +5,7 @@ import { ExternalLink } from "lucide-react";
 import { IndustryBreadcrumb } from "@/components/IndustryBreadcrumb";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageRating } from "@/components/PageRating";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
-import { Orbitron } from "next/font/google";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import {
   designAndVisualArts,
   fashionAndTextiles,
@@ -15,17 +13,6 @@ import {
   heritageAndConservation,
   mediaAndJournalism,
 } from "@/lib/data/industries/creative";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
 
 const SECTION_IDS = {
   general: "creative-section-general",
@@ -45,15 +32,6 @@ const SECTION_PILLS: { id: string; label: string }[] = [
 
 const cardShell =
   "group relative overflow-hidden border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-5 text-sm text-neutral-200 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none";
-
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
-  );
-}
 
 function SectionDivider() {
   return <div className="border-t border-neutral-800" />;
@@ -258,7 +236,7 @@ export default function CreativeIndustryPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex-1">
           <PageHeader />
 

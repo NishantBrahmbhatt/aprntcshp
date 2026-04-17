@@ -5,11 +5,9 @@ import { ExternalLink, FileText } from "lucide-react";
 import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
 import { SiteFooter } from "@/components/SiteFooter";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
-import { Orbitron } from "next/font/google";
 import {
   apprenticeshipGuides,
   assessmentCentre,
@@ -34,17 +32,6 @@ function ResourceTypePill({ type }: { type: CvResourceType }) {
     </span>
   );
 }
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
 
 const SECTION_IDS = {
   apprenticeshipGuides: "resources-section-apprenticeship-guides",
@@ -77,15 +64,6 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   },
   { id: SECTION_IDS.getInspired, label: "Get Inspired" },
 ];
-
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
-  );
-}
 
 function SectionDivider() {
   return <div className="border-t border-neutral-800" />;
@@ -394,7 +372,7 @@ export default function CvResourcesPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex-1">
           <PageHeader />
 

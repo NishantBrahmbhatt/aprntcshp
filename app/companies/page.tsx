@@ -5,27 +5,14 @@ import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
-import { NavbarLogo } from "@/components/NavbarLogo";
-import { NavbarNavLinks } from "@/components/NavbarNavLinks";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { CopyCardLinkButton } from "@/components/CopyCardLinkButton";
 import { NewBadge } from "@/components/NewBadge";
 import { VoteButton } from "@/components/VoteButton";
 import { SearchEmptyState } from "@/components/EmptyState";
 import { voteResourceId } from "@/lib/vote-resource-id";
-import { Orbitron } from "next/font/google";
 import { companies } from "@/lib/data/companies";
 import { logSearch } from "@/lib/supabase";
-
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
-
-const navItems = [
-  { label: "Organisations", href: "/organisations" },
-  { label: "Find Apprenticeships", href: "/find-apprenticeships" },
-  { label: "Companies", href: "/companies" },
-  { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
-  { label: "Communities", href: "/communities" },
-];
 
 function CompanyLogo({ src, alt }: { src: string; alt: string }) {
   const [errored, setErrored] = useState(false);
@@ -49,15 +36,6 @@ function CompanyLogo({ src, alt }: { src: string; alt: string }) {
         onError={() => setErrored(true)}
       />
     </div>
-  );
-}
-
-function Navbar() {
-  return (
-    <header className="flex items-center justify-between text-xs sm:text-sm text-neutral-300">
-      <NavbarLogo orbitronClassName={orbitron.className} />
-      <NavbarNavLinks items={navItems} />
-    </header>
   );
 }
 
@@ -184,7 +162,7 @@ export default function CompaniesPage() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
-        <Navbar />
+        <SiteNavbar />
         <div className="flex-1">
           <PageHeader />
           <div className="pb-6">
