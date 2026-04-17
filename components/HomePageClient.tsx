@@ -32,6 +32,7 @@ import {
   Wrench,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Orbitron } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NavbarLogo } from "@/components/NavbarLogo";
@@ -442,6 +443,19 @@ function StartHereGuidedPath() {
 }
 
 function HeroSection() {
+  const heroLogos = [
+    "/logos/amazing_apprenticeships_logo.jpg",
+    "/logos/ucas_logo.jpg",
+    "/logos/apprenticeshipsgov_logo.jpg",
+    "/logos/getmyfirstjob_logo.jpg",
+    "/logos/ratemyapp_ship_logo.jpg",
+    "/logos/notgoingtounicouk_logo.jpg",
+    "/logos/success_at_school_logo.jpg",
+    "/logos/gradcracker_ltd_logo.jpg",
+    "/logos/unifrog.jpg",
+    "/logos/apprenticenation_logo.jpg",
+  ] as const;
+
   return (
     <section className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12" id="hero">
       <div className="space-y-7 text-left">
@@ -456,12 +470,65 @@ function HeroSection() {
           </h1>
         </div>
       </div>
-      <div className="text-left md:pt-1">
-        <p className="max-w-md text-sm sm:text-base md:text-lg leading-relaxed text-neutral-500">
-          Finding apprenticeship resources shouldn&apos;t be hard. We&apos;ve gathered every
-          organisation, community, CV guide, and job board in one place - so you can
-          spend less time searching and more time applying.
-        </p>
+      <div className="hidden md:flex md:items-center md:justify-end md:pt-1">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          {heroLogos.map((logo, index) => (
+            <div
+              key={`hero-logo-${index}`}
+              className="z-10"
+              style={{
+                width: "80px",
+                height: "80px",
+                borderRadius: "18px",
+                marginLeft: index === 0 ? "0" : "-16px",
+                background: "#1a1a1a",
+                border: "1px solid #2a2a2a",
+                overflow: "hidden",
+                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)",
+                transform:
+                  index === 0
+                    ? "translateY(0px)"
+                    : index === 1
+                      ? "translateY(-40px)"
+                      : index === 2
+                        ? "translateY(-60px)"
+                        : index === 3
+                          ? "translateY(-40px)"
+                          : index === 4
+                            ? "translateY(0px)"
+                            : index === 5
+                              ? "translateY(40px)"
+                              : index === 6
+                                ? "translateY(60px)"
+                                : index === 7
+                                  ? "translateY(40px)"
+                                  : "translateY(0px)",
+              }}
+            >
+              <img
+                src={logo}
+                alt=""
+                style={{
+                  width: "55%",
+                  height: "55%",
+                  objectFit: "contain",
+                  filter: "grayscale(1)",
+                  opacity: 0.7,
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
