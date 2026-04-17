@@ -319,7 +319,7 @@ function HeroSection() {
           <p className="text-[10px] font-medium tracking-[0.3em] text-neutral-500 uppercase">
           The UK&apos;s apprenticeship hub
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-neutral-50">
+          <h1 className="text-[1.35rem] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-50">
             <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
               Every apprenticeship resource, in one place.
             </span>

@@ -155,15 +155,17 @@ const FEATURED_CARD_CLASS =
 
 function SearchOverlay({ onClose }: { onClose: () => void }) {
   const [query, setQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const trimmed = query.trim().toLowerCase();
   const clearSearch = useCallback(() => setQuery(""), []);
   const results = useMemo(() => {
-    return !trimmed
-      ? globalSearchHits
-      : globalSearchHits.filter((h) => h.haystack.includes(trimmed));
-  }, [trimmed]);
+    return globalSearchHits.filter(
+      (h) =>
+        (selectedCategory.length === 0 || selectedCategory.includes(h.category)) &&
+        (!trimmed || h.haystack.includes(trimmed)),
+    );
+  }, [trimmed, selectedCategory]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -320,12 +322,24 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
             {["All", "Organisation", "Community", "Company", "Platform", "Resource"].map(
               (category) => {
                 const isActive =
-                  category === "All" ? selectedCategory === null : selectedCategory === category;
+                  category === "All"
+                    ? selectedCategory.length === 0
+                    : selectedCategory.includes(category);
                 return (
                   <button
                     key={category}
                     type="button"
-                    onClick={() => setSelectedCategory(category === "All" ? null : category)}
+                    onClick={() => {
+                      if (category === "All") {
+                        setSelectedCategory([]);
+                      } else {
+                        setSelectedCategory((prev) =>
+                          prev.includes(category)
+                            ? prev.filter((c) => c !== category)
+                            : [...prev, category],
+                        );
+                      }
+                    }}
                     className={`mr-2 mb-2 rounded-full border px-3 py-1.5 text-xs transition-all duration-200 ${
                       isActive
                         ? "border-[#555] bg-[#222] text-white"
