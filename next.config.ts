@@ -5,11 +5,11 @@ const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://do.featurebase.app https://va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://do.featurebase.app https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://do.featurebase.app",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
-  "connect-src 'self' https://*.featurebase.app wss://*.featurebase.app",
+  "connect-src 'self' https://ahklzdifznazlrknvkxk.supabase.co https://*.featurebase.app https://va.vercel-scripts.com wss://*.featurebase.app",
   "frame-src https://*.featurebase.app",
   "media-src https://*.featurebase.app https://*.featurebase-attachments.com",
 ].join("; ");
