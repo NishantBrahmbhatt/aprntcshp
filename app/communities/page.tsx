@@ -59,7 +59,7 @@ function OrganisationLogo({ src, alt }: { src: string; alt: string }) {
 
 function PageHeader() {
   return (
-    <section className="pt-16 pb-10">
+    <section className="pt-8 pb-6">
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
           <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
@@ -199,7 +199,7 @@ function CommunitiesGrid({
         </div>
       </section>
       {totalPages > 1 ? (
-        <div className="flex items-center justify-center gap-2 mt-8 mb-4">
+        <div className="flex items-center justify-center gap-2 mt-12 mb-4">
           <button
             type="button"
             disabled={currentPage === 1}

@@ -17,7 +17,7 @@ export default function IndustriesPage() {
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-5 pb-20">
         <SiteNavbar />
         <div className="flex-1">
-          <section className="pt-16 pb-10">
+          <section className="pt-8 pb-10">
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
                 <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">

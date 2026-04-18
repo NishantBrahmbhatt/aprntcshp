@@ -384,7 +384,7 @@ export default function CvResourcesPage() {
           <section
             ref={apprenticeshipGuidesRef}
             id={SECTION_IDS.apprenticeshipGuides}
-            className="scroll-mt-[72px] space-y-4 py-10"
+            className="scroll-mt-[72px] space-y-4 pt-14 pb-10"
           >
             <SectionHeading title="Apprenticeship Guides" />
             <div className="grid gap-5 md:grid-cols-2">

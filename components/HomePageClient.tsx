@@ -371,7 +371,7 @@ function RecentlyVisitedSection() {
   if (!items.length) return null;
 
   return (
-    <section className="mt-8">
+    <section className="mt-10 mb-2">
       <h2 className="text-sm font-normal tracking-[0.05em] text-neutral-500">
         Continue where you left off
       </h2>
@@ -430,7 +430,7 @@ function NewToLibrarySection() {
   if (newLibraryItems.length === 0) return null;
 
   return (
-    <section className="mt-10" aria-labelledby="new-to-library-heading">
+    <section className="mt-16" aria-labelledby="new-to-library-heading">
       <h2
         id="new-to-library-heading"
         className="text-sm font-medium tracking-wide text-neutral-500 uppercase"

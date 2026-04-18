@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { voteResourceLookup } from "@/lib/vote-resource-lookup";
 
 const CARD_CLASS =
-  "group relative overflow-hidden flex flex-row items-start justify-between gap-4 rounded-xl border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none";
+  "group relative overflow-hidden flex min-h-[80px] flex-row items-start justify-between gap-4 rounded-xl border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none";
 
 type ResolvedItem = {
   resourceId: string;
@@ -94,14 +94,14 @@ export function MostUsefulResourcesSection() {
 
   if (status === "loading") {
     return (
-      <div className="mt-10" aria-busy="true" aria-label="Loading most useful resources">
+      <div className="mt-16" aria-busy="true" aria-label="Loading most useful resources">
         <SkeletonCards />
       </div>
     );
   }
 
   return (
-    <section className="mt-10" aria-labelledby="most-useful-heading">
+    <section className="mt-16" aria-labelledby="most-useful-heading">
       <h2
         id="most-useful-heading"
         className="text-sm font-medium tracking-wide text-neutral-500 uppercase"

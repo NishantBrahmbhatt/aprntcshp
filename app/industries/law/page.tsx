@@ -42,7 +42,7 @@ function SectionDivider() {
 
 function PageHeader() {
   return (
-    <section className="pt-16 pb-10">
+    <section className="pt-8 pb-10">
       <IndustryBreadcrumb industryLabel="Law" />
       <div className="space-y-3">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-50">
@@ -58,9 +58,9 @@ function PageHeader() {
   );
 }
 
-function SectionHeading({ title }: { title: string }) {
+function SectionHeading({ title, className }: { title: string; className?: string }) {
   return (
-    <div className="flex items-center justify-between gap-4">
+    <div className={`flex items-center justify-between gap-4${className ? ` ${className}` : ""}`}>
       <h2 className="text-sm font-medium tracking-wide text-neutral-300 uppercase">
         {title}
       </h2>
@@ -327,7 +327,7 @@ export default function LawIndustryPage() {
             id={SECTION_IDS.firms}
             className="scroll-mt-[72px] space-y-4 pb-10"
           >
-            <SectionHeading title="Firms" />
+            <SectionHeading title="Firms" className="mt-6" />
             <div className="grid gap-5 md:grid-cols-2">
               {firms.map((firm) => (
                 <FirmCard
