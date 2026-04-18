@@ -104,9 +104,9 @@ export function MostUsefulResourcesSection() {
     <section className="mt-16" aria-labelledby="most-useful-heading">
       <h2
         id="most-useful-heading"
-        className="text-sm font-medium tracking-wide text-neutral-500 uppercase"
+        className="text-sm font-medium tracking-wide text-neutral-500"
       >
-        Most useful
+        Most Useful
       </h2>
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
         {items.map((item) => {

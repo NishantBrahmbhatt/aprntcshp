@@ -12,7 +12,13 @@ function toAbsoluteUrl(href: string): string {
   }
 }
 
-export function CopyCardLinkButton({ href }: { href: string }) {
+export function CopyCardLinkButton({
+  href,
+  quiet = false,
+}: {
+  href: string;
+  quiet?: boolean;
+}) {
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -42,7 +48,11 @@ export function CopyCardLinkButton({ href }: { href: string }) {
       type="button"
       onClick={handleClick}
       aria-label={copied ? "Link copied" : "Copy link"}
-      className="hidden cursor-pointer border-0 bg-transparent p-0 text-left text-[#555] transition-colors duration-200 ease hover:text-[#888] md:block"
+      className={`hidden cursor-pointer border-0 bg-transparent p-0 text-left transition-colors duration-200 ease md:block ${
+        quiet
+          ? "text-neutral-600 hover:text-neutral-400"
+          : "text-[#555] hover:text-[#888]"
+      }`}
     >
       <span className="inline-flex items-center gap-1">
         {copied ? (

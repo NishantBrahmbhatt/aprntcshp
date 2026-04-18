@@ -187,10 +187,11 @@ function CommunitiesGrid({
               </div>
             </a>
             <div className="flex w-full items-center gap-2">
-              <CopyCardLinkButton href={org.url} />
+              <CopyCardLinkButton href={org.url} quiet />
               <div className="ml-auto">
                 <VoteButton
                   resourceId={voteResourceId(org.name, org.description)}
+                  quiet
                 />
               </div>
             </div>

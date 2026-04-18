@@ -318,9 +318,6 @@ function HeroSection() {
     <section className="mt-8 grid grid-cols-1" id="hero">
       <div className="space-y-2 text-left">
         <div className="space-y-4">
-          <p className="text-[10px] font-medium tracking-[0.3em] text-neutral-500 uppercase">
-          The UK&apos;s apprenticeship hub
-          </p>
           <h1 className="text-[1.35rem] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-50">
             <span className="inline-block pb-1 bg-[linear-gradient(180deg,#ffffff_0%,#707070_100%)] bg-clip-text [-webkit-background-clip:text] text-transparent [-webkit-text-fill-color:transparent]">
               Every apprenticeship resource, in one place.
@@ -433,9 +430,9 @@ function NewToLibrarySection() {
     <section className="mt-16" aria-labelledby="new-to-library-heading">
       <h2
         id="new-to-library-heading"
-        className="text-sm font-medium tracking-wide text-neutral-500 uppercase"
+        className="text-sm font-medium tracking-wide text-neutral-500"
       >
-        New to the library
+        New to the Library
       </h2>
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-5">
         {newLibraryItems.map((item) => (

@@ -153,9 +153,9 @@ function CompaniesGrid({
               </div>
             </a>
             <div className="flex w-full items-center gap-2">
-              <CopyCardLinkButton href={c.url} />
+              <CopyCardLinkButton href={c.url} quiet />
               <div className="ml-auto">
-                <VoteButton resourceId={voteResourceId(c.name, c.url)} />
+                <VoteButton resourceId={voteResourceId(c.name, c.url)} quiet />
               </div>
             </div>
           </div>

@@ -26,7 +26,13 @@ function writeVoteMap(map: Record<string, string>) {
   localStorage.setItem(LS_KEY, JSON.stringify(map));
 }
 
-export function VoteButton({ resourceId }: { resourceId: string }) {
+export function VoteButton({
+  resourceId,
+  quiet = false,
+}: {
+  resourceId: string;
+  quiet?: boolean;
+}) {
   const [count, setCount] = useState<number | null>(null);
   const [voted, setVoted] = useState(false);
   const [voteRowId, setVoteRowId] = useState<string | null>(null);
@@ -114,14 +120,36 @@ export function VoteButton({ resourceId }: { resourceId: string }) {
       className={`inline-flex items-center gap-1 border-0 bg-transparent p-0 font-inherit outline-none transition-[color] duration-200 ease disabled:opacity-50 ${
         voted
           ? "text-white hover:text-white"
-          : "text-[#555] hover:text-[#888]"
+          : quiet
+            ? "group"
+            : "text-[#555] hover:text-[#888]"
       }`}
       style={{ fontSize: 12 }}
       aria-pressed={voted}
       aria-label={voted ? "Remove vote" : "Add vote"}
     >
-      <ThumbsUp className="h-[14px] w-[14px] shrink-0" strokeWidth={2} aria-hidden />
-      <span className="tabular-nums leading-none">{count ?? "—"}</span>
+      <ThumbsUp
+        className={`h-[14px] w-[14px] shrink-0 ${
+          voted
+            ? ""
+            : quiet
+              ? "text-[#555] transition-[color] duration-200 ease group-hover:text-[#888]"
+              : ""
+        }`}
+        strokeWidth={2}
+        aria-hidden
+      />
+      <span
+        className={`tabular-nums leading-none ${
+          voted
+            ? ""
+            : quiet
+              ? "text-neutral-600 transition-[color] duration-200 ease group-hover:text-neutral-400"
+              : ""
+        }`}
+      >
+        {count ?? "—"}
+      </span>
     </button>
   );
 }
