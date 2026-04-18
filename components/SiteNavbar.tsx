@@ -463,7 +463,7 @@ export function SiteNavbar() {
       {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
       <header
         className={`w-full bg-transparent py-0 ${searchOpen ? "invisible pointer-events-none" : ""}`}
-        style={{ position: "relative", zIndex: 10 }}
+        style={{ position: "relative", zIndex: 9999 }}
       >
         <div
           className="relative overflow-visible flex h-12 md:h-14 w-full items-center justify-between rounded-[20px] md:rounded-[24px] border border-[#2a2a2a] pl-4 pr-1 md:pl-6 md:pr-2"
@@ -551,7 +551,7 @@ export function SiteNavbar() {
                     boxShadow:
                       "inset 0 1px 0 rgba(255,255,255,0.13), inset 0 0 0 1px rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)",
                     overflow: "hidden",
-                    zIndex: 60,
+                    zIndex: 9999,
                   }}
                 >
                   {sectionTiles.map(({ label, Icon, href }) => (
