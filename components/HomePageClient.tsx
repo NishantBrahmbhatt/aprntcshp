@@ -396,7 +396,7 @@ function SectionsRow() {
     <section className="mt-8" id="sections">
       <div
         className="grid gap-3"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(155px, 1fr))" }}
       >
         {iconGridTiles.map((tile) => (
           <Link
