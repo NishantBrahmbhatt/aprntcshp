@@ -36,6 +36,7 @@ import {
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import { organisations } from "@/lib/data/organisations";
+import { trackPageVisit } from "@/lib/recentlyVisited";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -486,7 +487,10 @@ export function SiteNavbar() {
                     <Link
                       key={href}
                       href={href}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={() => {
+                        trackPageVisit(href, label);
+                        setMenuOpen(false);
+                      }}
                       className="flex items-center gap-3 border-b border-[#1a1a1a] px-4 py-3 text-sm text-neutral-400 no-underline transition-all duration-200 last:border-b-0 hover:bg-white/5 hover:text-white"
                     >
                       <Icon size={15} className="text-[#666]" aria-hidden />

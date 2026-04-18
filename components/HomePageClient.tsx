@@ -8,6 +8,7 @@ import {
   Building2,
   Building,
   ClipboardList,
+  Clock,
   Code,
   GraduationCap,
   HardHat,
@@ -58,6 +59,7 @@ import { organisations } from "@/lib/data/organisations";
 import { logSearch } from "@/lib/supabase";
 
 const VISITED_STORAGE_KEY = "aprntcshp_visited";
+const RECENTLY_VISITED_KEY = "aprntcshp_recently_visited";
 
 const iconGridTiles = [
   { label: "Organisations", Icon: Building, href: "/organisations" },
@@ -330,6 +332,65 @@ function HeroSection() {
   );
 }
 
+type RecentlyVisitedItem = {
+  href: string;
+  label: string;
+  visitedAt: number;
+};
+
+function RecentlyVisitedSection() {
+  const [items, setItems] = useState<RecentlyVisitedItem[]>([]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(RECENTLY_VISITED_KEY);
+      if (!raw) {
+        setItems([]);
+        return;
+      }
+      const parsed = JSON.parse(raw) as unknown;
+      if (!Array.isArray(parsed)) {
+        setItems([]);
+        return;
+      }
+      const next = parsed.filter(
+        (e): e is RecentlyVisitedItem =>
+          Boolean(e) &&
+          typeof e === "object" &&
+          "href" in e &&
+          "label" in e &&
+          typeof (e as RecentlyVisitedItem).href === "string" &&
+          typeof (e as RecentlyVisitedItem).label === "string",
+      );
+      setItems(next);
+    } catch {
+      setItems([]);
+    }
+  }, []);
+
+  if (!items.length) return null;
+
+  return (
+    <section className="mt-8">
+      <h2 className="text-sm font-normal tracking-[0.05em] text-neutral-500">
+        Continue where you left off
+      </h2>
+      <div className="flex flex-row gap-3 mt-4">
+        {items.map((item) => (
+          <Link
+            key={`${item.href}-${item.visitedAt}`}
+            href={item.href}
+            className="group flex items-center gap-3 rounded-[10px] border border-solid border-[#2a2a2a] bg-[#111] px-5 py-4 text-[13px] text-[#888] transition-all duration-300 ease hover:-translate-y-0.5 hover:border-[#383838] hover:text-white"
+          >
+            <Clock size={14} className="shrink-0" aria-hidden />
+            <span>{item.label}</span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function SectionsRow() {
   return (
     <section className="mt-8" id="sections">
@@ -427,6 +488,7 @@ export default function HomePageClient() {
         <SiteNavbar />
         <div className="flex-1 pt-4 pb-20">
           <HeroSection />
+          <RecentlyVisitedSection />
           {showStartHere === true ? <StartHereGuidedPath /> : null}
           <SectionsRow />
           <MostUsefulResourcesSection />
