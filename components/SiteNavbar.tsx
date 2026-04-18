@@ -38,6 +38,7 @@ import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import { organisations } from "@/lib/data/organisations";
 import { trackPageVisit } from "@/lib/recentlyVisited";
+import { useRegisterShareShortcut } from "@/components/KeyboardShortcutsProvider";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["700"] });
 
@@ -446,6 +447,8 @@ export function SiteNavbar() {
   const [glitching, setGlitching] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useRegisterShareShortcut(() => setShareOpen(true));
 
   useEffect(() => {
     if (!menuOpen) return;

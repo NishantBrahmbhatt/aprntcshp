@@ -146,3 +146,27 @@ export function useRegisterSiteSearch(
     };
   }, [register, inputRef, clear]);
 }
+
+export function useRegisterShareShortcut(onShare: () => void) {
+  const onShareRef = useRef(onShare);
+  onShareRef.current = onShare;
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (isEditableTarget(e.target)) {
+        return;
+      }
+      if (hasShortcutModifiers(e)) {
+        return;
+      }
+      if (e.key !== "s" && e.key !== "S") {
+        return;
+      }
+      e.preventDefault();
+      onShareRef.current();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+}
