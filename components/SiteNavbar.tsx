@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Briefcase,
   Building2,
@@ -155,9 +156,13 @@ const FEATURED_CARD_CLASS =
   "group relative overflow-hidden flex flex-row items-start justify-between gap-4 rounded-xl border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none";
 
 function SearchOverlay({ onClose }: { onClose: () => void }) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const cardRefs = useRef<(HTMLAnchorElement | HTMLAnchorElement | null)[]>([]);
   const trimmed = query.trim().toLowerCase();
   const clearSearch = useCallback(() => setQuery(""), []);
   const results = useMemo(() => {
@@ -167,6 +172,58 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
         (!trimmed || h.haystack.includes(trimmed)),
     );
   }, [trimmed, selectedCategory]);
+
+  useEffect(() => {
+    setFocusedIndex(-1);
+  }, [results]);
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setFocusedIndex((i) =>
+          Math.min(i + 1, Math.max(0, results.length - 1)),
+        );
+        return;
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setFocusedIndex((i) => Math.max(i - 1, -1));
+        return;
+      }
+      if (e.key === "Enter") {
+        if (focusedIndex >= 0 && results[focusedIndex]) {
+          e.preventDefault();
+          const hit = results[focusedIndex];
+          if (hit.external) {
+            window.open(hit.href, "_blank");
+          } else {
+            router.push(hit.href);
+            onClose();
+          }
+        }
+        return;
+      }
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [focusedIndex, onClose, results, router]);
+
+  useEffect(() => {
+    if (focusedIndex >= 0) {
+      cardRefs.current[focusedIndex]?.scrollIntoView({ block: "nearest" });
+    }
+  }, [focusedIndex]);
+
+  useEffect(() => {
+    if (focusedIndex === -1) {
+      searchInputRef.current?.focus();
+    }
+  }, [focusedIndex]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -208,32 +265,38 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
             <ChevronLeft size={16} aria-hidden />
             <span className="hidden sm:inline">Back</span>
           </button>
-          <div className="relative flex flex-1 items-center">
-            <Search
-              size={16}
-              aria-hidden
-              className="pointer-events-none absolute left-3 text-[#555]"
-            />
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search organisations, companies, resources, communities..."
-              autoComplete="off"
-              aria-label="Site search"
-              className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden"
-            />
-            {query ? (
-              <button
-                type="button"
-                onClick={() => setQuery("")}
-                aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors duration-200 hover:text-white"
-                style={{ cursor: "pointer" }}
-              >
-                <X size={18} aria-hidden />
-              </button>
-            ) : null}
+          <div className="relative flex flex-1 flex-col">
+            <div className="relative flex flex-1 items-center">
+              <Search
+                size={16}
+                aria-hidden
+                className="pointer-events-none absolute left-3 text-[#555]"
+              />
+              <input
+                ref={searchInputRef}
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search organisations, companies, resources, communities..."
+                autoComplete="off"
+                aria-label="Site search"
+                className="w-full rounded-2xl border border-[#2a2a2a] bg-[#111] py-3 pl-10 pr-10 text-base text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#555] focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden"
+              />
+              {query ? (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 transition-colors duration-200 hover:text-white"
+                  style={{ cursor: "pointer" }}
+                >
+                  <X size={18} aria-hidden />
+                </button>
+              ) : null}
+            </div>
+            <p className="hidden sm:block mt-2 px-1 text-[11px] text-[#444]">
+              ↑↓ to navigate · Enter to open · Esc to close
+            </p>
           </div>
           <button
             type="button"
@@ -248,11 +311,14 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
       </div>
       <div className="mx-auto w-full max-w-7xl px-6 pb-10">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {results.map((hit) => {
-            const cardClass = `${FEATURED_CARD_CLASS} flex-col gap-1 no-underline text-inherit`;
+          {results.map((hit, index) => {
+            const cardClass = `${FEATURED_CARD_CLASS} flex-col gap-1 no-underline text-inherit${
+              index === focusedIndex ? " ring-1 ring-[#555] border-[#555]" : ""
+            }`;
             return hit.external ? (
               <a
                 key={hit.id}
+                ref={(el) => void (cardRefs.current[index] = el)}
                 href={hit.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -264,7 +330,12 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 </span>
               </a>
             ) : (
-              <Link key={hit.id} href={hit.href} className={cardClass}>
+              <Link
+                key={hit.id}
+                ref={(el) => void (cardRefs.current[index] = el)}
+                href={hit.href}
+                className={cardClass}
+              >
                 <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
                 <span className="relative z-[1] w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666]">
                   {hit.category}
