@@ -23,7 +23,7 @@ function isExternalHref(href: string) {
 
 function SkeletonCards() {
   return (
-    <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
       {Array.from({ length: 5 }).map((_, i) => (
         <div
           key={i}
@@ -108,7 +108,7 @@ export function MostUsefulResourcesSection() {
       >
         Most useful
       </h2>
-      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
         {items.map((item) => {
           const external = isExternalHref(item.href);
           const inner = (

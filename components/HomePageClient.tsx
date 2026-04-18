@@ -444,7 +444,7 @@ function NewToLibrarySection() {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${FEATURED_CARD_CLASS} no-underline text-inherit`}
+            className={`${FEATURED_CARD_CLASS} no-underline text-inherit min-h-[100px] items-start`}
           >
             <div className="relative z-[1] min-w-0 flex-1 space-y-1.5">
               <p className="text-base font-semibold text-neutral-100 leading-snug">
