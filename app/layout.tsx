@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { ViewTransitions } from "next/view-transitions";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { BackToTopButton } from "@/components/BackToTopButton";
@@ -84,13 +85,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ backgroundColor: "#0a0a0a" }}
       >
-        <div className="relative z-10">
-          <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
-        </div>
-        <BackToTopButton />
-        <CursorGlow />
-        <CustomCursor />
-        <Analytics />
+        <ViewTransitions>
+          <div className="relative z-10">
+            <KeyboardShortcutsProvider>{children}</KeyboardShortcutsProvider>
+          </div>
+          <BackToTopButton />
+          <CursorGlow />
+          <CustomCursor />
+          <Analytics />
+        </ViewTransitions>
       </body>
     </html>
   );

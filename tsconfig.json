@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "next/view-transitions": ["./node_modules/next-view-transitions"]
     }
   },
   "include": [
