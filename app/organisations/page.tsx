@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { useRegisterSiteSearch } from "@/components/KeyboardShortcutsProvider";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
@@ -15,6 +23,8 @@ import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import { organisations } from "@/lib/data/organisations";
 import { logSearch } from "@/lib/supabase";
+
+const ITEMS_PER_PAGE = 12;
 
 const organisationTagsUnique = Array.from(
   new Set(organisations.flatMap((o) => o.tags)),
@@ -66,10 +76,14 @@ function OrganisationsGrid({
   searchTerm,
   activeTag,
   onResetSearchAndFilters,
+  currentPage,
+  setCurrentPage,
 }: {
   searchTerm: string;
   activeTag: string | null;
   onResetSearchAndFilters: () => void;
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }) {
   const sortedOrganisations = [...organisations].sort((a, b) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
@@ -101,10 +115,32 @@ function OrganisationsGrid({
     );
   }
 
+  const totalPages = Math.ceil(filteredOrganisations.length / ITEMS_PER_PAGE);
+  const paginatedItems = filteredOrganisations.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
+  const pageWindowSize = Math.min(5, totalPages);
+  const startPage = Math.max(
+    1,
+    Math.min(
+      currentPage - Math.floor(pageWindowSize / 2),
+      totalPages - pageWindowSize + 1,
+    ),
+  );
+  const pageNumbers = Array.from({ length: pageWindowSize }, (_, i) => startPage + i);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <section className="space-y-4">
-      <div className="grid gap-5 md:grid-cols-2">
-        {filteredOrganisations.map((org) => (
+    <>
+      <section className="space-y-4">
+        <div className="grid gap-5 md:grid-cols-2">
+        {paginatedItems.map((org) => (
           <div
             key={org.name}
             className="relative overflow-visible border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
@@ -158,14 +194,56 @@ function OrganisationsGrid({
             </div>
           </div>
         ))}
-      </div>
-    </section>
+        </div>
+      </section>
+      {totalPages > 1 ? (
+        <div className="flex items-center justify-center gap-2 mt-8 mb-4">
+          <button
+            type="button"
+            disabled={currentPage === 1}
+            onClick={() => {
+              setCurrentPage((p) => p - 1);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="rounded-xl border border-[#2a2a2a] bg-[#111] px-4 py-2 text-sm text-neutral-400 hover:text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            Previous
+          </button>
+          {pageNumbers.map((pageNum) => (
+            <button
+              key={pageNum}
+              type="button"
+              onClick={() => goToPage(pageNum)}
+              className={`rounded-xl border px-3 py-2 text-sm transition-all duration-200 ${
+                pageNum === currentPage
+                  ? "border-[#555] bg-[#222] text-white"
+                  : "border-[#2a2a2a] bg-transparent text-neutral-500 hover:text-white"
+              }`}
+            >
+              {pageNum}
+            </button>
+          ))}
+          <button
+            type="button"
+            disabled={currentPage === totalPages}
+            onClick={() => {
+              setCurrentPage((p) => p + 1);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="rounded-xl border border-[#2a2a2a] bg-[#111] px-4 py-2 text-sm text-neutral-400 hover:text-white transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
+        </div>
+      ) : null}
+    </>
   );
 }
 
 export default function OrganisationsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const clearSearch = useCallback(() => setSearchTerm(""), []);
   useRegisterSiteSearch(searchInputRef, clearSearch);
@@ -204,6 +282,10 @@ export default function OrganisationsPage() {
       window.clearTimeout(timeoutId);
     };
   }, [searchTerm, searchResultsCount]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, activeTag]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
@@ -244,6 +326,8 @@ export default function OrganisationsPage() {
               setSearchTerm("");
               setActiveTag(null);
             }}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
         <SiteFooter />
