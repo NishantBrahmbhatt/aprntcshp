@@ -110,7 +110,7 @@ function Glitch404Title() {
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
-      <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:py-8 md:py-10">
+      <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-5 pb-20">
         <SiteNavbar />
         <div className="flex flex-1 flex-col">
           <div className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center sm:py-20 md:py-28">
