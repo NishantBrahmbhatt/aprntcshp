@@ -323,6 +323,9 @@ function HeroSection() {
               Every apprenticeship resource, in one place.
             </span>
           </h1>
+          <p className="mt-4 text-sm text-neutral-600">
+            {organisations.length} organisations · {communities.length} communities · {companies.length} companies · {cvResourcesCount}+ resources
+          </p>
         </div>
       </div>
     </section>
@@ -389,35 +392,53 @@ function RecentlyVisitedSection() {
 }
 
 function SectionsRow() {
+  const gridStyle = {
+    gridTemplateColumns: "repeat(auto-fill, minmax(155px, 1fr))",
+  };
+
+  const renderTile = (tile: (typeof iconGridTiles)[number]) => (
+    <Link
+      key={tile.href}
+      href={tile.href}
+      className="group relative overflow-hidden flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[12px] border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] px-4 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-all duration-300 ease hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
+    >
+      <tile.Icon
+        className="relative z-[1] h-6 w-6 text-[#888] transition-all duration-300 ease group-hover:text-white"
+        aria-hidden="true"
+      />
+      <span
+        className="relative z-[1] text-xs font-medium leading-[1.3] text-[#888] transition-all duration-300 ease group-hover:text-white"
+        style={{
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+        }}
+      >
+        {tile.label}
+      </span>
+    </Link>
+  );
+
   return (
     <section className="mt-8" id="sections">
-      <div
-        className="grid gap-3"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(155px, 1fr))" }}
-      >
-        {iconGridTiles.map((tile) => (
-          <Link
-            key={tile.href}
-            href={tile.href}
-            className="group relative overflow-hidden flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[12px] border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] px-4 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-all duration-300 ease hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),_inset_0_0_0_1px_rgba(255,255,255,0.06)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
-          >
-            <tile.Icon
-              className="relative z-[1] h-6 w-6 text-[#888] transition-all duration-300 ease group-hover:text-white"
-              aria-hidden="true"
-            />
-            <span
-              className="relative z-[1] text-xs font-medium leading-[1.3] text-[#888] transition-all duration-300 ease group-hover:text-white"
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-              }}
-            >
-              {tile.label}
-            </span>
-          </Link>
-        ))}
+      <div className="space-y-6">
+        <div>
+          <p className="text-[11px] font-medium tracking-[0.2em] text-neutral-600 uppercase mb-3">
+            Browse
+          </p>
+          <div className="grid gap-3" style={gridStyle}>
+            {iconGridTiles.slice(0, 14).map((tile) => renderTile(tile))}
+          </div>
+        </div>
+        <div>
+          <p className="text-[11px] font-medium tracking-[0.2em] text-neutral-600 uppercase mb-3">
+            By Industry
+          </p>
+          <div className="grid gap-3" style={gridStyle}>
+            {iconGridTiles.slice(14).map((tile) => renderTile(tile))}
+          </div>
+        </div>
       </div>
     </section>
   );

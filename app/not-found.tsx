@@ -126,13 +126,13 @@ export default function NotFound() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/"
-                className="rounded-full border border-[#2a2a2a] bg-[#111] px-5 py-2 text-[13px] text-[#888] transition-colors duration-200 ease hover:text-white"
+                className="bg-white text-black border border-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-neutral-200 transition-all duration-200"
               >
                 Go home
               </Link>
               <Link
                 href="/resources"
-                className="rounded-full border border-[#2a2a2a] bg-[#111] px-5 py-2 text-[13px] text-[#888] transition-colors duration-200 ease hover:text-white"
+                className="bg-transparent text-neutral-400 border border-[#2a2a2a] px-5 py-2.5 rounded-full text-sm hover:text-white hover:border-[#444] transition-all duration-200"
               >
                 Browse resources
               </Link>

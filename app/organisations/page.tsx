@@ -169,6 +169,9 @@ function OrganisationsGrid({
                   <h2 className="text-base font-semibold text-neutral-50">
                     {org.name}
                   </h2>
+                  <p className="text-xs text-neutral-500 mt-1 mb-2 line-clamp-2">
+                    {org.description}
+                  </p>
                   <div
                     className="flex flex-wrap gap-[6px]"
                     style={{

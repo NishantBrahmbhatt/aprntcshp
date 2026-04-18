@@ -142,35 +142,38 @@ function CommunitiesGrid({
     <>
       <section className="space-y-4">
         <div className="grid gap-5 md:grid-cols-2">
-        {paginatedItems.map((org) => (
+        {paginatedItems.map((community) => (
           <div
-            key={org.name}
+            key={community.name}
             className="relative overflow-visible border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.13),_inset_0_0_0_1px_rgba(255,255,255,0.04)] translate-y-0 transition-[transform,box-shadow,border-color] [transition-duration:0.3s,120ms,120ms] [transition-timing-function:ease,cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-[#383838] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),_inset_0_0_0_1px_rgba(255,255,255,0.06)] p-[14px] md:p-5 text-sm text-neutral-200 flex flex-col gap-3 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[60px] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,transparent_100%)] before:pointer-events-none"
           >
-            <NewBadge dateAdded={org.dateAdded} />
+            <NewBadge dateAdded={community.dateAdded} />
             <div className="absolute top-[14px] right-[14px] z-[2] hidden md:block md:top-5 md:right-5">
               <a
-                href={org.url}
+                href={community.url}
                 target="_blank"
                 rel="noreferrer"
                 className="shrink-0 text-neutral-500 transition-colors duration-200 ease hover:text-neutral-300"
-                aria-label={`Open ${org.name} in new tab`}
+                aria-label={`Open ${community.name} in new tab`}
               >
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
             <a
-              href={org.url}
+              href={community.url}
               target="_blank"
               rel="noreferrer"
               className="group/link flex w-full min-w-0 items-start gap-4 md:pr-12"
             >
               <div className="flex min-w-0 items-start gap-4">
-                <OrganisationLogo src={org.logo} alt={org.name} />
+                <OrganisationLogo src={community.logo} alt={community.name} />
                 <div className="min-w-0">
                   <h2 className="text-base font-semibold text-neutral-50">
-                    {org.name}
+                    {community.name}
                   </h2>
+                  <p className="text-xs text-neutral-500 mt-1 mb-2 line-clamp-2">
+                    {community.description}
+                  </p>
                   <div
                     className="flex flex-wrap gap-[6px]"
                     style={{
@@ -179,7 +182,7 @@ function CommunitiesGrid({
                       paddingTop: 10,
                     }}
                   >
-                    {org.tags.map((tag) => (
+                    {community.tags.map((tag) => (
                       <TagTooltipPill key={tag} tag={tag} />
                     ))}
                   </div>
@@ -187,10 +190,10 @@ function CommunitiesGrid({
               </div>
             </a>
             <div className="flex w-full items-center gap-2">
-              <CopyCardLinkButton href={org.url} quiet />
+              <CopyCardLinkButton href={community.url} quiet />
               <div className="ml-auto">
                 <VoteButton
-                  resourceId={voteResourceId(org.name, org.description)}
+                  resourceId={voteResourceId(community.name, community.description)}
                   quiet
                 />
               </div>

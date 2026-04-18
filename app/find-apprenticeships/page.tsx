@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -167,15 +168,48 @@ function LinkCard({
 }
 
 export default function FindApprenticeshipsPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredPlatforms = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
+    if (!q) return platforms;
+    return platforms.filter(
+      (p) =>
+        p.title.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q),
+    );
+  }, [searchTerm]);
+
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-neutral-50">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-5 pb-20">
         <SiteNavbar />
         <div className="flex-1">
           <PageHeader />
+          <div className="pb-6">
+            <div className="relative w-full max-w-2xl">
+              <input
+                type="search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search platforms..."
+                className={`w-full bg-[#111] border border-[#333] rounded-[8px] py-3 pl-4 text-neutral-100 placeholder:text-[#444] transition-[border-color] duration-300 ease focus:border-[#666] focus:shadow-[0_0_0_1px_#444] focus:outline-none ${searchTerm ? "pr-10" : "pr-4"}`}
+              />
+              {searchTerm ? (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-0 top-0 flex h-full items-center px-3 text-sm leading-none text-neutral-500 transition-[color] duration-200 ease hover:text-neutral-300"
+                >
+                  ×
+                </button>
+              ) : null}
+            </div>
+          </div>
           <section className="space-y-4">
             <div className="grid gap-5 md:grid-cols-2">
-              {platforms.map((card) => (
+              {filteredPlatforms.map((card) => (
                 <LinkCard
                   key={card.href}
                   title={card.title}

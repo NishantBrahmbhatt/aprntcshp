@@ -48,7 +48,7 @@ function PageHeader() {
 function SectionHeading({ title }: { title: string }) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <h2 className="scroll-mt-[72px] text-sm font-medium tracking-wide text-neutral-300 uppercase">
+      <h2 className="scroll-mt-[72px] text-sm font-medium tracking-wide text-neutral-300">
         {title}
       </h2>
     </div>

@@ -61,7 +61,7 @@ function PageHeader() {
 function SectionHeading({ title, className }: { title: string; className?: string }) {
   return (
     <div className={`flex items-center justify-between gap-4${className ? ` ${className}` : ""}`}>
-      <h2 className="text-sm font-medium tracking-wide text-neutral-300 uppercase">
+      <h2 className="text-sm font-medium tracking-wide text-neutral-300">
         {title}
       </h2>
     </div>
@@ -111,7 +111,7 @@ function LawSectionsNav({
       ref={scrollContainerRef}
       aria-label="Law guide sections"
       style={{ scrollbarWidth: "none" }}
-      className="sticky top-0 z-20 flex w-full flex-nowrap overflow-x-auto border-b border-[#1a1a1a]/80 bg-[#0f0f0f] py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
+      className="sticky top-0 z-20 flex w-full flex-nowrap overflow-x-auto bg-[#0f0f0f] py-3 md:bg-[#0f0f0f]/95 md:backdrop-blur-sm [&::-webkit-scrollbar]:[display:none]"
     >
       <div className="flex w-max min-w-0 flex-nowrap justify-start gap-2 pr-6">
         {SECTION_PILLS.map((pill) => {
@@ -325,9 +325,9 @@ export default function LawIndustryPage() {
           <section
             ref={firmsRef}
             id={SECTION_IDS.firms}
-            className="scroll-mt-[72px] space-y-4 pb-10"
+            className="scroll-mt-[72px] space-y-4 py-10"
           >
-            <SectionHeading title="Firms" className="mt-6" />
+            <SectionHeading title="Firms" />
             <div className="grid gap-5 md:grid-cols-2">
               {firms.map((firm) => (
                 <FirmCard
