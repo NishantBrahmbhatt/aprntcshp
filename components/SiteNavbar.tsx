@@ -21,7 +21,7 @@ import { NavbarLogo } from "@/components/NavbarLogo";
 import { SharePageModal } from "@/components/SharePageModal";
 import { SuggestResourceModal } from "@/components/SuggestResourceModal";
 import { SearchEmptyState } from "@/components/EmptyState";
-import { platforms } from "@/app/find-apprenticeships/page";
+import { platforms } from "@/lib/data/platforms";
 import {
   apprenticeshipGuides,
   assessmentCentre,

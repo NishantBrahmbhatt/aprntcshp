@@ -1,0 +1,123 @@
+export type Platform = {
+  title: string;
+  source: string;
+  description: string;
+  href: string;
+};
+
+export const platforms: Platform[] = [
+  {
+    title: "Creative Dimension Trust",
+    source: "Creative Dimension Trust",
+    description: "Apprenticeships and programmes in the creative industry.",
+    href: "https://creativelivesinprogress.com/articles/creative-apprenticeships-and-programmes",
+  },
+  {
+    title: "Pathway CTM",
+    source: "Pathway CTM",
+    description: "Careers and apprenticeship opportunities across multiple sectors.",
+    href: "https://pathwayctm.com/",
+  },
+  {
+    title: "Higherin",
+    source: "Higherin",
+    description: "Search apprenticeship vacancies alongside community reviews.",
+    href: "https://higherin.com/search-jobs",
+  },
+  {
+    title: "GradCracker",
+    source: "GradCracker",
+    description: "STEM-focused degree apprenticeships and graduate schemes.",
+    href: "https://www.gradcracker.com/search/all-disciplines/degree-apprenticeships",
+  },
+  {
+    title: "Apprentago",
+    source: "Apprentago",
+    description: "UK apprenticeship search platform for school leavers.",
+    href: "https://apprentago.co.uk/",
+  },
+  {
+    title: "ApprenticeWatch",
+    source: "ApprenticeWatch",
+    description: "Browse live apprenticeship vacancies across the UK.",
+    href: "https://apprenticewatch.com/apprenticeships",
+  },
+  {
+    title: "NotGoingToUni",
+    source: "NotGoingToUni",
+    description: "Apprenticeship and school leaver opportunities.",
+    href: "https://notgoingtouni.co.uk/opportunities",
+  },
+  {
+    title: "ApprenticeTrack",
+    source: "ApprenticeTrack",
+    description: "Track and find apprenticeship opportunities.",
+    href: "https://theapprenticetrack.co.uk/",
+  },
+  {
+    title: "UCAS",
+    source: "UCAS",
+    description: "Search apprenticeships on the UK's official application platform.",
+    href: "https://www.ucas.com/explore/search/apprenticeships",
+  },
+  {
+    title: "Gov.uk",
+    source: "Gov.uk",
+    description: "The government's official apprenticeship search service.",
+    href: "https://www.findapprenticeship.service.gov.uk/apprenticeships",
+  },
+  {
+    title: "Amazing Apprenticeships",
+    source: "Amazing Apprenticeships",
+    description: "Browse apprenticeships by employer.",
+    href: "https://www.amazingapprenticeships.com/meet-the-employer/",
+  },
+  {
+    title: "QA",
+    source: "QA",
+    description: "Apprenticeship jobs across tech and digital sectors.",
+    href: "https://www.qa.com/apprenticeships/apprenticeship-jobs/",
+  },
+  {
+    title: "Placer Apprenticeships",
+    source: "Placer Apprenticeships",
+    description: "Search apprenticeship vacancies by location and sector.",
+    href: "https://apprenticeships.placer.co.uk/jobs",
+  },
+  {
+    title: "RISE Network",
+    source: "RISE Network",
+    description: "Apprenticeship opportunities via RISE Network (free account needed).",
+    href: "https://risenetwork.online/apprenticeships",
+  },
+  {
+    title: "All About School Leavers",
+    source: "All About School Leavers",
+    description: "Apprenticeship and school leaver opportunities across the UK.",
+    href: "https://www.allaboutschoolleavers.co.uk/jobs/apprenticeships",
+  },
+  {
+    title: "Best Apprenticeships",
+    source: "Best Apprenticeships",
+    description: "Browse apprenticeships by employer, sector and location.",
+    href: "https://www.bestapprenticeships.com/find-apprenticeships/",
+  },
+  {
+    title: "Success at School",
+    source: "Success at School",
+    description: "Search apprenticeship and school leaver vacancies.",
+    href: "https://www.successatschool.org/jobs",
+  },
+  {
+    title: "Talentix",
+    source: "Talentix",
+    description: "Track and find apprenticeship opportunities.",
+    href: "https://talentix.co.uk/apprenticeship-tracker",
+  },
+  {
+    title: "Young Professionals",
+    source: "Young Professionals",
+    description: "Apprenticeship opportunities for young people across the UK.",
+    href: "https://apprenticeships.co.uk/jobs/role/apprenticeships",
+  },
+];
