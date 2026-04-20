@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { organisations } from "@/lib/data/organisations";
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
-import { platforms } from "@/lib/data/platforms";
+import { platforms } from "@/app/find-apprenticeships/page";
 import {
   templates,
   cvAdvice,

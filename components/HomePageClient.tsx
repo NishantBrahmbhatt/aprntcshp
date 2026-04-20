@@ -375,12 +375,15 @@ function RecentlyVisitedSection() {
       <h2 className="text-sm font-normal tracking-[0.05em] text-neutral-500">
         Continue where you left off
       </h2>
-      <div className="flex flex-row gap-3 mt-4">
+      <div
+        className="flex flex-row gap-3 mt-4 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: "none" }}
+      >
         {items.map((item) => (
           <Link
             key={`${item.href}-${item.visitedAt}`}
             href={item.href}
-            className="group flex items-center gap-3 rounded-[10px] border border-solid border-[#2a2a2a] bg-[#111] px-5 py-4 text-[13px] text-[#888] transition-all duration-300 ease hover:-translate-y-0.5 hover:border-[#383838] hover:text-white"
+            className="group shrink-0 flex items-center gap-3 rounded-[10px] border border-solid border-[#2a2a2a] bg-[#111] px-5 py-4 text-[13px] text-[#888] transition-all duration-300 ease hover:-translate-y-0.5 hover:border-[#383838] hover:text-white"
           >
             <Clock size={14} className="shrink-0" aria-hidden />
             <span>{item.label}</span>
