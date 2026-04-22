@@ -53,7 +53,7 @@ export default function RootLayout({
         </Script>
         <Script id="featurebase-init-messenger" strategy="afterInteractive">
           {`window.Featurebase && Featurebase("boot", {
-  appId: "YOUR_ACTUAL_APP_ID",
+  appId: "69bfdd57348f948db857faa9",
   theme: "dark",
   language: "en"
 });`}
