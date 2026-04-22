@@ -53,7 +53,7 @@ export default function RootLayout({
         </Script>
         <Script id="featurebase-init-messenger" strategy="afterInteractive">
           {`window.Featurebase && Featurebase("boot", {
-  appId: "aprntcshp",
+  appId: "YOUR_ACTUAL_APP_ID",
   theme: "dark",
   language: "en"
 });`}
