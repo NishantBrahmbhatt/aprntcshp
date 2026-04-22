@@ -48,6 +48,7 @@ const sectionTiles = [
   { label: "Companies", Icon: Briefcase, href: "/companies" },
   { label: "Industries", Icon: Briefcase, href: "/industries" },
   { label: "Resources", Icon: FileText, href: "/resources" },
+  { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "Communities", Icon: Users, href: "/communities" },
 ];
 

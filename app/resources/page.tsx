@@ -19,7 +19,6 @@ import {
   linkedinPersonalBrand,
   psychometricTests,
   templates,
-  workExperience,
   type CvResourceType,
 } from "@/lib/data/cv-resources";
 
@@ -41,7 +40,6 @@ const SECTION_IDS = {
   interviewPrep: "resources-section-interview-prep",
   psychometricTests: "resources-section-psychometric-tests",
   assessmentCentre: "resources-section-assessment-centre",
-  workExperience: "resources-section-work-experience",
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
   getInspired: "resources-section-get-inspired",
 } as const;
@@ -57,7 +55,6 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
   { id: SECTION_IDS.psychometricTests, label: "Psychometric Tests" },
   { id: SECTION_IDS.assessmentCentre, label: "Assessment Centre" },
-  { id: SECTION_IDS.workExperience, label: "Work Experience" },
   {
     id: SECTION_IDS.linkedinPersonalBrand,
     label: "LinkedIn & Personal Brand",
@@ -301,7 +298,6 @@ export default function CvResourcesPage() {
   const interviewPrepRef = useRef<HTMLElement | null>(null);
   const psychometricTestsRef = useRef<HTMLElement | null>(null);
   const assessmentCentreRef = useRef<HTMLElement | null>(null);
-  const workExperienceRef = useRef<HTMLElement | null>(null);
   const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
   const getInspiredRef = useRef<HTMLElement | null>(null);
 
@@ -319,7 +315,6 @@ export default function CvResourcesPage() {
       interviewPrepRef.current,
       psychometricTestsRef.current,
       assessmentCentreRef.current,
-      workExperienceRef.current,
       linkedinPersonalBrandRef.current,
       getInspiredRef.current,
     ].filter((n): n is HTMLElement => n !== null);
@@ -534,30 +529,6 @@ export default function CvResourcesPage() {
             <SectionHeading title="Assessment Centre" />
             <div className="grid gap-5 md:grid-cols-2">
               {assessmentCentre.map((card) => (
-                <LinkCard
-                  key={`${card.title}-${card.href}`}
-                  title={card.title}
-                  source={card.source}
-                  href={card.href}
-                  type={card.type}
-                  dateAdded={
-                    "dateAdded" in card ? card.dateAdded : undefined
-                  }
-                />
-              ))}
-            </div>
-          </section>
-
-          <SectionDivider />
-
-          <section
-            ref={workExperienceRef}
-            id={SECTION_IDS.workExperience}
-            className="scroll-mt-[72px] space-y-4 py-10"
-          >
-            <SectionHeading title="Work Experience" />
-            <div className="grid gap-5 md:grid-cols-2">
-              {workExperience.map((card) => (
                 <LinkCard
                   key={`${card.title}-${card.href}`}
                   title={card.title}

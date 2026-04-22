@@ -73,7 +73,7 @@ const iconGridTiles = [
   { label: "Interview Prep", Icon: MessageSquare, href: "/resources#resources-section-interview-prep" },
   { label: "Psychometric Tests", Icon: Brain, href: "/resources#resources-section-psychometric-tests" },
   { label: "Assessment Centres", Icon: ClipboardList, href: "/resources#resources-section-assessment-centre" },
-  { label: "Work Experience", Icon: Briefcase, href: "/resources#resources-section-work-experience" },
+  { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "LinkedIn & Personal Brand", Icon: Linkedin, href: "/resources#resources-section-linkedin-personal-brand" },
   { label: "Get Inspired", Icon: Sparkles, href: "/resources#resources-section-get-inspired" },
   { label: "Law", Icon: Scale, href: "/industries/law" },
