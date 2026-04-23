@@ -97,6 +97,15 @@ export const communities: Community[] = [
     tags: ["Resources", "Careers Advice", "Online"],
   },
   {
+    name: "Ayoub Gutin Database",
+    description:
+      "Degree apprenticeship dataset and links curated to help students research roles and applications.",
+    url: "https://heady-stranger-6bd.notion.site/Degree-Apprenticeship-Dataset-7ab670d05cae4b398c073a4f4ad8f7e0",
+    logo: "/logos/ayoub_gutin_logo.png",
+    tags: ["Resources", "Careers Advice", "Online"],
+    dateAdded: "2026-04-23",
+  },
+  {
     name: "LACE Network",
     description:
       "A community for aspiring, current and alumni apprentices. Hosts online and in-person networking events to help members build their network and navigate their apprenticeship journey.",

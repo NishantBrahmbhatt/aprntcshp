@@ -10,6 +10,7 @@ import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import {
   apprenticeshipsVsUniversity,
+  apprenticeshipApplicationGuides,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -18,6 +19,7 @@ import {
   getInspired,
   interviewPrep,
   linkedinPersonalBrand,
+  onlineAssessment,
   psychometricTests,
   templates,
   type CvResourceType,
@@ -39,7 +41,10 @@ const SECTION_IDS = {
   writingCv: "resources-section-writing-cv",
   coverLetters: "resources-section-cover-letters",
   interviewPrep: "resources-section-interview-prep",
+  apprenticeshipApplicationGuides:
+    "resources-section-apprenticeship-application-guides",
   psychometricTests: "resources-section-psychometric-tests",
+  onlineAssessment: "resources-section-online-assessment",
   assessmentCentre: "resources-section-assessment-centre",
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
   apprenticeshipsVsUniversity: "resources-section-apprenticeships-vs-university",
@@ -55,7 +60,12 @@ const SECTION_PILLS: { id: string; label: string }[] = [
     label: "Cover Letters & Personal Statements",
   },
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
+  {
+    id: SECTION_IDS.apprenticeshipApplicationGuides,
+    label: "Apprenticeship Application Guides",
+  },
   { id: SECTION_IDS.psychometricTests, label: "Psychometric Tests" },
+  { id: SECTION_IDS.onlineAssessment, label: "Online Assessment" },
   { id: SECTION_IDS.assessmentCentre, label: "Assessment Centre" },
   {
     id: SECTION_IDS.linkedinPersonalBrand,
@@ -302,7 +312,9 @@ export default function CvResourcesPage() {
   const writingCvRef = useRef<HTMLElement | null>(null);
   const coverLettersRef = useRef<HTMLElement | null>(null);
   const interviewPrepRef = useRef<HTMLElement | null>(null);
+  const apprenticeshipApplicationGuidesRef = useRef<HTMLElement | null>(null);
   const psychometricTestsRef = useRef<HTMLElement | null>(null);
+  const onlineAssessmentRef = useRef<HTMLElement | null>(null);
   const assessmentCentreRef = useRef<HTMLElement | null>(null);
   const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
   const apprenticeshipsVsUniversityRef = useRef<HTMLElement | null>(null);
@@ -320,7 +332,9 @@ export default function CvResourcesPage() {
       writingCvRef.current,
       coverLettersRef.current,
       interviewPrepRef.current,
+      apprenticeshipApplicationGuidesRef.current,
       psychometricTestsRef.current,
+      onlineAssessmentRef.current,
       assessmentCentreRef.current,
       linkedinPersonalBrandRef.current,
       apprenticeshipsVsUniversityRef.current,
@@ -522,6 +536,48 @@ export default function CvResourcesPage() {
                   dateAdded={
                     "dateAdded" in card ? card.dateAdded : undefined
                   }
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={apprenticeshipApplicationGuidesRef}
+            id={SECTION_IDS.apprenticeshipApplicationGuides}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Apprenticeship Application Guides" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {apprenticeshipApplicationGuides.map((card) => (
+                <LinkCard
+                  key={`${card.title}-${card.href}`}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                  type={card.type}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={onlineAssessmentRef}
+            id={SECTION_IDS.onlineAssessment}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Online Assessment" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {onlineAssessment.map((card) => (
+                <LinkCard
+                  key={`${card.title}-${card.href}`}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                  type={card.type}
                 />
               ))}
             </div>

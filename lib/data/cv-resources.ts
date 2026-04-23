@@ -149,6 +149,18 @@ export const cvAdvice = [
     dateAdded: "2026-04-23",
     type: "Article" as const,
   },
+  {
+    title: "CV FAQs",
+    source: "Uptree",
+    href: "https://uptree.co/cms_documents/134/CV_FAQs_LRWFOOs.pdf",
+    type: "PDF" as const,
+  },
+  {
+    title: "CV Writing Guide",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=mBDZJMTmUc0&list=PLeXiTfgA1iBpr7gd_pqFUgQ-CLDNW9tXi&index=2&pp=iAQB",
+    type: "Video" as const,
+  },
 ];
 
 export const coverLetters = [
@@ -218,6 +230,18 @@ export const coverLetters = [
     href: "https://higherin.com/careers-advice/application-tips/apprenticeship-cover-letter",
     dateAdded: "2026-03-01",
     type: "Article" as const,
+  },
+  {
+    title: "Cover Letter FAQs",
+    source: "Uptree",
+    href: "https://uptree.co/cms_documents/135/Cover_letter_FAQs.pdf",
+    type: "PDF" as const,
+  },
+  {
+    title: "Cover Letter Guide",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=e3kXL5gyi0w&list=PLeXiTfgA1iBpr7gd_pqFUgQ-CLDNW9tXi&index=1&t=1s&pp=iAQB",
+    type: "Video" as const,
   },
 ];
 
@@ -364,6 +388,45 @@ export const apprenticeshipGuides = [
   },
 ];
 
+export const apprenticeshipApplicationGuides = [
+  {
+    title: "Degree Apprenticeship Applications Guide",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=kntUzLRljwI&list=PLeXiTfgA1iBpr7gd_pqFUgQ-CLDNW9tXi&index=3&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Application Guide Video 1",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=XCGLkcI1t3E&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=2&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Application Guide Video 2",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=GXJgFwDLYuY&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=3&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Application Guide Video 3",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=de6BLMEzYvs&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=4&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Application Guide Video 4",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=0XQnpnnt-aY&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=5&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Application Guide Video 5",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=gcKZMLmqUsw&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=6&pp=iAQB",
+    type: "Video" as const,
+  },
+];
+
 export const interviewPrep = [
   {
     title: "A Guide to Apprenticeship Interviews",
@@ -470,6 +533,18 @@ export const interviewPrep = [
     dateAdded: "2026-04-23",
     type: "Article" as const,
   },
+  {
+    title: "Interview Guide",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=kjAXvJcDQZw&list=PLeXiTfgA1iBpr7gd_pqFUgQ-CLDNW9tXi&index=8&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Interview Guide Video 2",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=XHDLIi_CraM&list=PLeXiTfgA1iBqQDb2Y05B7waaZnXKsu8kN&index=1&pp=iAQB0gcJCcMKAYcqIYzv",
+    type: "Video" as const,
+  },
 ];
 
 export const psychometricTests = [
@@ -485,6 +560,15 @@ export const psychometricTests = [
     href: "https://higherin.com/careers-advice/application-tips/psychometric-tests",
     dateAdded: "2026-03-01",
     type: "Article" as const,
+  },
+];
+
+export const onlineAssessment = [
+  {
+    title: "Arctic Shores Full Guide",
+    source: "YouTube Playlist",
+    href: "https://www.youtube.com/playlist?list=PLeXiTfgA1iBryhX3nOIFxeTpII6Udd-wT",
+    type: "Video" as const,
   },
 ];
 
@@ -632,6 +716,18 @@ export const workExperience = [
     dateAdded: "2026-03-01",
     type: "Tool" as const,
   },
+  {
+    title: "Work Experience Guide",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=i3I5yBTdWio&list=PLeXiTfgA1iBpr7gd_pqFUgQ-CLDNW9tXi&index=12&pp=iAQB",
+    type: "Video" as const,
+  },
+  {
+    title: "Work Experience Advice",
+    source: "YouTube",
+    href: "https://www.youtube.com/watch?v=tUdQDC6t5sI&list=PLeXiTfgA1iBp1EArtqGlKy5oUpQlCdCxZ&index=4&pp=iAQB",
+    type: "Video" as const,
+  },
 ];
 
 export const linkedinPersonalBrand = [
@@ -679,8 +775,10 @@ export const cvResourcesCount =
   cvAdvice.length +
   coverLetters.length +
   apprenticeshipGuides.length +
+  apprenticeshipApplicationGuides.length +
   interviewPrep.length +
   psychometricTests.length +
+  onlineAssessment.length +
   assessmentCentre.length +
   workExperience.length +
   linkedinPersonalBrand.length +
