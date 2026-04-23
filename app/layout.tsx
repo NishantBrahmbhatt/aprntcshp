@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import { ViewTransitions } from "next/view-transitions";
 import Script from "next/script";
@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   description:
     "Free hub gathering every UK apprenticeship resource in one place. Find organisations, communities, CV templates, and job boards — so you can spend less time searching and more time applying.",
   manifest: "/manifest.json",
-  themeColor: "#0a0a0a",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -36,6 +35,10 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     apple: "/aprntcshp_logo.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({

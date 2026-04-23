@@ -260,7 +260,7 @@ export const organisations: Organisation[] = [
     logo: "/logos/the_apprenticeship_guide_logo.jpg",
     category: "Organisation",
     tags: ["Resources", "Careers Advice", "Community"],
-    dateAdded: "2026-04-05",
+    dateAdded: "2026-03-01",
   },
   {
     name: "Prospects",
@@ -270,7 +270,7 @@ export const organisations: Organisation[] = [
     logo: "/logos/prospects_ac_uk_logo.jpg",
     category: "Organisation",
     tags: ["Resources", "Careers Advice", "Job Board"],
-    dateAdded: "2026-04-05",
+    dateAdded: "2026-03-01",
   },
   {
     name: "Best Apprenticeships",
@@ -280,7 +280,7 @@ export const organisations: Organisation[] = [
     logo: "/logos/best_apprenticeships_logo.jpg",
     category: "Organisation",
     tags: ["Job Board", "Resources", "Careers Advice"],
-    dateAdded: "2026-04-05",
+    dateAdded: "2026-03-01",
   },
   {
     name: "LegalCheek",
@@ -290,7 +290,7 @@ export const organisations: Organisation[] = [
     logo: "/logos/legal_cheek_logo.jpg",
     category: "Organisation",
     tags: ["Sector Specific", "Resources", "Careers Advice"],
-    dateAdded: "2026-04-05",
+    dateAdded: "2026-03-01",
   },
   {
     name: "The Mentors Collective",
@@ -300,7 +300,7 @@ export const organisations: Organisation[] = [
     logo: "/logos/the_mentors_collective_logo.jpg",
     category: "Organisation",
     tags: ["Mentorship", "Community", "Events"],
-    dateAdded: "2026-04-05",
+    dateAdded: "2026-03-01",
   },
   {
     name: "Early Talent Academy",
@@ -310,5 +310,6 @@ export const organisations: Organisation[] = [
     logo: "/logos/early_talent_academy_logo.jpg",
     category: "Organisation",
     tags: ["Job Board", "Resources", "Careers Advice"],
+    dateAdded: "2026-04-23",
   },
 ];

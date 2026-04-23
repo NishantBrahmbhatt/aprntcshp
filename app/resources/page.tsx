@@ -63,7 +63,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   },
   {
     id: SECTION_IDS.apprenticeshipsVsUniversity,
-    label: "Apprenticeships VS University",
+    label: "Apprenticeships vs. University",
   },
   { id: SECTION_IDS.getInspired, label: "Get Inspired" },
 ];
@@ -582,7 +582,7 @@ export default function CvResourcesPage() {
             id={SECTION_IDS.apprenticeshipsVsUniversity}
             className="scroll-mt-[72px] space-y-4 py-10"
           >
-            <SectionHeading title="Apprenticeships VS University" />
+            <SectionHeading title="Apprenticeships vs. University" />
             <div className="grid gap-5 md:grid-cols-2">
               {apprenticeshipsVsUniversity.map((card) => (
                 <LinkCard
@@ -591,9 +591,6 @@ export default function CvResourcesPage() {
                   source={card.source}
                   href={card.href}
                   type={card.type}
-                  dateAdded={
-                    "dateAdded" in card ? card.dateAdded : undefined
-                  }
                 />
               ))}
             </div>

@@ -7,6 +7,7 @@ import {
   Briefcase,
   Building2,
   Building,
+  Landmark,
   ClipboardList,
   Clock,
   Code,
@@ -42,6 +43,7 @@ import { MostUsefulResourcesSection } from "@/components/MostUsefulResourcesSect
 import { cvResourcesCount } from "@/app/resources/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
 import {
+  apprenticeshipsVsUniversity,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -65,7 +67,7 @@ const iconGridTiles = [
   { label: "Organisations", Icon: Building, href: "/organisations" },
   { label: "Communities", Icon: Users, href: "/communities" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
-  { label: "Companies", Icon: Briefcase, href: "/companies" },
+  { label: "Companies", Icon: Landmark, href: "/companies" },
   { label: "Apprenticeship Guides", Icon: BookOpen, href: "/resources#resources-section-apprenticeship-guides" },
   { label: "CV Templates", Icon: FileText, href: "/resources#resources-section-templates" },
   { label: "Writing Your CV", Icon: PenLine, href: "/resources#resources-section-writing-cv" },
@@ -76,6 +78,7 @@ const iconGridTiles = [
   { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "LinkedIn & Personal Brand", Icon: Linkedin, href: "/resources#resources-section-linkedin-personal-brand" },
   { label: "Get Inspired", Icon: Sparkles, href: "/resources#resources-section-get-inspired" },
+  { label: "Apprenticeships vs. University", Icon: GraduationCap, href: "/resources#resources-section-apprenticeships-vs-university" },
   { label: "Law", Icon: Scale, href: "/industries/law" },
   { label: "Finance", Icon: TrendingUp, href: "/industries/finance" },
   { label: "Tech", Icon: Code, href: "/industries/tech" },
@@ -157,6 +160,7 @@ const newLibraryItems: NewLibraryItem[] = (() => {
     psychometricTests,
     assessmentCentre,
     getInspired,
+    apprenticeshipsVsUniversity,
     workExperience,
     linkedinPersonalBrand,
   ].forEach((resourceArray, resourceArrayIndex) => {
@@ -431,7 +435,7 @@ function SectionsRow() {
             Browse
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(0, 14).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(0, 15).map((tile) => renderTile(tile))}
           </div>
         </div>
         <div>
@@ -439,7 +443,7 @@ function SectionsRow() {
             By Industry
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(14).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(15).map((tile) => renderTile(tile))}
           </div>
         </div>
       </div>
