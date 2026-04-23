@@ -1,10 +1,12 @@
+import { TECHACADEMIA_TECHNICAL_CV_HREF } from "./shared/cv-template-links";
+
 export type CvResourceType = "Article" | "PDF" | "Video" | "Template" | "Tool";
 
 export const templates = [
   {
     name: "Techacademia Technical CV",
     description: "Clean, technical format suited for tech degree apprenticeships.",
-    href: "/resources/CV/CV%20Templates/Tech-Academia-Techncial-CV-Template-.docx",
+    href: TECHACADEMIA_TECHNICAL_CV_HREF,
     download: true,
     type: "Template" as const,
   },

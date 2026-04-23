@@ -74,6 +74,12 @@ export function SiteFooter() {
         >
           Industries
         </Link>
+        <Link
+          href="/work-experience"
+          className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors duration-200 no-underline"
+        >
+          Work Experience
+        </Link>
       </div>
       <div className="flex w-full flex-col items-center gap-3 md:grid md:grid-cols-3 md:items-center md:justify-items-stretch md:gap-4 md:px-0 md:py-0">
         <div className="order-1 flex w-full justify-center justify-self-center md:order-none md:w-full md:justify-self-stretch md:justify-start">

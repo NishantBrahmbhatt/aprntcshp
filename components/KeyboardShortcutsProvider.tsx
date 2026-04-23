@@ -95,6 +95,9 @@ export function KeyboardShortcutsProvider({
         c: "/communities",
         f: "/find-apprenticeships",
         r: "/resources",
+        i: "/industries",
+        w: "/work-experience",
+        p: "/companies",
       };
 
       if (gArmedRef.current) {

@@ -1,3 +1,5 @@
+import { TECHACADEMIA_TECHNICAL_CV_HREF } from "../shared/cv-template-links";
+
 export type TechResource = {
   title: string;
   source: string;
@@ -126,6 +128,6 @@ export const cvResources: TechResource[] = [
   {
     title: "Techacademia Technical CV",
     source: "Techacademia",
-    href: "/resources/CV/CV%20Templates/Techacademia_Technical_CV.pdf",
+    href: TECHACADEMIA_TECHNICAL_CV_HREF,
   },
 ];
