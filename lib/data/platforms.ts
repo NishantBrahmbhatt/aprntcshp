@@ -113,4 +113,11 @@ export const platforms = [
     description: "Apprenticeship opportunities for young people across the UK.",
     href: "https://apprenticeships.co.uk/jobs/role/apprenticeships",
   },
+  {
+    title: "Early Talent Academy Tracker",
+    source: "Early Talent Academy",
+    description:
+      "Search and track apprenticeship opportunities across employers and sectors.",
+    href: "https://earlytalentacademy.co.uk/jobs/",
+  },
 ];

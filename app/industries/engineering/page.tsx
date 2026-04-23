@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { PageRating } from "@/components/PageRating";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import {
+  articles,
   aerospace,
   civilEngineering,
   electricalEngineering,
@@ -23,6 +24,7 @@ const SECTION_IDS = {
   electrical: "engineering-section-electrical",
   marine: "engineering-section-marine",
   manufacturing: "engineering-section-manufacturing",
+  articles: "engineering-section-articles",
   getInspired: "engineering-section-get-inspired",
 } as const;
 
@@ -33,6 +35,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.electrical, label: "Electrical Engineering" },
   { id: SECTION_IDS.marine, label: "Marine Engineering" },
   { id: SECTION_IDS.manufacturing, label: "Manufacturing" },
+  { id: SECTION_IDS.articles, label: "Articles" },
   { id: SECTION_IDS.getInspired, label: "Get Inspired" },
 ];
 
@@ -180,6 +183,7 @@ export default function EngineeringIndustryPage() {
   const electricalRef = useRef<HTMLElement | null>(null);
   const marineRef = useRef<HTMLElement | null>(null);
   const manufacturingRef = useRef<HTMLElement | null>(null);
+  const articlesRef = useRef<HTMLElement | null>(null);
   const getInspiredRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
@@ -195,6 +199,7 @@ export default function EngineeringIndustryPage() {
       electricalRef.current,
       marineRef.current,
       manufacturingRef.current,
+      articlesRef.current,
       getInspiredRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
@@ -363,6 +368,26 @@ export default function EngineeringIndustryPage() {
             <SectionHeading title="Manufacturing" />
             <div className="grid gap-5 md:grid-cols-2">
               {manufacturing.map((r) => (
+                <ResourceCard
+                  key={r.href}
+                  title={r.title}
+                  source={r.source}
+                  href={r.href}
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={articlesRef}
+            id={SECTION_IDS.articles}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Articles" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {articles.map((r) => (
                 <ResourceCard
                   key={r.href}
                   title={r.title}

@@ -302,4 +302,13 @@ export const organisations: Organisation[] = [
     tags: ["Mentorship", "Community", "Events"],
     dateAdded: "2026-04-05",
   },
+  {
+    name: "Early Talent Academy",
+    description:
+      "Early careers platform with apprenticeship jobs, employer opportunities, and student resources.",
+    url: "https://earlytalentacademy.co.uk/",
+    logo: "/logos/early_talent_academy_logo.jpg",
+    category: "Organisation",
+    tags: ["Job Board", "Resources", "Careers Advice"],
+  },
 ];

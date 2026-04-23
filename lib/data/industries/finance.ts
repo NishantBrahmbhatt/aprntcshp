@@ -85,6 +85,21 @@ export const resourceSections: FinanceResourceSection[] = [
       },
     ],
   },
+  {
+    label: "Articles",
+    items: [
+      {
+        title: "Apprenticeships in Financial Services",
+        source: "Early Talent Academy",
+        href: "https://earlytalentacademy.co.uk/student/apprenticeships-financial-service/",
+      },
+      {
+        title: "Apprenticeships in the Insurance Industry",
+        source: "Early Talent Academy",
+        href: "https://earlytalentacademy.co.uk/student/apprenticeships-in-insurance/",
+      },
+    ],
+  },
 ];
 
 export const communities = [

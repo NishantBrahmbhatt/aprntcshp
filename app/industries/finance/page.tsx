@@ -13,6 +13,7 @@ const SECTION_IDS = {
   finance: "finance-section-finance",
   accounting: "finance-section-accounting",
   insurance: "finance-section-insurance",
+  articles: "finance-section-articles",
   communities: "finance-section-communities",
 } as const;
 
@@ -21,6 +22,7 @@ const RESOURCE_SUBSECTION_IDS: Record<string, string> = {
   Finance: SECTION_IDS.finance,
   Accounting: SECTION_IDS.accounting,
   Insurance: SECTION_IDS.insurance,
+  Articles: SECTION_IDS.articles,
 };
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -28,6 +30,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.finance, label: "Finance" },
   { id: SECTION_IDS.accounting, label: "Accounting" },
   { id: SECTION_IDS.insurance, label: "Insurance" },
+  { id: SECTION_IDS.articles, label: "Articles" },
   { id: SECTION_IDS.communities, label: "Communities" },
 ];
 
@@ -221,6 +224,7 @@ export default function FinanceIndustryPage() {
   const financeRef = useRef<HTMLElement | null>(null);
   const accountingRef = useRef<HTMLElement | null>(null);
   const insuranceRef = useRef<HTMLElement | null>(null);
+  const articlesRef = useRef<HTMLElement | null>(null);
   const communitiesRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
@@ -234,6 +238,7 @@ export default function FinanceIndustryPage() {
       financeRef.current,
       accountingRef.current,
       insuranceRef.current,
+      articlesRef.current,
       communitiesRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
@@ -310,7 +315,9 @@ export default function FinanceIndustryPage() {
                     ? financeRef
                     : section.label === "Accounting"
                       ? accountingRef
-                      : insuranceRef;
+                      : section.label === "Insurance"
+                        ? insuranceRef
+                        : articlesRef;
               return (
                 <section
                   key={section.label}

@@ -9,6 +9,7 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { VoteButton } from "@/components/VoteButton";
 import { voteResourceId } from "@/lib/vote-resource-id";
 import {
+  apprenticeshipsVsUniversity,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -41,6 +42,7 @@ const SECTION_IDS = {
   psychometricTests: "resources-section-psychometric-tests",
   assessmentCentre: "resources-section-assessment-centre",
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
+  apprenticeshipsVsUniversity: "resources-section-apprenticeships-vs-university",
   getInspired: "resources-section-get-inspired",
 } as const;
 
@@ -58,6 +60,10 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   {
     id: SECTION_IDS.linkedinPersonalBrand,
     label: "LinkedIn & Personal Brand",
+  },
+  {
+    id: SECTION_IDS.apprenticeshipsVsUniversity,
+    label: "Apprenticeships VS University",
   },
   { id: SECTION_IDS.getInspired, label: "Get Inspired" },
 ];
@@ -299,6 +305,7 @@ export default function CvResourcesPage() {
   const psychometricTestsRef = useRef<HTMLElement | null>(null);
   const assessmentCentreRef = useRef<HTMLElement | null>(null);
   const linkedinPersonalBrandRef = useRef<HTMLElement | null>(null);
+  const apprenticeshipsVsUniversityRef = useRef<HTMLElement | null>(null);
   const getInspiredRef = useRef<HTMLElement | null>(null);
 
   const scrollToSection = (sectionId: string) => {
@@ -316,6 +323,7 @@ export default function CvResourcesPage() {
       psychometricTestsRef.current,
       assessmentCentreRef.current,
       linkedinPersonalBrandRef.current,
+      apprenticeshipsVsUniversityRef.current,
       getInspiredRef.current,
     ].filter((n): n is HTMLElement => n !== null);
 
@@ -553,6 +561,30 @@ export default function CvResourcesPage() {
             <SectionHeading title="LinkedIn & Personal Brand" />
             <div className="grid gap-5 md:grid-cols-2">
               {linkedinPersonalBrand.map((card) => (
+                <LinkCard
+                  key={`${card.title}-${card.href}`}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                  type={card.type}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            ref={apprenticeshipsVsUniversityRef}
+            id={SECTION_IDS.apprenticeshipsVsUniversity}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="Apprenticeships VS University" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {apprenticeshipsVsUniversity.map((card) => (
                 <LinkCard
                   key={`${card.title}-${card.href}`}
                   title={card.title}

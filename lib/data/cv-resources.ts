@@ -1,4 +1,7 @@
-import { TECHACADEMIA_TECHNICAL_CV_HREF } from "./shared/cv-template-links";
+import {
+  ETA_APPRENTICE_CV_EXAMPLE_HREF,
+  TECHACADEMIA_TECHNICAL_CV_HREF,
+} from "./shared/cv-template-links";
 
 export type CvResourceType = "Article" | "PDF" | "Video" | "Template" | "Tool";
 
@@ -24,6 +27,12 @@ export const templates = [
     external: true,
     dateAdded: "2026-04-05",
     type: "Template" as const,
+  },
+  {
+    name: "Apprentice CV Example",
+    description: "Example apprenticeship CV template from Early Talent Academy.",
+    href: ETA_APPRENTICE_CV_EXAMPLE_HREF,
+    type: "PDF" as const,
   },
 ];
 
@@ -123,6 +132,18 @@ export const cvAdvice = [
     source: "King's Trust",
     href: "https://www.kingstrust.org.uk/how-we-can-help/tools-resources/finding-job/how-to-create-cv",
     dateAdded: "2026-04-05",
+    type: "Article" as const,
+  },
+  {
+    title: "How To Create a Standout Apprentice CV",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/how-to-create-a-standout-cv/",
+    type: "Article" as const,
+  },
+  {
+    title: "How to Get an Apprenticeship When AI Screens Your Application",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/how-to-get-an-apprenticeship-when-ai-screens-your-application/",
     type: "Article" as const,
   },
 ];
@@ -289,6 +310,48 @@ export const apprenticeshipGuides = [
     dateAdded: "2026-04-05",
     type: "PDF" as const,
   },
+  {
+    title: "Accredited Apprenticeships: What are they?",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/what-are-accredited-apprenticeships/",
+    type: "Article" as const,
+  },
+  {
+    title: "Degree Apprenticeships: Redefining Higher Education",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/degree-apprenticeships-redefining-higher-ed/",
+    type: "Article" as const,
+  },
+  {
+    title: "Apprenticeship Levels Explained",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/apprenticeships-levels-explained/",
+    type: "Article" as const,
+  },
+  {
+    title: "Why Choose an Apprenticeship?",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/why-choose-an-apprenticeship/",
+    type: "Article" as const,
+  },
+  {
+    title: "Apprenticeship Entry Requirements Explained",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/apprenticeship-entry-requirements/",
+    type: "Article" as const,
+  },
+  {
+    title: "Apprenticeship Applications Explained",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/apprenticeship-applications/",
+    type: "Article" as const,
+  },
+  {
+    title: "Foundation Apprenticeships: Learn Real World Skills",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/foundation-apprenticeships-learn-real-world-skills/",
+    type: "Article" as const,
+  },
 ];
 
 export const interviewPrep = [
@@ -383,6 +446,18 @@ export const interviewPrep = [
     dateAdded: "2026-04-05",
     type: "Article" as const,
   },
+  {
+    title: "How to Answer Apprenticeship Interview Questions: Complete Guide",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/how-to-answer-apprenticeship-interview-questions-complete-guide/",
+    type: "Article" as const,
+  },
+  {
+    title: "How to Ace your Apprenticeship Interviews",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/how-to-apprenticeship-interviews/",
+    type: "Article" as const,
+  },
 ];
 
 export const psychometricTests = [
@@ -419,6 +494,12 @@ export const assessmentCentre = [
     source: "Higherin",
     href: "https://higherin.com/careers-advice/interview-tips/apprenticeship-assessment-centres",
     dateAdded: "2026-04-05",
+    type: "Article" as const,
+  },
+  {
+    title: "Apprenticeship Assessment Centre Guide: What to Expect and How to Prepare",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/apprenticeship-assessment-centre-guide-what-to-expect-and-how-to-prepare/",
     type: "Article" as const,
   },
 ];
@@ -465,6 +546,33 @@ export const getInspired = [
     source: "Apprenticeship Guide",
     href: "https://apprenticeshipguide.co.uk/success-overview/",
     dateAdded: "2026-04-05",
+    type: "Article" as const,
+  },
+  {
+    title: "My Degree Apprenticeship Experience: What to Expect",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/my-degree-apprenticeship-experience-what-to-expect/",
+    type: "Article" as const,
+  },
+];
+
+export const apprenticeshipsVsUniversity = [
+  {
+    title: "Future-Proof Skills: Why Apprenticeships are the Smart Choice",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/future-proof-skills/",
+    type: "Article" as const,
+  },
+  {
+    title: "Do You Recognise the Amazing Value of an Apprenticeship?",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/the-value-of-an-apprenticeship/",
+    type: "Article" as const,
+  },
+  {
+    title: "Degree Apprenticeships: A University Alternative?",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/degree-apprenticeships-a-university-alternative/",
     type: "Article" as const,
   },
 ];
@@ -559,4 +667,5 @@ export const cvResourcesCount =
   assessmentCentre.length +
   workExperience.length +
   linkedinPersonalBrand.length +
-  getInspired.length;
+  getInspired.length +
+  apprenticeshipsVsUniversity.length;

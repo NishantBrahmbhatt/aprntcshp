@@ -109,3 +109,11 @@ export const getInspired: EngineeringResource[] = [
     href: "https://www.bestapprenticeships.com/meet-chanda-devops-engineering-apprentice-leeds/",
   },
 ];
+
+export const articles: EngineeringResource[] = [
+  {
+    title: "Apprenticeships in the Engineering Industry",
+    source: "Early Talent Academy",
+    href: "https://earlytalentacademy.co.uk/student/engineering-apprenticeships/",
+  },
+];
