@@ -8,6 +8,7 @@ import {
   Building2,
   Building,
   Landmark,
+  ClipboardCheck,
   ClipboardList,
   Clock,
   Code,
@@ -44,6 +45,7 @@ import { cvResourcesCount } from "@/app/resources/page";
 import { industryGridItems } from "@/app/industries/industry-grid";
 import {
   apprenticeshipsVsUniversity,
+  apprenticeshipApplicationGuides,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -69,7 +71,13 @@ const iconGridTiles = [
   { label: "Communities", Icon: Users, href: "/communities" },
   { label: "Find Apprenticeships", Icon: Search, href: "/find-apprenticeships" },
   { label: "Companies", Icon: Landmark, href: "/companies" },
+  { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "Apprenticeship Guides", Icon: BookOpen, href: "/resources#resources-section-apprenticeship-guides" },
+  {
+    label: "Application Guides",
+    Icon: ClipboardCheck,
+    href: "/resources#resources-section-apprenticeship-application-guides",
+  },
   { label: "CV Templates", Icon: FileText, href: "/resources#resources-section-templates" },
   { label: "Writing Your CV", Icon: PenLine, href: "/resources#resources-section-writing-cv" },
   { label: "Cover Letters", Icon: Mail, href: "/resources#resources-section-cover-letters" },
@@ -77,7 +85,6 @@ const iconGridTiles = [
   { label: "Psychometric Tests", Icon: Brain, href: "/resources#resources-section-psychometric-tests" },
   { label: "Online Assessment", Icon: ClipboardList, href: "/resources#resources-section-online-assessment" },
   { label: "Assessment Centres", Icon: ClipboardList, href: "/resources#resources-section-assessment-centre" },
-  { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "LinkedIn & Personal Brand", Icon: Linkedin, href: "/resources#resources-section-linkedin-personal-brand" },
   { label: "Get Inspired", Icon: Sparkles, href: "/resources#resources-section-get-inspired" },
   { label: "Apprenticeships vs. University", Icon: GraduationCap, href: "/resources#resources-section-apprenticeships-vs-university" },
@@ -158,6 +165,7 @@ const newLibraryItems: NewLibraryItem[] = (() => {
     cvAdvice,
     coverLetters,
     apprenticeshipGuides,
+    apprenticeshipApplicationGuides,
     interviewPrep,
     psychometricTests,
     onlineAssessment,
@@ -438,7 +446,7 @@ function SectionsRow() {
             Browse
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(0, 16).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(0, 17).map((tile) => renderTile(tile))}
           </div>
         </div>
         <div>
@@ -446,7 +454,7 @@ function SectionsRow() {
             By Industry
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(16).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(17).map((tile) => renderTile(tile))}
           </div>
         </div>
       </div>

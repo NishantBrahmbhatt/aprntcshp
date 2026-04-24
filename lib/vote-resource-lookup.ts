@@ -3,6 +3,7 @@ import { organisations } from "@/lib/data/organisations";
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import {
+  apprenticeshipApplicationGuides,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -71,6 +72,7 @@ function buildVoteResourceLookup(): Map<string, VoteResourceMeta> {
   addLinkList(cvAdvice);
   addLinkList(coverLetters);
   addLinkList(apprenticeshipGuides);
+  addLinkList(apprenticeshipApplicationGuides);
   addLinkList(interviewPrep);
   addLinkList(psychometricTests);
   addLinkList(assessmentCentre);

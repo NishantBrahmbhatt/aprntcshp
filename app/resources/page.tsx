@@ -62,7 +62,7 @@ const SECTION_PILLS: { id: string; label: string }[] = [
   { id: SECTION_IDS.interviewPrep, label: "Interview Prep" },
   {
     id: SECTION_IDS.apprenticeshipApplicationGuides,
-    label: "Apprenticeship Application Guides",
+    label: "Application Guides",
   },
   { id: SECTION_IDS.psychometricTests, label: "Psychometric Tests" },
   { id: SECTION_IDS.onlineAssessment, label: "Online Assessment" },
@@ -548,7 +548,7 @@ export default function CvResourcesPage() {
             id={SECTION_IDS.apprenticeshipApplicationGuides}
             className="scroll-mt-[72px] space-y-4 py-10"
           >
-            <SectionHeading title="Apprenticeship Application Guides" />
+            <SectionHeading title="Application Guides" />
             <div className="grid gap-5 md:grid-cols-2">
               {apprenticeshipApplicationGuides.map((card) => (
                 <LinkCard

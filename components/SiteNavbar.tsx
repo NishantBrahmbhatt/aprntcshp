@@ -23,6 +23,7 @@ import { SuggestResourceModal } from "@/components/SuggestResourceModal";
 import { SearchEmptyState } from "@/components/EmptyState";
 import { platforms } from "@/lib/data/platforms";
 import {
+  apprenticeshipApplicationGuides,
   apprenticeshipGuides,
   assessmentCentre,
   coverLetters,
@@ -131,6 +132,10 @@ export const globalSearchHits: GlobalSearchHit[] = (() => {
   addResourceTitles(cvAdvice, "cv-advice");
   addResourceTitles(coverLetters, "cover-letters");
   addResourceTitles(apprenticeshipGuides, "apprenticeship-guides");
+  addResourceTitles(
+    apprenticeshipApplicationGuides,
+    "application-guides",
+  );
   addResourceTitles(interviewPrep, "interview-prep");
   addResourceTitles(psychometricTests, "psychometric-tests");
   addResourceTitles(assessmentCentre, "assessment-centre");

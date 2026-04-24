@@ -9,6 +9,7 @@ import {
   templates,
   cvAdvice,
   coverLetters,
+  apprenticeshipApplicationGuides,
   apprenticeshipGuides,
   interviewPrep,
   psychometricTests,
@@ -39,6 +40,7 @@ export default async function StatsPage() {
     cvAdvice.length +
     coverLetters.length +
     apprenticeshipGuides.length +
+    apprenticeshipApplicationGuides.length +
     interviewPrep.length +
     psychometricTests.length +
     assessmentCentre.length +
