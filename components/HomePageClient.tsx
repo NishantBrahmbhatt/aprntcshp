@@ -51,6 +51,7 @@ import {
   getInspired,
   interviewPrep,
   linkedinPersonalBrand,
+  onlineAssessment,
   psychometricTests,
   templates,
   workExperience,
@@ -74,6 +75,7 @@ const iconGridTiles = [
   { label: "Cover Letters", Icon: Mail, href: "/resources#resources-section-cover-letters" },
   { label: "Interview Prep", Icon: MessageSquare, href: "/resources#resources-section-interview-prep" },
   { label: "Psychometric Tests", Icon: Brain, href: "/resources#resources-section-psychometric-tests" },
+  { label: "Online Assessment", Icon: ClipboardList, href: "/resources#resources-section-online-assessment" },
   { label: "Assessment Centres", Icon: ClipboardList, href: "/resources#resources-section-assessment-centre" },
   { label: "Work Experience", Icon: Briefcase, href: "/work-experience" },
   { label: "LinkedIn & Personal Brand", Icon: Linkedin, href: "/resources#resources-section-linkedin-personal-brand" },
@@ -158,6 +160,7 @@ const newLibraryItems: NewLibraryItem[] = (() => {
     apprenticeshipGuides,
     interviewPrep,
     psychometricTests,
+    onlineAssessment,
     assessmentCentre,
     getInspired,
     apprenticeshipsVsUniversity,
@@ -435,7 +438,7 @@ function SectionsRow() {
             Browse
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(0, 15).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(0, 16).map((tile) => renderTile(tile))}
           </div>
         </div>
         <div>
@@ -443,7 +446,7 @@ function SectionsRow() {
             By Industry
           </p>
           <div className="grid gap-3" style={gridStyle}>
-            {iconGridTiles.slice(15).map((tile) => renderTile(tile))}
+            {iconGridTiles.slice(16).map((tile) => renderTile(tile))}
           </div>
         </div>
       </div>
