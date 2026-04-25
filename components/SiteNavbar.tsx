@@ -332,7 +332,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 className={cardClass}
               >
                 <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
-                <span className="relative z-[1] w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666]">
+                <span className="relative z-[1] hidden w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666] sm:inline-flex">
                   {hit.category}
                 </span>
               </a>
@@ -344,7 +344,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 className={cardClass}
               >
                 <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
-                <span className="relative z-[1] w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666]">
+                <span className="relative z-[1] hidden w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666] sm:inline-flex">
                   {hit.category}
                 </span>
               </Link>
