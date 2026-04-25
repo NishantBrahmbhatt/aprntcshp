@@ -319,7 +319,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
       <div className="mx-auto w-full max-w-7xl px-6 pb-10">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {results.map((hit, index) => {
-            const cardClass = `${FEATURED_CARD_CLASS} flex-col gap-1 no-underline text-inherit${
+            const cardClass = `${FEATURED_CARD_CLASS} flex-col items-center justify-center gap-1 text-center no-underline text-inherit${
               index === focusedIndex ? " ring-1 ring-[#555] border-[#555]" : ""
             }`;
             return hit.external ? (
@@ -331,7 +331,9 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 rel="noopener noreferrer"
                 className={cardClass}
               >
-                <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
+                <p className="relative z-[1] w-full break-words text-sm text-neutral-100">
+                  {hit.name}
+                </p>
                 <span className="relative z-[1] hidden w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666] sm:inline-flex">
                   {hit.category}
                 </span>
@@ -343,7 +345,9 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 href={hit.href}
                 className={cardClass}
               >
-                <p className="relative z-[1] text-sm text-neutral-100">{hit.name}</p>
+                <p className="relative z-[1] w-full break-words text-sm text-neutral-100">
+                  {hit.name}
+                </p>
                 <span className="relative z-[1] hidden w-fit rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-[#666] sm:inline-flex">
                   {hit.category}
                 </span>
