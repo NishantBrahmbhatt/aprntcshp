@@ -26,10 +26,12 @@ function LinkCard({
   title,
   href,
   description,
+  note,
 }: {
   title: string;
   href: string;
   description: string;
+  note?: string;
 }) {
   return (
     <a
@@ -41,6 +43,11 @@ function LinkCard({
       <div className="space-y-1">
         <h3 className="text-base font-semibold text-neutral-50">{title}</h3>
         <p className="pt-2 text-xs text-neutral-400">{description}</p>
+        {note ? (
+          <span className="mt-2 inline-flex shrink-0 rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5 text-[10px] font-normal tracking-[0.05em] text-[#666]">
+            {note}
+          </span>
+        ) : null}
       </div>
       <ExternalLink
         className="hidden md:block mt-1 h-4 w-4 text-neutral-500 group-hover:text-neutral-300"
@@ -65,6 +72,7 @@ export default function FindApprenticeshipsPage() {
                   title={card.title}
                   href={card.href}
                   description={card.description}
+                  note={card.note}
                 />
               ))}
             </div>

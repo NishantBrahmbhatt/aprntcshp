@@ -3,13 +3,13 @@ export const platforms = [
     title: "Creative Dimension Trust",
     source: "Creative Dimension Trust",
     description: "Apprenticeships and programmes in the creative industry.",
-    href: "https://creativelivesinprogress.com/articles/creative-apprenticeships-and-programmes",
+    href: "https://creativelivesinprogress.com/opportunities?type=Apprenticeship",
   },
   {
     title: "Pathway CTM",
     source: "Pathway CTM",
     description: "Careers and apprenticeship opportunities across multiple sectors.",
-    href: "https://pathwayctm.com/",
+    href: "https://pathwayctm.com/opportunity/",
   },
   {
     title: "Higherin",
@@ -28,6 +28,7 @@ export const platforms = [
     source: "Apprentago",
     description: "UK apprenticeship search platform for school leavers.",
     href: "https://apprentago.co.uk/",
+    note: "Free account neededd",
   },
   {
     title: "ApprenticeWatch",
@@ -45,7 +46,7 @@ export const platforms = [
     title: "ApprenticeTrack",
     source: "ApprenticeTrack",
     description: "Track and find apprenticeship opportunities.",
-    href: "https://theapprenticetrack.co.uk/",
+    href: "https://theapprenticetrack.co.uk/firm-rankings",
   },
   {
     title: "UCAS",
@@ -106,6 +107,7 @@ export const platforms = [
     source: "Talentix",
     description: "Track and find apprenticeship opportunities.",
     href: "https://talentix.co.uk/apprenticeship-tracker",
+    note: "Free account needed",
   },
   {
     title: "Young Professionals",
