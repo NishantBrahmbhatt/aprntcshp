@@ -6,6 +6,7 @@ import { organisations } from "@/lib/data/organisations";
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
 import { platforms } from "@/lib/data/platforms";
+import { StatsSuggestions, type SuggestionItem } from "@/components/StatsSuggestions";
 import {
   templates,
   cvAdvice,
@@ -90,7 +91,7 @@ export default async function StatsPage() {
     .slice(0, 10);
 
   const totalSearches = typeof totalSearchCount === "number" ? totalSearchCount : 0;
-  const suggestionsList = suggestions ?? [];
+  const suggestionsList: SuggestionItem[] = suggestions ?? [];
   const suggestionsReceived = suggestionsList.length;
 
   return (
@@ -159,33 +160,7 @@ export default async function StatsPage() {
           ) : suggestionsList.length === 0 ? (
             <p className="text-sm text-neutral-500">No suggestions yet.</p>
           ) : (
-            suggestionsList.map((s) => (
-              <div
-                key={String(s.id ?? `${s.url}-${s.submitted_at}`)}
-                className="rounded-xl border border-[#2a2a2a] bg-[linear-gradient(160deg,#202020_0%,#111_100%)] p-5"
-              >
-                <p className="text-sm font-medium text-white break-all">{String(s.url ?? "")}</p>
-                {s.description ? (
-                  <p className="text-sm text-neutral-400 mt-2">{String(s.description)}</p>
-                ) : null}
-                <div className="flex flex-wrap gap-3 mt-3 text-xs text-neutral-500">
-                  {s.category ? (
-                    <span className="rounded-full border border-[#2a2a2a] bg-[#1a1a1a] px-2 py-0.5">
-                      {String(s.category)}
-                    </span>
-                  ) : null}
-                  {s.submitted_at ? (
-                    <span>
-                      Submitted{" "}
-                      {new Date(String(s.submitted_at)).toLocaleString(undefined, {
-                        dateStyle: "medium",
-                        timeStyle: "short",
-                      })}
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-            ))
+            <StatsSuggestions suggestions={suggestionsList} />
           )}
         </div>
       </section>

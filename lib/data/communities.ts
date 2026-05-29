@@ -199,7 +199,7 @@ export const communities: Community[] = [
     name: "Black Law Network",
     description:
       "Community connecting and supporting Black legal talent across study and early careers.",
-    url: "https://www.blacklawnetwork.com/",
+    url: "https://blacklawnetwork.wixsite.com/black-law-network",
     logo: "/logos/black_law_network_logo.jpg",
     tags: ["Identity Led", "Sector Specific", "Networking"],
     dateAdded: "2026-03-01",
