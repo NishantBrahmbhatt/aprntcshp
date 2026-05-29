@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { supabase } from "@/lib/supabase";
+import { getSupabaseServer } from "@/lib/supabase-server";
 import { organisations } from "@/lib/data/organisations";
 import { communities } from "@/lib/data/communities";
 import { companies } from "@/lib/data/companies";
@@ -20,7 +21,7 @@ import {
 } from "@/lib/data/cv-resources";
 
 export default async function StatsPage() {
-  const [{ data: searchRows }, { count: totalSearchCount }, { data: suggestions }] =
+  const [{ data: searchRows }, { count: totalSearchCount }, suggestionsResult] =
     await Promise.all([
     supabase
       .from("search_analytics")
@@ -28,8 +29,27 @@ export default async function StatsPage() {
       .order("created_at", { ascending: false })
       .limit(200),
     supabase.from("search_analytics").select("id", { count: "exact", head: true }),
-    supabase.from("suggestions").select("*").order("submitted_at", { ascending: false }),
+    (async () => {
+      try {
+        const serverClient = getSupabaseServer();
+        return serverClient.from("suggestions").select("*").order("submitted_at", { ascending: false });
+      } catch (err) {
+        return {
+          data: null,
+          error: { message: err instanceof Error ? err.message : "Failed to load suggestions." },
+        };
+      }
+    })(),
   ]);
+
+  const { data: suggestions, error: suggestionsError } = suggestionsResult;
+  const suggestionsLoadError =
+    suggestionsError?.code === "42501"
+      ? {
+          message:
+            "Suggestions are blocked by database permissions. Add SUPABASE_SERVICE_ROLE_KEY to your env, or run scripts/supabase-suggestions-setup.sql in the Supabase SQL editor.",
+        }
+      : suggestionsError;
 
   const totalOrgs = organisations.length;
   const totalCommunities = communities.length;
@@ -131,7 +151,9 @@ export default async function StatsPage() {
       <section>
         <h2 className="text-lg font-semibold text-neutral-100 mb-4">Recent suggestions</h2>
         <div className="space-y-4">
-          {suggestionsList.length === 0 ? (
+          {suggestionsLoadError ? (
+            <p className="text-sm text-red-400">{suggestionsLoadError.message}</p>
+          ) : suggestionsList.length === 0 ? (
             <p className="text-sm text-neutral-500">No suggestions yet.</p>
           ) : (
             suggestionsList.map((s) => (

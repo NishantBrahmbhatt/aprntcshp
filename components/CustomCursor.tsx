@@ -10,10 +10,13 @@ function prefersMouseEnvironment() {
   );
 }
 
+const INTERACTIVE_SELECTOR =
+  'a, button, input, textarea, select, label, [role="button"], [role="option"]';
+
 function isClickableUnderPoint(x: number, y: number): boolean {
   const el = document.elementFromPoint(x, y);
   if (!el) return false;
-  return !!el.closest('a, button, [role="button"]');
+  return !!el.closest(INTERACTIVE_SELECTOR);
 }
 
 export function CustomCursor() {
@@ -96,7 +99,7 @@ export function CustomCursor() {
       <div
         ref={ringRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[50] opacity-0"
+        className="pointer-events-none fixed left-0 top-0 z-[10000] opacity-0"
         style={{
           boxSizing: "border-box",
           width: 24,
@@ -110,7 +113,7 @@ export function CustomCursor() {
       <div
         ref={dotRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[51] opacity-0"
+        className="pointer-events-none fixed left-0 top-0 z-[10001] opacity-0"
         style={{
           width: 6,
           height: 6,

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { EmptyStateAstronaut } from "@/components/EmptyState";
-import { logSuggestion } from "@/lib/supabase";
 
 type SuggestResourceModalProps = {
   open: boolean;
@@ -43,17 +42,27 @@ export function SuggestResourceModal({ open, onClose }: SuggestResourceModalProp
       return;
     }
     setSubmitting(true);
-    const { error: insertError } = await logSuggestion({
-      url: url.trim(),
-      description: description.trim(),
-      category,
-    });
-    setSubmitting(false);
-    if (insertError) {
-      setError(insertError.message);
-      return;
+    try {
+      const response = await fetch("/api/suggestions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: url.trim(),
+          description: description.trim(),
+          category,
+        }),
+      });
+      const data = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setSuccess(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
-    setSuccess(true);
   }
 
   if (!open) return null;
