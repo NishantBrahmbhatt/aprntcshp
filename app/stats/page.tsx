@@ -43,13 +43,16 @@ export default async function StatsPage() {
   ]);
 
   const { data: suggestions, error: suggestionsError } = suggestionsResult;
-  const suggestionsLoadError =
-    suggestionsError?.code === "42501"
-      ? {
-          message:
-            "Suggestions are blocked by database permissions. Add SUPABASE_SERVICE_ROLE_KEY to your env, or run scripts/supabase-suggestions-setup.sql in the Supabase SQL editor.",
-        }
-      : suggestionsError;
+  const isPermissionError =
+    suggestionsError != null &&
+    "code" in suggestionsError &&
+    suggestionsError.code === "42501";
+  const suggestionsLoadError = isPermissionError
+    ? {
+        message:
+          "Suggestions are blocked by database permissions. Add SUPABASE_SERVICE_ROLE_KEY to your env, or run scripts/supabase-suggestions-setup.sql in the Supabase SQL editor.",
+      }
+    : suggestionsError;
 
   const totalOrgs = organisations.length;
   const totalCommunities = communities.length;
