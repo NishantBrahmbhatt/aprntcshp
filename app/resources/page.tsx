@@ -17,6 +17,7 @@ import {
   cvAdvice,
   cvResourcesCount,
   getInspired,
+  generalResources,
   interviewPrep,
   linkedinPersonalBrand,
   onlineAssessment,
@@ -49,6 +50,7 @@ const SECTION_IDS = {
   linkedinPersonalBrand: "resources-section-linkedin-personal-brand",
   apprenticeshipsVsUniversity: "resources-section-apprenticeships-vs-university",
   getInspired: "resources-section-get-inspired",
+  generalResources: "resources-section-general-resources",
 } as const;
 
 const SECTION_PILLS: { id: string; label: string }[] = [
@@ -662,6 +664,29 @@ export default function CvResourcesPage() {
             <SectionHeading title="Get Inspired" />
             <div className="grid gap-5 md:grid-cols-2">
               {getInspired.map((card) => (
+                <LinkCard
+                  key={`${card.title}-${card.href}`}
+                  title={card.title}
+                  source={card.source}
+                  href={card.href}
+                  type={card.type}
+                  dateAdded={
+                    "dateAdded" in card ? card.dateAdded : undefined
+                  }
+                />
+              ))}
+            </div>
+          </section>
+
+          <SectionDivider />
+
+          <section
+            id={SECTION_IDS.generalResources}
+            className="scroll-mt-[72px] space-y-4 py-10"
+          >
+            <SectionHeading title="General Resources" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {generalResources.map((card) => (
                 <LinkCard
                   key={`${card.title}-${card.href}`}
                   title={card.title}

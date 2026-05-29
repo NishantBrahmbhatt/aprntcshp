@@ -770,6 +770,16 @@ export const linkedinPersonalBrand = [
   },
 ];
 
+export const generalResources = [
+  {
+    title: "The Resource Hub",
+    source: "GoodWork",
+    href: "http://goodworkuk.notion.site/the-resource-hub",
+    type: "Article" as const,
+    dateAdded: "2026-05-29",
+  },
+];
+
 export const cvResourcesCount =
   templates.length +
   cvAdvice.length +
@@ -783,4 +793,5 @@ export const cvResourcesCount =
   workExperience.length +
   linkedinPersonalBrand.length +
   getInspired.length +
-  apprenticeshipsVsUniversity.length;
+  apprenticeshipsVsUniversity.length +
+  generalResources.length;

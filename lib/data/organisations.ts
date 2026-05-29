@@ -190,6 +190,16 @@ export const organisations: Organisation[] = [
     tags: ["Job Board", "Resources", "Careers Advice"],
   },
   {
+    name: "GoodWork",
+    description:
+      "Youth employment and social mobility charity creating fairer career opportunities for young people from underserved communities.",
+    url: "https://www.goodwork.org.uk/",
+    logo: "/logos/goodworkuk_logo.jpg",
+    category: "Organisation",
+    tags: ["Mentorship", "Careers Advice", "Events"],
+    dateAdded: "2026-05-29",
+  },
+  {
     name: "Apprentice Nation",
     description:
       "Platform supporting apprentices with resources, events, and community.",

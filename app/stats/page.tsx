@@ -19,6 +19,7 @@ import {
   workExperience,
   linkedinPersonalBrand,
   getInspired,
+  generalResources,
 } from "@/lib/data/cv-resources";
 
 export default async function StatsPage() {
@@ -70,7 +71,8 @@ export default async function StatsPage() {
     assessmentCentre.length +
     workExperience.length +
     linkedinPersonalBrand.length +
-    getInspired.length;
+    getInspired.length +
+    generalResources.length;
   const totalItems =
     totalOrgs +
     totalCommunities +
